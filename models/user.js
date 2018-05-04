@@ -7,7 +7,7 @@ var userSchema = new mongoose.Schema({
     email: {type: String},
     name: {type: String},
     bio: {type: String},
-    socialMedia: {type: String},
+    socialMedia: [{type: String}],
     picture: {type: String},
     role: {type: String},
     newsPosts: [{type: Schema.Types.ObjectId, ref: 'News'}]

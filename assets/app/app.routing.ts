@@ -1,10 +1,10 @@
 import { Routes, RouterModule } from "@angular/router";
-import { SignupComponent } from "../auth/signup.component";
-import { SigninComponent } from "../auth/signin.component";
-import { LogoutComponent } from "../auth/logout.component";
+import { SignupComponent } from "../app/auth/signup.component";
+import { SigninComponent } from "../app/auth/signin.component";
+import { LogoutComponent } from "../app/auth/logout.component";
 
 const APP_ROUTES: Routes = [
-    { path: 'signup', component: SignupComponent },
+    { path: 'signup', component: SignupComponent},
     { path: 'signin', component: SigninComponent},
     { path: 'logout', component: LogoutComponent}
 

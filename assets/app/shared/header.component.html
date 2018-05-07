@@ -4,6 +4,7 @@
             <li routerLinkActive="active" *ngIf="!isLoggedIn()"><a [routerLink]="['/signup']">Signup</a></li>
             <li routerLinkActive="active" *ngIf="!isLoggedIn()"><a [routerLink]="['/signin']">Signin</a></li>
             <li routerLinkActive="active" *ngIf="isLoggedIn()"><a (click)="onLogout()">Logout</a></li>
+            <li *ngIf="isLoggedIn()"><a>Hello {{ username }}</a></li>
         </ul>
     </nav>
 </header>

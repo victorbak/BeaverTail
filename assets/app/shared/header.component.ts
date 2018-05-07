@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { AuthService } from "../auth/auth.service";
 import { Router } from "@angular/router";
 
@@ -6,7 +6,9 @@ import { Router } from "@angular/router";
     selector: 'app-header',
     templateUrl: './header.component.html'
 })
-export class HeaderComponent{
+export class HeaderComponent implements OnInit {
+
+    username: String
 
     constructor(private authService: AuthService, private router: Router) {}
 
@@ -17,5 +19,11 @@ export class HeaderComponent{
     onLogout() {
         this.authService.logout()
         this.router.navigateByUrl('/')
+    }
+
+    ngOnInit() {
+        if (this.isLoggedIn()) {
+            this.username = localStorage.getItem('username')
+        }
     }
 }

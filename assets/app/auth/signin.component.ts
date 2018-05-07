@@ -1,9 +1,37 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
+import { AuthService } from "./auth.service";
+import { FormGroup, FormControl, Validators } from "@angular/forms";
+import { User } from "./user.model";
+import { Router } from "@angular/router";
 
 @Component({
     selector: 'app-signin',
     templateUrl: './signin.component.html'
 })
-export class SigninComponent{
+export class SigninComponent implements OnInit {
 
+    myForm: FormGroup
+    
+    constructor(private authService: AuthService, private router: Router) {}
+
+    onSubmit() {
+        const user = new User(this.myForm.value.username, this.myForm.value.password)
+        this.authService.signin(user)
+            .subscribe(
+                data => {
+                    localStorage.setItem('token', data.token)
+                    localStorage.setItem('userId', data.userId)
+                    this.router.navigateByUrl('/')
+                },
+                error => console.log(error)
+            )
+        this.myForm.reset()
+    }
+
+    ngOnInit() {
+        this.myForm = new FormGroup({
+            username: new FormControl(null, Validators.required),
+            password: new FormControl(null, Validators.required),
+        })
+    }
 }

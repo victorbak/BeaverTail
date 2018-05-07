@@ -30,6 +30,7 @@ export class SignupComponent implements OnInit {
                 data => {
                     localStorage.setItem('token', data.token)
                     localStorage.setItem('userId', data.userId)
+                    localStorage.setItem('username', data.obj.username)
                     this.router.navigateByUrl('/')
                 },
                 error => console.log(error)

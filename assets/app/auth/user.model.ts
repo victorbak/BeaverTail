@@ -8,5 +8,6 @@ export class User {
         public socialMedia?: [string],
         public picture?: string,
         public role?: string,
+        public newsPosts?: [string]
     ) { }
 }

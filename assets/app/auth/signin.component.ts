@@ -10,7 +10,7 @@ import { Router } from "@angular/router";
 })
 export class SigninComponent implements OnInit {
 
-    myForm: FormGroup
+    public myForm: FormGroup
     
     constructor(private authService: AuthService, private router: Router) {}
 
@@ -21,6 +21,7 @@ export class SigninComponent implements OnInit {
                 data => {
                     localStorage.setItem('token', data.token)
                     localStorage.setItem('userId', data.userId)
+                    localStorage.setItem('username', data.obj.username)
                     this.router.navigateByUrl('/')
                 },
                 error => console.log(error)

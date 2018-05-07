@@ -3,11 +3,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 
 import { AppComponent } from "./app.component";
-import { HeaderComponent } from './header.component';
+import { HeaderComponent } from './shared/header.component';
 import { SignupComponent } from '../app/auth/signup.component';
 import { routing } from './app.routing';
 import { SigninComponent } from '../app/auth/signin.component';
-import { LogoutComponent } from '../app/auth/logout.component';
 import { HttpModule } from '@angular/http';
 import { AuthService } from './auth/auth.service';
 
@@ -17,7 +16,6 @@ import { AuthService } from './auth/auth.service';
         HeaderComponent,
         SignupComponent,
         SigninComponent,
-        LogoutComponent
     ],
     imports: [
         BrowserModule,

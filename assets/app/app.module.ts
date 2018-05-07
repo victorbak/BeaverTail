@@ -9,6 +9,8 @@ import { routing } from './app.routing';
 import { SigninComponent } from '../app/auth/signin.component';
 import { HttpModule } from '@angular/http';
 import { AuthService } from './auth/auth.service';
+import { AgmCoreModule } from '@agm/core'
+import { MainMapComponent } from './maps/main-map.component';
 
 @NgModule({
     declarations: [
@@ -16,13 +18,17 @@ import { AuthService } from './auth/auth.service';
         HeaderComponent,
         SignupComponent,
         SigninComponent,
+        MainMapComponent,
     ],
     imports: [
         BrowserModule,
         routing,
         FormsModule,
         ReactiveFormsModule,
-        HttpModule
+        HttpModule,
+        AgmCoreModule.forRoot({
+            apiKey: 'AIzaSyBeWcFP4LtWiS8ckrXz1JytArU2YEXhMPc'
+        })
     ],
     providers: [
         AuthService

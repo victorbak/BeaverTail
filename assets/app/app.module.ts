@@ -11,6 +11,7 @@ import { HttpModule } from '@angular/http';
 import { AuthService } from './auth/auth.service';
 import { AgmCoreModule } from '@agm/core'
 import { MainMapComponent } from './maps/main-map.component';
+import { ProfileComponent } from './auth/profile.component';
 
 @NgModule({
     declarations: [
@@ -19,6 +20,7 @@ import { MainMapComponent } from './maps/main-map.component';
         SignupComponent,
         SigninComponent,
         MainMapComponent,
+        ProfileComponent
     ],
     imports: [
         BrowserModule,

@@ -9,6 +9,31 @@ const saltRounds = 10
 const tokenTime = 7200
 const secret = "It's Kovine, Nigerian! Hehehehe"
 
+//Get data from a user
+router.get('/profile/:username', function (req, res, next) {
+    User.findOne({username: req.params.username}, function(err, user){
+        //Database error
+        if (err) {
+            return res.status(500).json({
+                title: 'An error occured',
+                error: err
+            })
+        }
+         //No user found
+         if (!user) {
+            return res.status(401).json({
+                title: 'User does not exits',
+                error: {message: 'Invalid username'}
+            })
+        }
+        res.status(200).json({
+            message: 'Successfully found the user',
+            userId: user._id,
+            obj: user
+        })
+    })
+})
+
 //Sign up new user, and sign them in
 router.post('/', function (req, res, next) {
     var user = new User({

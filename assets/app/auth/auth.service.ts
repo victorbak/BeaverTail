@@ -33,4 +33,14 @@ export class AuthService {
     isLoggedIn() {
         return localStorage.getItem('token') != null;
     }
+
+    getUser(username){
+        return this.http.get('http://localhost:3000/user/profile/'+ username)
+        .map((response: Response) =>{
+            const user = response.json().obj
+            let username = user.username
+            return username;
+        })
+        .catch((error: Response) => Observable.throw(error.json()))
+    }
 }

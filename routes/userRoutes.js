@@ -10,7 +10,7 @@ const tokenTime = 7200
 const secret = "It's Kovine, Nigerian! Hehehehe"
 
 //Get data from a user
-router.get('/profile/:username', function (req, res, next) {
+router.get('/:username', function (req, res, next) {
     User.findOne({username: req.params.username}, function(err, user){
         //Database error
         if (err) {

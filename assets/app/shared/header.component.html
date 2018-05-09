@@ -5,7 +5,7 @@
             <li *ngIf="!isLoggedIn()"><a [routerLink]="['/signup']">Signup</a></li>
             <li *ngIf="!isLoggedIn()"><a [routerLink]="['/signin']">Signin</a></li>
             <li *ngIf="isLoggedIn()"><a (click)="onLogout()">Logout</a></li>
-            <li *ngIf="isLoggedIn()"><a [routerLink]="['/user/profile']">Hello {{ username }}</a></li>
+            <li *ngIf="isLoggedIn()"><a [routerLink]="['/user']">Hello {{ username }}</a></li>
         </ul>
     </nav>
 </header>

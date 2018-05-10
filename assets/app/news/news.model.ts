@@ -1,4 +1,4 @@
-export class Form {
+export class News {
 
     constructor(
         public urlSubmission: string,

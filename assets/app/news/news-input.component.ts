@@ -1,12 +1,11 @@
 import { Component } from "@angular/core";
 
-import {Form} from './form.model'
-
+import {Form} from './news.model';
 @Component({
     selector: 'app-form',
-    templateUrl: './form.component.html',
+    templateUrl: './news-input.component.html',
     styleUrls:[
-        './form-component.css'
+        './news-input.component.css'
     ]
 
 })
@@ -20,5 +19,6 @@ export class FormComponent{
     onSubmit() {
         this.submitted = true;
     }
+    
 
 }

@@ -28,6 +28,7 @@
     "debug": "~2.2.0",
     "express": "~4.14.0",
     "hbs": "~3.1.0",
+    "image-loader-angular": "^1.2.0",
     "jsonwebtoken": "^8.2.1",
     "mongoose": "^5.0.17",
     "morgan": "~1.6.1",
@@ -48,6 +49,7 @@
     "raw-loader": "^0.5.1",
     "ts-loader": "^2.0.3",
     "typescript": "^2.4.2",
+    "url-loader": "^1.0.1",
     "webpack": "^2.2.1",
     "webpack-merge": "^4.1.0"
   }

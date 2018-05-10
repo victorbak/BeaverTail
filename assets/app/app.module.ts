@@ -13,6 +13,7 @@ import { AgmCoreModule } from '@agm/core'
 import { MainMapComponent } from './maps/main-map.component';
 import { ProfileComponent } from './user/profile.component';
 import { FormComponent } from './news/form-component';
+import { UserInfoComponent } from './user/user-info.component';
 
 @NgModule({
     declarations: [
@@ -22,7 +23,8 @@ import { FormComponent } from './news/form-component';
         SigninComponent,
         MainMapComponent,
         ProfileComponent,
-        FormComponent     
+        FormComponent,
+        UserInfoComponent     
     ],
     imports: [
         BrowserModule,

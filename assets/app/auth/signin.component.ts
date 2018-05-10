@@ -23,10 +23,11 @@ export class SigninComponent implements OnInit {
                     localStorage.setItem('userId', data.userId)
                     localStorage.setItem('username', data.obj.username)
                     localStorage.setItem('token', data.token)
-                    this.router.navigateByUrl('/')
                 },
                 error => console.log(error)
             )
+
+        this.router.navigateByUrl('/')
         this.myForm.reset()
     }
 

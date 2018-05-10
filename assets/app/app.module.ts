@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 
 import { AppComponent } from "./app.component";
 import { HeaderComponent } from './shared/header.component';
+import { Ng4GeoautocompleteModule } from 'ng4-geoautocomplete'
 import { SignupComponent } from '../app/auth/signup.component';
 import { routing } from './app.routing';
 import { SigninComponent } from '../app/auth/signin.component';
@@ -34,7 +35,8 @@ import { FormComponent } from './news/news-input.component';
         HttpModule,
         AgmCoreModule.forRoot({
             apiKey: 'AIzaSyBeWcFP4LtWiS8ckrXz1JytArU2YEXhMPc'
-        })
+        }),
+        Ng4GeoautocompleteModule.forRoot(),
     ],
     providers: [
         AuthService

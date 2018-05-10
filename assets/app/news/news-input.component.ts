@@ -20,5 +20,8 @@ export class FormComponent{
         this.submitted = true;
     }
     
+    autoCompleteCallback1(selectedData:any) {
+        console.log(selectedData)
+    }
 
 }

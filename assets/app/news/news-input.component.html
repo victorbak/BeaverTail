@@ -1,41 +1,13 @@
 <!-- <div class="container"> -->
-    <div class="background">
+<div class="background">
 <h1>News Submission Form</h1>
 <form>
-    <!-- <div class="form-group">
-    <label for="urlSubmission">Submitting:</label>
-    <input type="text"  id="urlSubmission" required>
-    </div>
-
-    <div class="form-group">
-       <input type="text"  id="synopsis"><br><br>
-       <label for="countryTag">Country:</label>
-       <input type="text"  id="countryTag">
-
-    </div>
-
-    <div class="form-group">
-        <label for="govermentTag">Government:</label>
-        <input type="text" id="govermentTag">
-    </div>
-
-    <div class="form-group">
-        <label for="peopleTag">People:</label>
-        <input type="text"  id="govermentTag">
-    </div>
-
-
-    <div class="form-group">
-        <label for="generalTag">Tags:</label>
-        <input type="text" id="generalTag">
-    </div> -->
-    
-    
         <label for="urlSubmission">Submitting:</label>
         <input type="text"  id="urlSubmission" required><br><br>
         <label></label> <input type="text"  id="synopsis"><br><br>
         <label for="countryTag">Country:</label>
         <input type="text"  id="countryTag"><br><br>
+        <ng4geo-autocomplete (componentCallback)="autoCompleteCallback1($event)"></ng4geo-autocomplete>
 
         <label for="govermentTag">Government:</label>
         <input type="text" id="govermentTag"><br><br>
@@ -44,30 +16,6 @@
         <input type="text"  id="govermentTag"><br><br>
         
         <label for="generalTag">Tags:</label>
-        <input type="text" id="generalTag">
-
-        
-    
+        <input type="text" id="generalTag">  
 </form>
-
-
-<!-- <p>Example of the range selection</p>
-
-        <ngb-datepicker #dp (select)="onDateSelection($event)" [displayMonths]="2" [dayTemplate]="t">
-        </ngb-datepicker>
-        
-        <ng-template #t let-date="date" let-focused="focused">
-          <span class="custom-day"
-                [class.focused]="focused"
-                [class.range]="isFrom(date) || isTo(date) || isInside(date) || isHovered(date)"
-                [class.faded]="isHovered(date) || isInside(date)"
-                (mouseenter)="hoveredDate = date"
-                (mouseleave)="hoveredDate = null">
-            {{ date.day }}
-          </span>
-        </ng-template>
-        
-        <hr>
-         -->
-       
 </div>

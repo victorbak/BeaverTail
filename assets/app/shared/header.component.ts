@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit} from "@angular/core";
 import { AuthService } from "../auth/auth.service";
 import { Router } from "@angular/router";
 
@@ -9,10 +9,9 @@ import { Router } from "@angular/router";
         './header.component.css'
     ]
 })
-export class HeaderComponent implements OnInit {
-
+export class HeaderComponent implements OnInit{
+    
     username: String
-
     constructor(private authService: AuthService, private router: Router) {}
 
     isLoggedIn() {
@@ -25,8 +24,9 @@ export class HeaderComponent implements OnInit {
     }
 
     ngOnInit() {
-        if (this.isLoggedIn()) {
+        if (this.isLoggedIn()) {         
             this.username = localStorage.getItem('username')
         }
     }
+
 }

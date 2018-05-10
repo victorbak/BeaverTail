@@ -12,6 +12,8 @@ import { HttpModule } from '@angular/http';
 import { AuthService } from './auth/auth.service';
 import { AgmCoreModule } from '@agm/core'
 import { MainMapComponent } from './maps/main-map.component';
+import { ProfileComponent } from './user/profile.component';
+import { UserInfoComponent } from './user/user-info.component';
 import { FormComponent } from './news/news-input.component';
 
 
@@ -22,10 +24,9 @@ import { FormComponent } from './news/news-input.component';
         SignupComponent,
         SigninComponent,
         MainMapComponent,
-        FormComponent
-        
-
-        
+        ProfileComponent,
+        FormComponent,
+        UserInfoComponent     
     ],
     imports: [
         BrowserModule,

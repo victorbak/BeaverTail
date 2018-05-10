@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 
 import { AppComponent } from "./app.component";
 import { HeaderComponent } from './shared/header.component';
+import { Ng4GeoautocompleteModule } from 'ng4-geoautocomplete'
 import { SignupComponent } from '../app/auth/signup.component';
 import { routing } from './app.routing';
 import { SigninComponent } from '../app/auth/signin.component';
@@ -12,8 +13,9 @@ import { AuthService } from './auth/auth.service';
 import { AgmCoreModule } from '@agm/core'
 import { MainMapComponent } from './maps/main-map.component';
 import { ProfileComponent } from './user/profile.component';
-import { FormComponent } from './news/form-component';
 import { UserInfoComponent } from './user/user-info.component';
+import { FormComponent } from './news/news-input.component';
+
 
 @NgModule({
     declarations: [
@@ -34,7 +36,8 @@ import { UserInfoComponent } from './user/user-info.component';
         HttpModule,
         AgmCoreModule.forRoot({
             apiKey: 'AIzaSyBeWcFP4LtWiS8ckrXz1JytArU2YEXhMPc'
-        })
+        }),
+        Ng4GeoautocompleteModule.forRoot(),
     ],
     providers: [
         AuthService

@@ -29,7 +29,7 @@
         <label for="generalTag">Tags:</label>
         <input type="text" id="generalTag">
     </div> -->
-
+    
     
         <label for="urlSubmission">Submitting:</label>
         <input type="text"  id="urlSubmission" required><br><br>
@@ -45,10 +45,29 @@
         
         <label for="generalTag">Tags:</label>
         <input type="text" id="generalTag">
-       
+
+        
     
 </form>
 
 
+<!-- <p>Example of the range selection</p>
 
+        <ngb-datepicker #dp (select)="onDateSelection($event)" [displayMonths]="2" [dayTemplate]="t">
+        </ngb-datepicker>
+        
+        <ng-template #t let-date="date" let-focused="focused">
+          <span class="custom-day"
+                [class.focused]="focused"
+                [class.range]="isFrom(date) || isTo(date) || isInside(date) || isHovered(date)"
+                [class.faded]="isHovered(date) || isInside(date)"
+                (mouseenter)="hoveredDate = date"
+                (mouseleave)="hoveredDate = null">
+            {{ date.day }}
+          </span>
+        </ng-template>
+        
+        <hr>
+         -->
+       
 </div>

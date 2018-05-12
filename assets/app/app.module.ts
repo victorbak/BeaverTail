@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 
@@ -12,7 +12,8 @@ import { AuthService } from './auth/auth.service';
 import { AgmCoreModule } from '@agm/core'
 import { MainMapComponent } from './maps/main-map.component';
 import { FormComponent } from './news/news-input.component';
-
+import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
     declarations: [
@@ -22,9 +23,6 @@ import { FormComponent } from './news/news-input.component';
         SigninComponent,
         MainMapComponent,
         FormComponent
-        
-
-        
     ],
     imports: [
         BrowserModule,
@@ -34,12 +32,16 @@ import { FormComponent } from './news/news-input.component';
         HttpModule,
         AgmCoreModule.forRoot({
             apiKey: 'AIzaSyBeWcFP4LtWiS8ckrXz1JytArU2YEXhMPc'
-        })
+        }),
+        MDBBootstrapModule.forRoot(),
+        // NgbModalModule.forRoot(),
+   
     ],
     providers: [
         AuthService
     ],
-    bootstrap: [AppComponent]
+    bootstrap: [AppComponent],
+    schemas: [ NO_ERRORS_SCHEMA ]
 })
 export class AppModule {
 

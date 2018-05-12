@@ -1,6 +1,7 @@
 import { Component } from "@angular/core";
 
 import {Form} from './news.model';
+
 @Component({
     selector: 'app-form',
     templateUrl: './news-input.component.html',
@@ -21,4 +22,5 @@ export class FormComponent{
     }
     
 
+    
 }

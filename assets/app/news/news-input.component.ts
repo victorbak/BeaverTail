@@ -1,6 +1,8 @@
 import { Component } from "@angular/core";
+import {News} from './news.model';
+import { FormGroup, FormControl, Validators } from "@angular/forms";
 
-import {Form} from './news.model';
+
 @Component({
     selector: 'app-form',
     templateUrl: './news-input.component.html',

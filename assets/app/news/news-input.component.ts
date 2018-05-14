@@ -26,8 +26,10 @@ export class FormComponent {
     zoom: number = 2
 
     submitted = false;
-    onSubmit() {
+
+    onSubmit(f) {
         this.submitted = true;
+        console.log(f)
     }
 
     onClear(form: NgForm) {
@@ -58,8 +60,6 @@ export class FormComponent {
         this.longitude = $event.coords.lng
         console.log(this.latitude + ", " + this.longitude)
     }
-
-
 }
 
 interface Marker {

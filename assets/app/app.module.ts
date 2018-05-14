@@ -18,7 +18,7 @@ import { FormComponent } from './news/news-input.component';
 import { AgmCoreOverrideModule } from './agmcoreoverride.module';
 import { NewsListComponent } from './news/news-list.component';
 import { NewsComponent } from './news/news.component';
-
+import { FlexLayoutModule } from "@angular/flex-layout";
 
 @NgModule({
     declarations: [

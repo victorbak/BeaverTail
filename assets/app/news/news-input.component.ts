@@ -24,8 +24,10 @@ export class FormComponent{
     zoom: number = 2
 
     submitted = false;
+
     onSubmit(f) {
         this.submitted = true;
+        console.log(f)
     }
     
     autoCompleteCallback1(selectedData:any) {

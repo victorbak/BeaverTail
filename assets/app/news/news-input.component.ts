@@ -3,11 +3,6 @@ import {News} from './news.model';
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 
 
-<<<<<<< HEAD
-import {Form} from './news.model';
-
-=======
->>>>>>> 5266d7e9f5d6c0d5ecc0c1fec8261559da64c933
 @Component({
     selector: 'app-form',
     templateUrl: './news-input.component.html',

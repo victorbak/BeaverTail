@@ -2,7 +2,6 @@ import { Component } from "@angular/core";
 import {News} from './news.model';
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 
-
 @Component({
     selector: 'app-form',
     templateUrl: './news-input.component.html',
@@ -25,8 +24,10 @@ export class FormComponent{
     zoom: number = 2
 
     submitted = false;
-    onSubmit() {
+
+    onSubmit(f) {
         this.submitted = true;
+        console.log(f)
     }
     
     autoCompleteCallback1(selectedData:any) {
@@ -52,10 +53,4 @@ export class FormComponent{
         this.longitude = $event.coords.lng
         console.log(this.latitude + ", " + this.longitude)
     }
-}
-
-interface Marker {
-    name?: string,
-    lat: Number,
-    lng: Number,
 }

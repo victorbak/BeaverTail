@@ -1,13 +1,28 @@
 <!-- <div class="container"> -->
-    <div class="background">
+<div class="background">
 <h1>News Submission Form</h1>
 <form>
-    
         <label for="urlSubmission">Submitting:</label>
         <input type="text"  id="urlSubmission" required><br><br>
         <label></label> <input type="text"  id="synopsis"><br><br>
         <label for="countryTag">Country:</label>
         <input type="text"  id="countryTag"><br><br>
+        <ng4geo-autocomplete (componentCallback)="autoCompleteCallback1($event)"></ng4geo-autocomplete>
+
+        <agm-map
+            [latitude]="latitudeForMap" 
+            [longitude]="longitudeForMap"
+            [zoom]="zoom"
+            (mapClick)="mapClicked($event)">
+
+            <agm-marker
+                [latitude]="latitude" 
+                [longitude]="longitude"
+                [markerDraggable]="true"
+                (dragEnd)="pinDragged($event)">
+            </agm-marker>
+
+        </agm-map>
 
         <label for="govermentTag">Government:</label>
         <input type="text" id="govermentTag"><br><br>
@@ -16,9 +31,6 @@
         <input type="text"  id="govermentTag"><br><br>
         
         <label for="generalTag">Tags:</label>
-        <input type="text" id="generalTag">
-
-        
-    
-</form>             
+        <input type="text" id="generalTag">  
+</form>
 </div>

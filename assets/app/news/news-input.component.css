@@ -9,8 +9,12 @@ label{
     }
     
 
-input[type=text] { width: 250px;
-height: 50px; }
+input[type=text] { 
+    width: 250px;
+    height: 50px;
+}
 
-
-@import "fullcalendar/dist/fullcalendar.min.css";
+agm-map {
+    height: 300px;
+    width: 300px;
+}

@@ -16,11 +16,45 @@ export class FormComponent{
     // ,'So this is the example', 'Canada', 'Canadian, Social',
     // 'Canadian','News, Social, Facebook'
     // );
+
+    latitudeForMap: number = 50
+    longitudeForMap: number = -122
+    latitude: number
+    longitude: number
+    zoom: number = 2
+
     submitted = false;
     onSubmit() {
         this.submitted = true;
     }
     
+    autoCompleteCallback1(selectedData:any) {
+        console.log(selectedData.response)
+        if (selectedData.response) {
+            this.latitudeForMap = selectedData.data.geometry.location.lat
+            this.latitude = selectedData.data.geometry.location.lat
+            this.longitudeForMap = selectedData.data.geometry.location.lng
+            this.longitude = selectedData.data.geometry.location.lng
+            this.zoom = 10
+            console.log(this.latitude + ", " + this.longitude)
+        }
+    }
 
-    
+    mapClicked($event: any) {
+        this.latitude = $event.coords.lat
+        this.longitude = $event.coords.lng
+        console.log(this.latitude + ", " + this.longitude)
+    }
+
+    pinDragged($event: any) {
+        this.latitude = $event.coords.lat
+        this.longitude = $event.coords.lng
+        console.log(this.latitude + ", " + this.longitude)
+    }
+}
+
+interface Marker {
+    name?: string,
+    lat: Number,
+    lng: Number,
 }

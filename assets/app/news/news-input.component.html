@@ -22,12 +22,10 @@
             <div class="form-group">
                 <label for="url">URL</label>
                 <input type="text" id="url" class="form-control" [ngModel]="news?.url" name="url">
-                <input type="text" id="url" class="form-control" [ngModel]="news?.url" name="url" required>
             </div>
 
             <div class="form-group">
                 <label for="location">Location</label>
-                
 
                 <ng4geo-autocomplete (componentCallback)="autoCompleteCallback1($event)"></ng4geo-autocomplete>
                 

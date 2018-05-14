@@ -18,6 +18,17 @@ module.exports = {
             {
                 test: /\.css$/,
                 use: [{ loader: 'raw-loader' }]
+            },
+            {
+                test: /\.(png|jpg|gif)$/,
+                use: [
+                  {
+                    loader: 'url-loader',
+                    options: {
+                      limit: 8192
+                    }
+                  }
+                ]
             }
         ],
         exprContextCritical: false

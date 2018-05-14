@@ -1,17 +1,19 @@
 import { Component } from "@angular/core";
-import {News} from './news.model';
-import { FormGroup, FormControl, Validators } from "@angular/forms";
+import { News } from './news.model';
+import { NgForm, FormGroup, FormControl, Validators } from "@angular/forms";
 
 @Component({
     selector: 'app-form',
     templateUrl: './news-input.component.html',
-    styleUrls:[
+    styleUrls: [
         './news-input.component.css'
     ]
 
 })
 
-export class FormComponent{
+export class FormComponent {
+    news: News;
+
     // let form = new Form ( 'www.facebook.com.'
     // ,'So this is the example', 'Canada', 'Canadian, Social',
     // 'Canadian','News, Social, Facebook'
@@ -29,8 +31,13 @@ export class FormComponent{
         this.submitted = true;
         console.log(f)
     }
-    
-    autoCompleteCallback1(selectedData:any) {
+
+    onClear(form: NgForm) {
+        this.news = null;
+        form.resetForm();
+    }
+
+    autoCompleteCallback1(selectedData: any) {
         console.log(selectedData.response)
         if (selectedData.response) {
             this.latitudeForMap = selectedData.data.geometry.location.lat
@@ -53,4 +60,10 @@ export class FormComponent{
         this.longitude = $event.coords.lng
         console.log(this.latitude + ", " + this.longitude)
     }
+}
+
+interface Marker {
+    name?: string,
+    lat: Number,
+    lng: Number,
 }

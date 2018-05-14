@@ -1,6 +1,6 @@
 <!-- <div class="container"> -->
 <div class="background">
-    <h1>Create a News</h1>
+    <h1>Create News</h1>
 
     <div class="col-md-8 col-md-offset-2">
         <form (ngSubmit)="onSubmit(f)" #f="ngForm">
@@ -26,7 +26,7 @@
 
             <div class="form-group">
                 <label for="location">Location</label>
-                <br>
+                
 
                 <ng4geo-autocomplete (componentCallback)="autoCompleteCallback1($event)"></ng4geo-autocomplete>
                 
@@ -45,5 +45,6 @@
 
             <button type="button" class="btn btn-danger">Clear</button>
             <button class="btn btn-primary" type="submit">Save</button>
+            <footer></footer>
         </form>
     </div>

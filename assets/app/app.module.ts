@@ -16,6 +16,8 @@ import { ProfileComponent } from './user/profile.component';
 import { UserInfoComponent } from './user/user-info.component';
 import { FormComponent } from './news/news-input.component';
 import { AgmCoreOverrideModule } from './agmcoreoverride.module';
+import { NewsListComponent } from './news/news-list.component';
+import { NewsComponent } from './news/news.component';
 
 
 @NgModule({
@@ -27,7 +29,9 @@ import { AgmCoreOverrideModule } from './agmcoreoverride.module';
         MainMapComponent,
         ProfileComponent,
         FormComponent,
-        UserInfoComponent     
+        UserInfoComponent,
+        NewsListComponent,
+        NewsComponent     
     ],
     imports: [
         BrowserModule,

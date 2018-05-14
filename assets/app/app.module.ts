@@ -16,6 +16,8 @@ import { ProfileComponent } from './user/profile.component';
 import { UserInfoComponent } from './user/user-info.component';
 import { FormComponent } from './news/news-input.component';
 import { AgmCoreOverrideModule } from './agmcoreoverride.module';
+import { TagInputModule } from 'ngx-chips';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
 
 @NgModule({
@@ -39,6 +41,9 @@ import { AgmCoreOverrideModule } from './agmcoreoverride.module';
             apiKey: 'AIzaSyBeWcFP4LtWiS8ckrXz1JytArU2YEXhMPc'
         }),
         Ng4GeoautocompleteModule.forRoot(),
+        TagInputModule,
+        BrowserAnimationsModule,
+
     ],
     providers: [
         AuthService

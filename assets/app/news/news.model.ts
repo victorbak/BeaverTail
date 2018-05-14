@@ -1,12 +1,14 @@
-export class Form {
+export class News {
 
     constructor(
-        public urlSubmission: string,
+        public title: string,
         public synopsis: string,
-        public contryTag: string,
-        public governmentTag: string,
-        public peopleTag: string,
-        public generalTag: string
-        
+        public tags: [string],
+        public votes?: number,
+        public url?: string,
+        public location?: string,
+        public creationDate?: Date,
+        public dates?: [Date],
+        public userId?: string   
     ){}
 }

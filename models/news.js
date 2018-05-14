@@ -5,7 +5,7 @@ var newsSchema = new mongoose.Schema({
     title: {type: String, required: true},
     synopsis: {type: String, required: true},
     tags: [{type: String, required: true}],
-    votes: {type: Number},
+    replyCount: {type: Number},
     url: {type: String},
     location: {type: String},
     creationDate: {type: Date, default: Date.now},

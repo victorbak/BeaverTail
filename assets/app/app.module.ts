@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 
@@ -16,9 +16,15 @@ import { ProfileComponent } from './user/profile.component';
 import { UserInfoComponent } from './user/user-info.component';
 import { FormComponent } from './news/news-input.component';
 import { AgmCoreOverrideModule } from './agmcoreoverride.module';
+<<<<<<< HEAD
 import { TagInputModule } from 'ngx-chips';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
+=======
+import { NewsListComponent } from './news/news-list.component';
+import { NewsComponent } from './news/news.component';
+import { FlexLayoutModule } from "@angular/flex-layout";
+>>>>>>> f333450516951ac2d008d1477c95eb8c52085ec0
 
 @NgModule({
     declarations: [
@@ -29,7 +35,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
         MainMapComponent,
         ProfileComponent,
         FormComponent,
-        UserInfoComponent     
+        UserInfoComponent,
+        NewsListComponent,
+        NewsComponent     
     ],
     imports: [
         BrowserModule,
@@ -48,7 +56,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
     providers: [
         AuthService
     ],
-    bootstrap: [AppComponent]
+    bootstrap: [AppComponent],
+    schemas: [ NO_ERRORS_SCHEMA ]
 })
 export class AppModule {
 

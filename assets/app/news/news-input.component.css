@@ -15,6 +15,24 @@ input[type=text] {
 } */
 
 agm-map {
+<<<<<<< HEAD
     height: 300px;
     width: 700px;
+=======
+    /* height: 300px;
+    width: 700px; */
+    height:400px;
+    width: 100%;
+    float: left;
+    overflow: auto;
+    border:5px solid white;
+
+>>>>>>> 4f25a0c0740d55cdbe8a4db9e95f4fc91d37cd04
 }
+
+
+@media screen and (max-width: 800px) {
+    agm-map{
+      width: 100%; /* The width is 100%, when the viewport is 800px or smaller */
+    }
+  }

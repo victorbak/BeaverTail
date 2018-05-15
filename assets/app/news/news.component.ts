@@ -1,8 +1,9 @@
 import { Component, Input } from "@angular/core";
-import {News} from './news.model';
-import {User} from '../auth/user.model'
+import { News } from './news.model';
+import { User } from '../auth/user.model'
 import { AuthService } from "../auth/auth.service";
 import { NewsService } from "./news.service";
+import { Router } from "@angular/router";
 
 
 @Component({
@@ -23,10 +24,10 @@ import { NewsService } from "./news.service";
         }
     `]
 })
-export class NewsComponent{
+export class NewsComponent {
     @Input() news: News;
 
-    constructor(private newsService: NewsService) {}
+    constructor(private newsService: NewsService, private router: Router) { }
 
     onEdit() {
         this.newsService.editNews(this.news);
@@ -37,5 +38,9 @@ export class NewsComponent{
             .subscribe(
                 result => console.log(result)
             );
+    }
+
+    getDetail() {
+        this.router.navigateByUrl('/news')
     }
 }

@@ -1,7 +1,8 @@
-import { Component } from "@angular/core";
+import { Component, Input } from "@angular/core";
 import {News} from './news.model';
 import {User} from '../auth/user.model'
 import { AuthService } from "../auth/auth.service";
+import { NewsService } from "./news.service";
 
 
 @Component({
@@ -23,5 +24,18 @@ import { AuthService } from "../auth/auth.service";
     `]
 })
 export class NewsComponent{
+    @Input() news: News;
 
+    constructor(private newsService: NewsService) {}
+
+    onEdit() {
+        this.newsService.editNews(this.news);
+    }
+
+    onDelete() {
+        this.newsService.deleteNews(this.news)
+            .subscribe(
+                result => console.log(result)
+            );
+    }
 }

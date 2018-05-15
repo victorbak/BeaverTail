@@ -79,7 +79,7 @@ router.get('/:id', function(req, res, next) {
 });
 
 router.use('/', function(req, res, next) {
-    jwt.verify(req.query.token, "It's Kovine, Nigerian! Hehehehe" , function(err, decoded) {
+    jwt.verify(req.query.token, "It's Kovine, Nigerian! Hehehehe", function(err, decoded) {
         if (err) {
             return res.status(401).json({
                 title: 'Not Authenticated',
@@ -96,20 +96,21 @@ router.post('/', function(req, res, next) {
     User.findById(decoded.user._id, function(err, user) {
         if (err) {
             return res.status(401).json({
-                title: 'Not Authenticated',
+                title: 'An error has occured',
                 error: err
             });
         }
         var news = new News({
             title: req.body.title,
             synopsis: req.body.synopsis,
-            tags: req.body.synopsis,
+            tags: req.body.tags,
             replyCount: req.body.replyCount,
             url: req.body.url,
-            location: req.body.location,
+            longitude: req.body.longitude,
+            latitude: req.body.latitude,
             creationDate: req.body.creationDate,
             dates: req.body.dates,
-            user: user
+            user: user._id
         });
         news.save(function(err, result) {
             if (err) {
@@ -119,7 +120,7 @@ router.post('/', function(req, res, next) {
                 });
             }
             user.newsPosts.push(result);
-            user.save;
+            user.save();
             res.status(200).json({
                 message: 'News Saved',
                 obj: result

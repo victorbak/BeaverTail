@@ -16,12 +16,12 @@
 
             <div class="form-group">
                 <label for="gov-tag">Government Tags</label>
-                <rl-tag-input [(ngModel)]="govTags" name="gov-tag" id="gov-tag" placeholder="Add Government Tags"></rl-tag-input>
+                <rl-tag-input [(ngModel)]="govTags" name="govtag" id="gov-tag" placeholder="Add Government Tags"></rl-tag-input>
             </div>
 
             <div class="form-group">
                 <label for="people-tag">People Tags</label>
-                <rl-tag-input [(ngModel)]="peopleTags" name="people-tag" id="people-tag" placeholder="Add People Tags"></rl-tag-input>
+                <rl-tag-input [(ngModel)]="peopleTags" name="ppltag" id="people-tag" placeholder="Add People Tags"></rl-tag-input>
             </div>
 
             <div class="form-group">
@@ -61,6 +61,7 @@
             <h4 class="errorMessage" *ngFor="let m of errorMessages">{{ m }}</h4>
             <button type="button" class="btn btn-danger" (click)="onClear(f)">Clear</button>
             <button class="btn btn-primary" type="submit">Save</button>
+            <div class="footer"></div>
         </form>
     </div>
 </div>

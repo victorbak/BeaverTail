@@ -4,11 +4,12 @@ export class News {
         public title: string,
         public synopsis: string,
         public tags: [string],
-        public votes?: number,
+        public replyCount?: number,
         public url?: string,
-        public location?: string,
-        public creationDate?: Date,
+        public longitude?: number,
+        public latitude?: number,
         public dates?: [Date],
+        public newsId?: string,
         public userId?: string   
     ){}
 }

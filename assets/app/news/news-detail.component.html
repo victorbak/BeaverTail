@@ -1,6 +1,5 @@
-<!-- <div class="container"> -->
 <div class="background">
-    <h1>Create News</h1>
+    <h1>news detail</h1>
 
     <div class="col-md-8 col-md-offset-2">
         <form (ngSubmit)="onSubmit(f)" #f="ngForm">
@@ -21,14 +20,15 @@
 
             <div class="form-group">
                 <label for="url">URL</label>
-                <input type="text" id="url" class="form-control" [ngModel]="news?.url" name="url">
+                <input type="text" id="url" class="form-control" [ngModel]="news?.url" name="url" required>
             </div>
 
             <div class="form-group">
                 <label for="location">Location</label>
+                <br>
 
                 <ng4geo-autocomplete (componentCallback)="autoCompleteCallback1($event)"></ng4geo-autocomplete>
-                
+
                 <agm-map [latitude]="latitudeForMap" [longitude]="longitudeForMap" [zoom]="zoom" (mapClick)="mapClicked($event)">
 
                     <agm-marker [latitude]="latitude" [longitude]="longitude" [markerDraggable]="true" (dragEnd)="pinDragged($event)">
@@ -42,9 +42,9 @@
                 <input type="date" id="dates" class="form-control" [ngModel]="news?.dates" name="dates" required>
             </div>
 
-            <button type="button" class="btn btn-danger" (click)='onClear(f)'>Clear</button>
+            <button type="button" class="btn btn-danger">Clear</button>
             <button class="btn btn-primary" type="submit">Save</button>
-            <footer></footer>
+            <button class="btn btn-primary" type="submit">Edit</button>
+
         </form>
     </div>
-</div>

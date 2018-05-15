@@ -79,7 +79,7 @@ router.get('/:id', function(req, res, next) {
 });
 
 router.use('/', function(req, res, next) {
-    jwt.verify(req.query.token, "It's Kovine, Nigerian! Hehehehe" , function(err, decoded) {
+    jwt.verify(req.query.token, "It's Kovine, Nigerian! Hehehehe", function(err, decoded) {
         if (err) {
             return res.status(401).json({
                 title: 'Not Authenticated',
@@ -100,7 +100,7 @@ router.post('/', function(req, res, next) {
                 error: err
             });
         }
-        var news = new News({
+        const news = new News({
             title: req.body.title,
             synopsis: req.body.synopsis,
             tags: req.body.synopsis,
@@ -109,7 +109,7 @@ router.post('/', function(req, res, next) {
             location: req.body.location,
             creationDate: req.body.creationDate,
             dates: req.body.dates,
-            user: user
+            user: user._id
         });
         news.save(function(err, result) {
             if (err) {

@@ -19,8 +19,9 @@ import { AgmCoreOverrideModule } from './agmcoreoverride.module';
 import { NewsListComponent } from './news/news-list.component';
 import { NewsComponent } from './news/news.component';
 import { FlexLayoutModule } from "@angular/flex-layout";
-import { RlTagInputModule } from 'angular2-tag-input'
+import { RlTagInputModule } from 'angular2-tag-input';
 import {TabModule} from 'angular-tabs-component';
+import { NewsService } from './news/news.service';
 
 @NgModule({
     declarations: [
@@ -50,7 +51,8 @@ import {TabModule} from 'angular-tabs-component';
 
     ],
     providers: [
-        AuthService
+        AuthService,
+        NewsService
     ],
     bootstrap: [AppComponent],
     schemas: [ NO_ERRORS_SCHEMA ]

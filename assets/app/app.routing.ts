@@ -4,18 +4,19 @@ import { SigninComponent } from "../app/auth/signin.component";
 import { MainMapComponent } from "./maps/main-map.component";
 import { ProfileComponent } from "./user/profile.component";
 import { FormComponent } from "./news/news-input.component";
-import { AUTH_ROUTES } from "./news/news.routes";
+import { Profile_ROUTES } from "./user/profile.routes";
 import { NewsDetailComponent } from "./news/news-detail.component";
+// import { News_ROUTES } from "./news/news.routes";
+
+
 
 
 const APP_ROUTES: Routes = [
+    { path: '', component: MainMapComponent, pathMatch: 'full'},
     { path: 'signup', component: SignupComponent},
     { path: 'signin', component: SigninComponent},
-    { path: 'user', component: ProfileComponent},
-    { path: '', component: MainMapComponent, pathMatch: 'full'},
-    { path: 'form', component: FormComponent },
-    { path: 'news', component: NewsDetailComponent, children: AUTH_ROUTES }
-
+    { path: 'user/profile/:username', component: ProfileComponent, children: Profile_ROUTES},
+    { path: 'form', component: FormComponent }
 ];
 
 export const routing = RouterModule.forRoot(APP_ROUTES);

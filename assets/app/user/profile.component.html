@@ -4,7 +4,14 @@
     </div>
 
     <div class="col-lg-8  col-lg-offset-1">
-        <news-list></news-list>
+        <ul class="tabs">
+            <li routerLinkActive="active">
+                <a [routerLink]="['replies']">REPLIES</a>
+            </li>
+            <li routerLinkActive="active">
+                <a [routerLink]="['posts']">POSTS</a>
+            </li>
+        </ul>
+        <router-outlet></router-outlet>
     </div>
 </div>
-

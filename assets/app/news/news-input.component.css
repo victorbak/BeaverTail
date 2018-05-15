@@ -1,3 +1,4 @@
+
 agm-map {
     height:400px;
     width: 100%;
@@ -10,4 +11,12 @@ agm-map {
     agm-map{
       width: 100%; /* The width is 100%, when the viewport is 800px or smaller */
     }
+  }
+
+.errorMessage {
+    color: red
+}
+
+  .footer{
+    padding-bottom: 20px;
   }

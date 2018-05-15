@@ -1,7 +1,7 @@
-import { Routes } from "@angular/router";
+// import { Routes } from "@angular/router";
 
-import { NewsDetailComponent } from "./news-detail.component";
+// import { NewsDetailComponent } from ".././news/news-detail.component";
 
-export const AUTH_ROUTES: Routes = [
-    { path: 'detail', component: NewsDetailComponent }
-];
+// export const News_ROUTES: Routes = [
+//     { path: 'newsId', component: NewsDetailComponent }
+// ];

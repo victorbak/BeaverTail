@@ -106,7 +106,8 @@ router.post('/', function(req, res, next) {
             tags: req.body.tags,
             replyCount: req.body.replyCount,
             url: req.body.url,
-            location: req.body.location,
+            longitude: req.body.longitude,
+            latitude: req.body.latitude,
             creationDate: req.body.creationDate,
             dates: req.body.dates,
             user: user._id

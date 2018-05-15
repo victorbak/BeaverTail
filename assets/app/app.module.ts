@@ -19,7 +19,6 @@ import { AgmCoreOverrideModule } from './agmcoreoverride.module';
 import { NewsListComponent } from './news/news-list.component';
 import { NewsComponent } from './news/news.component';
 import { FlexLayoutModule } from "@angular/flex-layout";
-import { NewsDetailComponent } from './news/news-detail.component';
 import { RlTagInputModule } from 'angular2-tag-input'
 import {TabModule} from 'angular-tabs-component';
 
@@ -34,8 +33,7 @@ import {TabModule} from 'angular-tabs-component';
         FormComponent,
         UserInfoComponent,
         NewsListComponent,
-        NewsComponent,
-        NewsDetailComponent
+        NewsComponent
         ],
     imports: [
         BrowserModule,

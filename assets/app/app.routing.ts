@@ -5,8 +5,6 @@ import { MainMapComponent } from "./maps/main-map.component";
 import { ProfileComponent } from "./user/profile.component";
 import { FormComponent } from "./news/news-input.component";
 import { Profile_ROUTES } from "./user/profile.routes";
-import { NewsDetailComponent } from "./news/news-detail.component";
-// import { News_ROUTES } from "./news/news.routes";
 
 
 

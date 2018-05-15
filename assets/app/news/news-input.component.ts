@@ -1,6 +1,6 @@
 import { Component } from "@angular/core";
-import { News } from './news.model';
 import { NgForm, FormGroup, FormControl, Validators } from "@angular/forms";
+import {News} from './news.model';
 
 @Component({
     selector: 'app-form',
@@ -24,12 +24,34 @@ export class FormComponent {
     latitude: number
     longitude: number
     zoom: number = 2
+    tags: string[] = []
+    peopleTags: string[] = []
+    govTags: string[] = []
+    title: string
+    synopsis: string
+    url?: string
+
+    errorMessages: string[] = []
 
     submitted = false;
 
-    onSubmit(f) {
+    onSubmit(form: NgForm) {
+        this.errorMessages = []
         this.submitted = true;
-        console.log(f)
+        console.log(form)
+        console.log(this.latitude + ", " + this.longitude)
+        if (!this.latitude || !this.longitude) {
+            this.errorMessages.push("Please enter a valid location")
+        }
+        if (this.tags.length == 0 && this.govTags.length == 0 && this.peopleTags.length == 0) {
+            this.errorMessages.push("Please enter at least one tag")
+        }
+        if (form.form.value.url) {
+            var urlRegex = new RegExp(/[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/gi)
+            if (!urlRegex.test(form.form.value.url)) {
+                this.errorMessages.push("Please enter a valid URL")
+            }
+        }
     }
 
     onClear(form: NgForm) {

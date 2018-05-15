@@ -1,20 +1,22 @@
-/* label{
-    
-    width: 4em;
-    float: left;
-    text-align: right;
-    margin-right: 3em;
-    display: block
-    
-    }
-    
-
-input[type=text] { 
-    width: 250px;
-    height: 50px;
-} */
 
 agm-map {
-    height: 300px;
-    width: 700px;
+    height:400px;
+    width: 100%;
+    float: left;
+    overflow: auto;
+    border:5px solid white;
 }
+
+@media screen and (max-width: 800px) {
+    agm-map{
+      width: 100%; /* The width is 100%, when the viewport is 800px or smaller */
+    }
+  }
+
+.errorMessage {
+    color: red
+}
+
+  .footer{
+    padding-bottom: 20px;
+  }

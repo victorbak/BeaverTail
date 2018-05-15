@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 
@@ -18,7 +18,10 @@ import { FormComponent } from './news/news-input.component';
 import { AgmCoreOverrideModule } from './agmcoreoverride.module';
 import { NewsListComponent } from './news/news-list.component';
 import { NewsComponent } from './news/news.component';
-
+import { FlexLayoutModule } from "@angular/flex-layout";
+import { RlTagInputModule } from 'angular2-tag-input';
+import {TabModule} from 'angular-tabs-component';
+import { NewsService } from './news/news.service';
 
 @NgModule({
     declarations: [
@@ -43,11 +46,16 @@ import { NewsComponent } from './news/news.component';
             apiKey: 'AIzaSyBeWcFP4LtWiS8ckrXz1JytArU2YEXhMPc'
         }),
         Ng4GeoautocompleteModule.forRoot(),
+        RlTagInputModule,
+        TabModule,
+
     ],
     providers: [
-        AuthService
+        AuthService,
+        NewsService
     ],
-    bootstrap: [AppComponent]
+    bootstrap: [AppComponent],
+    schemas: [ NO_ERRORS_SCHEMA ]
 })
 export class AppModule {
 

@@ -13,15 +13,20 @@ export class NewsService {
     addNews(news: News) {
         const body = JSON.stringify(news);
         const headers = new Headers({'Content-Type': 'application/json'})
-        return this.http.post('http://localhost:3000/news', body, {headers: headers})
+        const token = localStorage.getItem('token')
+        ? '?token=' + localStorage.getItem('token')
+        : '';
+        return this.http.post('http://localhost:3000/news' + token, body, {headers: headers})
             .map((response: Response) => {
                 const result = response.json();
                 const news = new News(result.obj.title,
                                       result.obj.synopsis,
-                                      'Canada',
-                                      'Govmnt',
-                                      'ppl',
-                                      result.obj.tags
+                                      [result.obj.tags],
+                                      0,
+                                      result.obj.url,
+                                      null,
+                                      result.obj.dates,
+                                      result.obj.user._id
                                       );
                 this.stories.push(news);
                 return news;
@@ -35,7 +40,7 @@ export class NewsService {
                 const stories = response.json().obj;
                 let transformedNews: News[] = [];
                 for (let news of stories) {
-                    transformedNews.push(new News(news.title, news.synopsis, 'Canada', 'Govmnt', 'ppl', 'tag'));
+                    transformedNews.push(new News(news.title, news.synopsis, ['Canada'], 10, 'ppl', 'tag'));
                 }
                 this.stories = transformedNews;
                 return transformedNews;

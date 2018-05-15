@@ -18,12 +18,13 @@ tr td:first-child {
    
 }
 
-tr {
-    margin-top:500%;
+.info{
+ margin-top:250px;
+ margin-left:20px;
 }
 
 .bio {
-    margin-top: 200%;
+    margin-top: 210%;
     margin-left: 12%;
 }
 

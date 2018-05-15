@@ -1,4 +1,4 @@
-label{
+/* label{
     
     width: 4em;
     float: left;
@@ -9,7 +9,12 @@ label{
     }
     
 
-input[type=text] { width: 250px;
-height: 50px; }
+input[type=text] { 
+    width: 250px;
+    height: 50px;
+} */
 
-
+agm-map {
+    height: 300px;
+    width: 700px;
+}

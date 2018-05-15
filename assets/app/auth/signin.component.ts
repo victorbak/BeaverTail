@@ -16,16 +16,18 @@ export class SigninComponent implements OnInit {
 
     onSubmit() {
         const user = new User(this.myForm.value.username, this.myForm.value.password)
+        
         this.authService.signin(user)
             .subscribe(
                 data => {
-                    localStorage.setItem('token', data.token)
                     localStorage.setItem('userId', data.userId)
                     localStorage.setItem('username', data.obj.username)
-                    this.router.navigateByUrl('/')
+                    localStorage.setItem('token', data.token)
                 },
                 error => console.log(error)
             )
+
+        this.router.navigateByUrl('/')
         this.myForm.reset()
     }
 

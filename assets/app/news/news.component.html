@@ -1,43 +1,10 @@
-<hr>
-
-
-<div class="background">
-    <table>
-        <tr>
-            <td>Title</td>
-            <!-- <td>{{news?.title}}</td> -->
-            <td>Title for test</td>
-        </tr>
-        <tr>
-            <td>Synopsis</td>
-            <!-- <td>{{news?.synopsis}}</td> -->
-            <td>Synopsis for test</td>
-        </tr>
-        <tr>
-            <td>Tags</td>
-            <!-- <td>{{news?.tags}}</td> -->
-            <td>Tags for test</td>
-        </tr>
-        <tr>
-            <td>URL</td>
-            <!-- <td>
-                        <a href="{{user?.socialMedia}}">{{news?.url}}</a>
-                    </td> -->
-            <td>
-                <a>URL for test</a>
-            </td>
-        </tr>
-        <tr>
-            <td>Creation Date</td>
-            <!-- <td>{{news?.creationDate}}</td> -->
-            <td>Creation Date for test</td>
-        </tr>
-        <tr>
-            <td>Dates</td>
-            <!-- <td>{{news?.dates}}</td> -->
-            <td>Dates for test</td>
-        </tr>
-    </table>
-    <button class="btn btn-primary" type="submit"(click)="onEdit()">Edit</button>
-    <button class="btn btn-danger"(click)="onDelete()">Delete</button>
-</div>
+<article class="panel panel-default">
+    <div class="panel-body">
+        <!-- {{ news?.title }} -->
+        <a [routerLink]="['newsId']">test: title for a news</a>
+    </div>
+    <div class="panel-body">
+        <!-- {{ news?.creationDate }} -->
+        <p>2018/05/19</p>
+    </div>
+</article>

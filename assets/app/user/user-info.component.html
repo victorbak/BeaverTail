@@ -1,33 +1,30 @@
- <img class="user-photo" src="../../images/user.png" alt="default user">
- <hr >
-     <table>
-       <tr>
-           <td >UserName</td>
-           <td>{{user?.username}}</td>
-       </tr>
-       <tr>
-           <td>Name</td>
-           <td>{{user?.name}}</td>
-       </tr>
-       <tr>
-           <td>Bio</td>
-           <td>{{user?.bio}}</td>
-       </tr>
-       <tr>
-           <td>Email</td>
-           <td>{{user?.email}}</td>
-       </tr>
-        <tr>
-           <td>Social Media</td>
-           <td>{{user?.socialMedia}}</td>
-       </tr>
-   </table>
-   <hr>
-   <div class="config" >
-        <a (click)="onEdit()">Edit Profile</a>
-    </div>
-  
-    
-
-
-   
+<img class="user-photo" src="../../images/user.png" alt="default user">
+<hr>
+<table>
+    <tr>
+        <td>UserName</td>
+        <td>{{user?.username}}</td>
+    </tr>
+    <tr>
+        <td>Name</td>
+        <td>{{user?.name}}</td>
+    </tr>
+    <tr>
+        <td>Bio</td>
+        <td>{{user?.bio}}</td>
+    </tr>
+    <tr>
+        <td>Email</td>
+        <td>{{user?.email}}</td>
+    </tr>
+    <tr>
+        <td>Social Media</td>
+        <td>
+            <a href="{{user?.socialMedia}}">{{user?.socialMedia}}</a>
+        </td>
+    </tr>
+</table>
+<hr>
+<div class="config">
+    <a (click)="onEdit()">Edit Profile</a>
+</div>

@@ -33,8 +33,8 @@ import {TabModule} from 'angular-tabs-component';
         FormComponent,
         UserInfoComponent,
         NewsListComponent,
-        NewsComponent     
-    ],
+        NewsComponent
+        ],
     imports: [
         BrowserModule,
         routing,

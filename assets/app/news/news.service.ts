@@ -26,7 +26,8 @@ export class NewsService {
                                       result.obj.tags,
                                       0,
                                       result.obj.url,
-                                      result.obj.location,
+                                      result.obj.longitude,
+                                      result.obj.latitude,
                                       result.obj.dates,
                                       result.obj.user._id
                                       );
@@ -48,7 +49,8 @@ export class NewsService {
                         news.tags, 
                         news.replyCount, 
                         news.url,
-                        news.location,
+                        news.longitude,
+                        news.latitude,
                         news.dates,
                         news.userId
                      ));

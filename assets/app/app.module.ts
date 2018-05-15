@@ -16,6 +16,7 @@ import { ProfileComponent } from './user/profile.component';
 import { UserInfoComponent } from './user/user-info.component';
 import { FormComponent } from './news/news-input.component';
 import { AgmCoreOverrideModule } from './agmcoreoverride.module';
+import { AgmJsMarkerClustererModule, ClusterManager } from '@agm/js-marker-clusterer';
 import { NewsListComponent } from './news/news-list.component';
 import { NewsComponent } from './news/news.component';
 import { FlexLayoutModule } from "@angular/flex-layout";
@@ -45,6 +46,7 @@ import { NewsService } from './news/news.service';
         AgmCoreOverrideModule.forRoot({
             apiKey: 'AIzaSyBeWcFP4LtWiS8ckrXz1JytArU2YEXhMPc'
         }),
+        AgmJsMarkerClustererModule,
         Ng4GeoautocompleteModule.forRoot(),
         RlTagInputModule,
         TabModule,
@@ -52,7 +54,8 @@ import { NewsService } from './news/news.service';
     ],
     providers: [
         AuthService,
-        NewsService
+        NewsService,
+        ClusterManager
     ],
     bootstrap: [AppComponent],
     schemas: [ NO_ERRORS_SCHEMA ]

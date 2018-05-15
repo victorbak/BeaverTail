@@ -60,7 +60,6 @@ export class NewsService {
             })
             .catch((error: Response) => Observable.throw(error.json()));            
     }
-
     editNews(news: News) {
         this.newsIsEdit.emit(news);
     }

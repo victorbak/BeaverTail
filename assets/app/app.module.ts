@@ -23,6 +23,7 @@ import { FlexLayoutModule } from "@angular/flex-layout";
 import { RlTagInputModule } from 'angular2-tag-input';
 import {TabModule} from 'angular-tabs-component';
 import { NewsService } from './news/news.service';
+import { NewsDetailComponent } from './news/news-detail.component';
 
 @NgModule({
     declarations: [
@@ -35,7 +36,8 @@ import { NewsService } from './news/news.service';
         FormComponent,
         UserInfoComponent,
         NewsListComponent,
-        NewsComponent
+        NewsComponent,
+        NewsDetailComponent
         ],
     imports: [
         BrowserModule,

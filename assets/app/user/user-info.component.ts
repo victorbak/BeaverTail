@@ -5,19 +5,22 @@ import { AuthService } from "../auth/auth.service";
 @Component({
     selector: 'user-info',
     templateUrl: 'user-info.component.html',
-    styles: [`.user-photo{height: 150px;}
-              tr td:first-child {width:100px}
-            hr{visibility:hidden}`]
-    
+    // styles: [`.user-photo{height: 150px;}
+    //           tr td:first-child {width:100px}
+    //         hr{visibility:hidden}`]
+    styleUrls: [
+        './user-info.component.css',
+    ]
+
 })
-export class UserInfoComponent implements OnInit{
+export class UserInfoComponent implements OnInit {
     private username = localStorage.getItem('username')
     user: User
-    constructor(private authService: AuthService, private router: Router){}
-    ngOnInit(){
+    constructor(private authService: AuthService, private router: Router) { }
+    ngOnInit() {
         this.authService.getUser(this.username)
-        .subscribe((user: User) => {
-            this.user = user
-        })
+            .subscribe((user: User) => {
+                this.user = user
+            })
     }
 }

@@ -15,6 +15,12 @@ h1, h3{
     margin: 40px auto;
     position: relative;
 }
+@media screen and (max-width: 800px) {
+    .tabs{
+      width: 100%; /* The width is 100%, when the viewport is 800px or smaller */
+    }
+  }
+
 
 .tabs .tab{
     float: left;
@@ -34,7 +40,7 @@ h1, h3{
     text-transform: uppercase;
     cursor: pointer;
     position: relative;
-    color: #FFF;
+    color:black;
     /* background: #4A83FD; */
 }
 
@@ -57,7 +63,7 @@ h1, h3{
     top: 0;
     /* background: #303030; */
     /* color: #F5F5F5; */
-    color:black;
+    color:white;
 }
 
 .tabs>.tab>[id^="tab"]:checked ~ [id^="tab-content"] {
@@ -65,4 +71,14 @@ h1, h3{
    
     opacity: 1;
     transition: opacity 400ms ease-out;
+}
+
+
+@media screen and (max-width: 800px) {
+    .tabs{
+        width: 100%;
+      
+        text-align:center;
+        /* The width is 100%, when the viewport is 800px or smaller */
+    }
 }

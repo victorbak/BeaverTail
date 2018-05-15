@@ -40,7 +40,16 @@ export class NewsService {
                 const stories = response.json().obj;
                 let transformedNews: News[] = [];
                 for (let news of stories) {
-                    transformedNews.push(new News(news.title, news.synopsis, ['Canada'], 10, 'ppl', 'tag'));
+                    transformedNews.push(new News(
+                        news.title, 
+                        news.synopsis, 
+                        news.tags, 
+                        news.replyCount, 
+                        news.url,
+                        null,
+                        news.dates,
+                        news.userId
+                     ));
                 }
                 this.stories = transformedNews;
                 return transformedNews;

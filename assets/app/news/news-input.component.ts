@@ -57,7 +57,15 @@ export class FormComponent {
         }
         //Creating a news post
         
-        const news = new News(form.value.title, form.value.synopsis, form.value.tag, 0, form.value.url, form.value.location, form.value.dates);
+        const news = new News(
+            form.value.title,
+            form.value.synopsis, 
+            form.value.tag, 0, 
+            form.value.url, 
+            this.longitude,
+            this.latitude, 
+            form.value.dates
+        );
         this.newsService.addNews(news)
             .subscribe(
                 data => console.log(data),
@@ -65,6 +73,7 @@ export class FormComponent {
             );
         form.resetForm();
     }
+
 
     onClear(form: NgForm) {
         this.news = null;

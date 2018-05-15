@@ -6,7 +6,8 @@ export class News {
         public tags: [string],
         public replyCount?: number,
         public url?: string,
-        public location?: string,
+        public longitude?: number,
+        public latitude?: number,
         public dates?: [Date],
         public newsId?: string,
         public userId?: string   

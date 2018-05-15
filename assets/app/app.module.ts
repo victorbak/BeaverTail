@@ -20,6 +20,7 @@ import { NewsListComponent } from './news/news-list.component';
 import { NewsComponent } from './news/news.component';
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { RlTagInputModule } from 'angular2-tag-input'
+import {TabModule} from 'angular-tabs-component';
 
 @NgModule({
     declarations: [
@@ -44,7 +45,14 @@ import { RlTagInputModule } from 'angular2-tag-input'
             apiKey: 'AIzaSyBeWcFP4LtWiS8ckrXz1JytArU2YEXhMPc'
         }),
         Ng4GeoautocompleteModule.forRoot(),
+<<<<<<< HEAD
         RlTagInputModule
+=======
+        TagInputModule,
+        BrowserAnimationsModule,
+        TabModule,
+
+>>>>>>> 9b03bcb7ff21418641a0506d55e8750c06ffcf19
     ],
     providers: [
         AuthService

@@ -1,6 +1,8 @@
 
-<agm-map [latitude]="49" [longitude]="-123">
-    <agm-marker [latitude]="49" [longitude]="-123"></agm-marker>
+<agm-map [latitude]="49" [longitude]="-123" [backgroundColor]="'#aadaff'">
+    <agm-marker-cluster [imagePath]="'http://test.local:4711/m'">
+        <agm-marker *ngFor="let m of markers" [latitude]="m.lat" [longitude]="m.lng"></agm-marker>
+    </agm-marker-cluster>
 </agm-map>
 <!-- <h2><a [routerLink]="['/form']">form</a></h2> -->
 

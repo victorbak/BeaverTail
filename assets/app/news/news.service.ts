@@ -1,12 +1,14 @@
-import { Injectable } from "@angular/core";
+import { Injectable, EventEmitter } from "@angular/core";
 import { Http, Response, Headers } from "@angular/http";
 import { News } from "./news.model"
 import "rxjs/Rx";
 import { Observable } from "rxjs"
+import { error } from "util";
 
 @Injectable()
 export class NewsService {
     private stories: News[] = [];
+    newsIsEdit = new EventEmitter<News>();
 
     constructor(private http: Http) {}
 
@@ -21,10 +23,10 @@ export class NewsService {
                 const result = response.json();
                 const news = new News(result.obj.title,
                                       result.obj.synopsis,
-                                      [result.obj.tags],
+                                      result.obj.tags,
                                       0,
                                       result.obj.url,
-                                      null,
+                                      result.obj.location,
                                       result.obj.dates,
                                       result.obj.user._id
                                       );
@@ -46,7 +48,7 @@ export class NewsService {
                         news.tags, 
                         news.replyCount, 
                         news.url,
-                        null,
+                        news.location,
                         news.dates,
                         news.userId
                      ));
@@ -55,5 +57,16 @@ export class NewsService {
                 return transformedNews;
             })
             .catch((error: Response) => Observable.throw(error.json()));            
+    }
+
+    editNews(news: News) {
+        this.newsIsEdit.emit(news);
+    }
+
+    deleteNews(news: News) {
+        this.stories.splice(this.stories.indexOf(news), 1);
+        return this.http.delete('http://localhost:3000/news/' + news.newsId)
+            .map((response: Response) => response.json())
+            .catch((error: Response) => Observable.throw(error.json()));
     }
 }

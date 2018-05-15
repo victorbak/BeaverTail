@@ -8,6 +8,7 @@ export class News {
         public url?: string,
         public location?: string,
         public dates?: [Date],
+        public newsId?: string,
         public userId?: string   
     ){}
 }

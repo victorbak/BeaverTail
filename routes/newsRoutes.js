@@ -96,14 +96,14 @@ router.post('/', function(req, res, next) {
     User.findById(decoded.user._id, function(err, user) {
         if (err) {
             return res.status(401).json({
-                title: 'Not Authenticated',
+                title: 'An error has occured',
                 error: err
             });
         }
-        const news = new News({
+        var news = new News({
             title: req.body.title,
             synopsis: req.body.synopsis,
-            tags: req.body.synopsis,
+            tags: req.body.tags,
             replyCount: req.body.replyCount,
             url: req.body.url,
             location: req.body.location,
@@ -119,7 +119,7 @@ router.post('/', function(req, res, next) {
                 });
             }
             user.newsPosts.push(result);
-            user.save;
+            user.save();
             res.status(200).json({
                 message: 'News Saved',
                 obj: result

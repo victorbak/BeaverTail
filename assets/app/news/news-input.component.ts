@@ -1,6 +1,7 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { NgForm, FormGroup, FormControl, Validators } from "@angular/forms";
 import {News} from './news.model';
+import { NewsService } from "./news.service";
 
 @Component({
     selector: 'app-form',
@@ -13,6 +14,8 @@ import {News} from './news.model';
 
 export class FormComponent {
     news: News;
+
+    constructor(private newsService: NewsService) {}
 
     // let form = new Form ( 'www.facebook.com.'
     // ,'So this is the example', 'Canada', 'Canadian, Social',
@@ -52,6 +55,15 @@ export class FormComponent {
                 this.errorMessages.push("Please enter a valid URL")
             }
         }
+        //Creating a news post
+        
+        const news = new News(form.value.title, form.value.synopsis, form.value.tag, 0, form.value.url, form.value.location, form.value.dates);
+        this.newsService.addNews(news)
+            .subscribe(
+                data => console.log(data),
+                error => console.error(error)
+            );
+        form.resetForm();
     }
 
     onClear(form: NgForm) {
@@ -82,6 +94,7 @@ export class FormComponent {
         this.longitude = $event.coords.lng
         console.log(this.latitude + ", " + this.longitude)
     }
+
 }
 
 interface Marker {

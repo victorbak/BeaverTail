@@ -1,5 +1,7 @@
 import { Component } from "@angular/core";
 import {News} from './news.model';
+import {User} from '../auth/user.model'
+import { AuthService } from "../auth/auth.service";
 
 
 @Component({

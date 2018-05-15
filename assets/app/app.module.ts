@@ -34,8 +34,8 @@ import { NewsService } from './news/news.service';
         FormComponent,
         UserInfoComponent,
         NewsListComponent,
-        NewsComponent     
-    ],
+        NewsComponent
+        ],
     imports: [
         BrowserModule,
         routing,

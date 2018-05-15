@@ -45,14 +45,9 @@ import {TabModule} from 'angular-tabs-component';
             apiKey: 'AIzaSyBeWcFP4LtWiS8ckrXz1JytArU2YEXhMPc'
         }),
         Ng4GeoautocompleteModule.forRoot(),
-<<<<<<< HEAD
-        RlTagInputModule
-=======
-        TagInputModule,
-        BrowserAnimationsModule,
+        RlTagInputModule,
         TabModule,
 
->>>>>>> 9b03bcb7ff21418641a0506d55e8750c06ffcf19
     ],
     providers: [
         AuthService

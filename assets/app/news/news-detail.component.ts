@@ -4,7 +4,8 @@ import { FormGroup, FormControl, Validators } from "@angular/forms";
 
 @Component({
     selector: 'news-detail',
-    templateUrl: './news-detail.component.html'
+    templateUrl: './news-detail.component.html',
+    styleUrls: ['./news-detail.component.css']
 })
 export class NewsDetailComponent{
 

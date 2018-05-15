@@ -15,6 +15,11 @@ h1, h3 ,h5{
 
 tr td:first-child {
     width: 100px;
+   
+}
+
+tr {
+    margin-top:500%;
 }
 
 .bio {

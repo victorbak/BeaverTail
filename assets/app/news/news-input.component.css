@@ -13,6 +13,9 @@ agm-map {
     }
   }
 
+.errorMessage {
+    color: red
+}
 
   .footer{
     padding-bottom: 20px;

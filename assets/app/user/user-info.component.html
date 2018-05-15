@@ -1,57 +1,30 @@
-<div class="col-md-8 col-md-offset-2">
-    <img class="user-photo" src="../../images/user.png" alt="default user">
-
-    <table>
-        <div class="bio">
-
-            <tr>
-                <td>
-                    <h5>UserName </h5>
-                </td> &nbsp;
-                <td>
-                    <h6>{{user?.username}}</h6>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <h5>Name</h5>
-                </td>
-                <td>
-                    <h6>{{user?.name}}</h6>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <h5>Bio</h5>
-                </td>
-                <td>
-                    <h6>{{user?.bio}}</h6>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <h5>Email</h5>
-                </td>
-                <td>
-                    <h6>{{user?.email}}</h6>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <h5>Social Media</h5>
-                </td>
-                <td>
-                    <h6>{{user?.socialMedia}}</h6>
-                </td>
-            </tr>
-        </div>
-    </table>
-
-    <div class="config">
-        <!-- <a (click)="onEdit()">Edit Profile</a> -->
-        <button type="button" class="btn btn-info">
-            <a (click)="onEdit()">Edit Profile</a>
-        </button>
-    </div>
-
+<img class="user-photo" src="../../images/user.png" alt="default user">
+<hr>
+<table>
+    <tr>
+        <td>UserName</td>
+        <td>{{user?.username}}</td>
+    </tr>
+    <tr>
+        <td>Name</td>
+        <td>{{user?.name}}</td>
+    </tr>
+    <tr>
+        <td>Bio</td>
+        <td>{{user?.bio}}</td>
+    </tr>
+    <tr>
+        <td>Email</td>
+        <td>{{user?.email}}</td>
+    </tr>
+    <tr>
+        <td>Social Media</td>
+        <td>
+            <a href="{{user?.socialMedia}}">{{user?.socialMedia}}</a>
+        </td>
+    </tr>
+</table>
+<hr>
+<div class="config">
+    <a (click)="onEdit()">Edit Profile</a>
 </div>

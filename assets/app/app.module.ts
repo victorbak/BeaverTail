@@ -16,12 +16,12 @@ import { ProfileComponent } from './user/profile.component';
 import { UserInfoComponent } from './user/user-info.component';
 import { FormComponent } from './news/news-input.component';
 import { AgmCoreOverrideModule } from './agmcoreoverride.module';
-import { TagInputModule } from 'ngx-chips';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { NewsListComponent } from './news/news-list.component';
 import { NewsComponent } from './news/news.component';
 import { FlexLayoutModule } from "@angular/flex-layout";
+import { RlTagInputModule } from 'angular2-tag-input';
 import {TabModule} from 'angular-tabs-component';
+import { NewsService } from './news/news.service';
 
 @NgModule({
     declarations: [
@@ -34,8 +34,8 @@ import {TabModule} from 'angular-tabs-component';
         FormComponent,
         UserInfoComponent,
         NewsListComponent,
-        NewsComponent     
-    ],
+        NewsComponent
+        ],
     imports: [
         BrowserModule,
         routing,
@@ -46,13 +46,13 @@ import {TabModule} from 'angular-tabs-component';
             apiKey: 'AIzaSyBeWcFP4LtWiS8ckrXz1JytArU2YEXhMPc'
         }),
         Ng4GeoautocompleteModule.forRoot(),
-        TagInputModule,
-        BrowserAnimationsModule,
+        RlTagInputModule,
         TabModule,
 
     ],
     providers: [
-        AuthService
+        AuthService,
+        NewsService
     ],
     bootstrap: [AppComponent],
     schemas: [ NO_ERRORS_SCHEMA ]

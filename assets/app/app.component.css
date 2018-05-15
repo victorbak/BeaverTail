@@ -16,7 +16,9 @@ agm-map {
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 
-
+ .footer{
+    padding-bottom: 20px;
+  }
  @import url("https://fonts.googleapis.com/css?family=Raleway:400,700");
  :root {
      --blue: #4582EC;

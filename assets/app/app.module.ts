@@ -21,6 +21,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { NewsListComponent } from './news/news-list.component';
 import { NewsComponent } from './news/news.component';
 import { FlexLayoutModule } from "@angular/flex-layout";
+import {TabModule} from 'angular-tabs-component';
 
 @NgModule({
     declarations: [
@@ -47,6 +48,7 @@ import { FlexLayoutModule } from "@angular/flex-layout";
         Ng4GeoautocompleteModule.forRoot(),
         TagInputModule,
         BrowserAnimationsModule,
+        TabModule,
 
     ],
     providers: [

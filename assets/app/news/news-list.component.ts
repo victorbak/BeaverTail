@@ -4,7 +4,10 @@ import {News} from './news.model';
 
 @Component({
     selector: 'news-list',
-    templateUrl: './news-list.component.html'
+    templateUrl: './news-list.component.html',
+    styleUrls: [
+        './news-list.component.css',
+    ]
 })
 export class NewsListComponent{
 

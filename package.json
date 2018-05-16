@@ -9,6 +9,7 @@
   },
   "dependencies": {
     "@agm/core": "^1.0.0-beta.2",
+    "@agm/js-marker-clusterer": "^1.0.0-beta.2",
     "@angular/animations": "^5.0.0",
     "@angular/common": "^5.0.0",
     "@angular/compiler": "^5.0.0",
@@ -39,6 +40,7 @@
     "express": "~4.14.0",
     "hbs": "~3.1.0",
     "image-loader-angular": "^1.2.0",
+    "js-marker-clusterer": "^1.0.0",
     "jsonwebtoken": "^8.2.1",
     "mongoose": "^5.0.17",
     "morgan": "~1.6.1",

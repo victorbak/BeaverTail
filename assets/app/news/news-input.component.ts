@@ -33,6 +33,7 @@ export class FormComponent {
     title: string
     synopsis: string
     url?: string
+    merged: string[] = []
 
     errorMessages: string[] = []
 
@@ -55,12 +56,27 @@ export class FormComponent {
                 this.errorMessages.push("Please enter a valid URL")
             }
         }
+
+        //merging tags
+        for(var i = 0; i < this.tags.length; i++)
+        {
+            this.merged[i] = this.tags[i];
+        }
+        for(var i = 0; i < this.govTags.length; i++)
+        {
+            this.merged = this.merged.concat(this.govTags[i]);
+        }
+        for(var i = 0; i < this.peopleTags.length; i++)
+        {
+            this.merged = this.merged.concat(this.peopleTags[i]);
+        }
+
         //Creating a news post
-        
         const news = new News(
             form.value.title,
             form.value.synopsis, 
-            form.value.tag, 0, 
+            this.merged, 
+            0, 
             form.value.url, 
             this.longitude,
             this.latitude, 

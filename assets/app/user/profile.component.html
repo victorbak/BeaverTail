@@ -3,64 +3,22 @@
         <user-info></user-info>
     </div>
 
-<<<<<<< HEAD
-    <!-- <div class="col-lg-8  col-lg-offset-1">
-        <news-list></news-list>
-    </div> -->
-
-    <ul class="tabs">
-
-            <li class="tab">
-                <input type="radio" name="tabs" checked="checked" id="tab1" />
-                <label for="tab1">
-                    <h2>Replies</h2>
-                </label>
-                <hr/>
-                <hr/>
-                <div id="tab-content1" class="content">
-        
-                    <br>
-                    <!-- <app-news></app-news> -->
-                </div>
-            </li>
-        
-            <li class="tab">
-                <input type="radio" name="tabs" id="tab2" />
-                <label for="tab2">
-                    <h2>Post</h2>
-                </label>
-                <hr/>
-                <hr/>
-                <div id="tab-content2" class="content">
-                    <br>
-                    <news-list></news-list>
-        
-                    <!-- <h1>Tab content 2</h1>
-                        <hr/>
-                        <h3>Ut bibendum augue vel magna rhoncus</h3>
-                        <br/>
-                        <p>Nam cursus, massa ac imperdiet posuere, mauris metus gravida ligula, et rutrum ligula mi ut tellus. Quisque elit
-                            dolor, sagittis ac purus accumsan, sagittis rhoncus felis. Morbi nec bibendum arcu, sit amet pharetra orci.
-                            Nulla pulvinar ultrices quam. Cras nulla erat, eleifend non euismod vel, accumsan quis lacus. Ut bibendum
-                            augue vel magna rhoncus, sed rutrum massa vulputate. Nullam lectus diam, venenatis vel elit vel, ornare fermentum
-                            metus. Praesent euismod non mauris et dignissim. Sed in diam nec diam pellentesque lacinia at vitae lorem.
-                            Quisque et neque condimentum, viverra dolor mollis, feugiat justo.</p> -->
-                </div>
-            </li>
-        </ul>
-</div>
-
-=======
     <div class="col-lg-8  col-lg-offset-1">
-        <ul class="tabs">
-            <li routerLinkActive="active">
-                <a [routerLink]="['replies']">REPLIES</a>
+        <ul class="tab" >
+            <li routerLinkActive="active" class="tab"style="position:absolute;right:5px;float:right;">
+                <a [routerLink]="['replies']">
+                    <h1 >REPLIES</h1>
+                    <br>
+                    <br>
+                </a>
             </li>
-            <li routerLinkActive="active">
-                <a [routerLink]="['posts']">POSTS</a>
+            <li routerLinkActive="active" class="tab">
+                <a [routerLink]="['posts']">
+                    <h1>POSTS</h1>
+                </a>
             </li>
         </ul>
+
         <router-outlet></router-outlet>
     </div>
 </div>
->>>>>>> develop

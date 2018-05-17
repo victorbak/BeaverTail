@@ -10,6 +10,7 @@ export class News {
         public latitude?: number,
         public dates?: [Date],
         public newsId?: string,
-        public userId?: string   
+        public userId?: string,
+        public username?: string   
     ){}
 }

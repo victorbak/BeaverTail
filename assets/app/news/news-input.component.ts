@@ -34,6 +34,7 @@ export class FormComponent {
     synopsis: string
     url?: string
     merged: string[] = []
+    reply = 100 
 
     errorMessages: string[] = []
 
@@ -76,7 +77,7 @@ export class FormComponent {
             form.value.title,
             form.value.synopsis, 
             this.merged, 
-            0, 
+            this.reply, 
             form.value.url, 
             this.longitude,
             this.latitude, 

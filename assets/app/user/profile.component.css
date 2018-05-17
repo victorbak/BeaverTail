@@ -1,0 +1,30 @@
+
+.inlineList {
+    display: flex;
+    flex-direction: row;
+    /* Below sets up your display method: flex-start|flex-end|space-between|space-around */
+    justify-content: flex-start; 
+    /* Below removes bullets and cleans white-space */
+    list-style: none;
+    padding: 0;
+    /* Bonus: forces no word-wrap */
+    white-space: nowrap;
+  }
+
+  ul
+{ 
+overflow-x:hidden;
+white-space:nowrap; 
+height: 1em;
+width: 100%;
+} 
+
+li
+{ 
+display:inline; 
+}   
+
+ul li{
+    display: inline;
+  }
+  

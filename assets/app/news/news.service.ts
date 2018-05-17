@@ -56,8 +56,10 @@ export class NewsService {
                         news.longitude,
                         news.latitude,
                         news.dates,
-                        news.userId,
-                        news.username
+                        news.creationDate,
+                        news._id,
+                        news.user.id,
+                        news.user.username
                      ));
                 }
                 this.stories = transformedNews;

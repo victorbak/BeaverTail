@@ -24,6 +24,7 @@ import { RlTagInputModule } from 'angular2-tag-input';
 import {TabModule} from 'angular-tabs-component';
 import { NewsService } from './news/news.service';
 import { NewsDetailComponent } from './news/news-detail.component';
+import { NewsReplyComponent } from './news/news-reply.component';
 
 @NgModule({
     declarations: [
@@ -37,7 +38,8 @@ import { NewsDetailComponent } from './news/news-detail.component';
         UserInfoComponent,
         NewsListComponent,
         NewsComponent,
-        NewsDetailComponent
+        NewsDetailComponent,
+        NewsReplyComponent
         ],
     imports: [
         BrowserModule,

@@ -2,19 +2,20 @@
     <div class="panel-body">
         <!-- {{ news?.title }} -->
         <!-- <a (click)= "getDetail()">test: title for a news</a> -->
-        <a (click)= "getDetail(news?.newsId)">{{news?.title}}</a>
+        <a (click)="getDetail(news?.newsId)">{{news?.title}}</a>
 
     </div>
-    <div class="panel-body">
-        <!-- {{ news?.creationDate }} -->
-        <p>latitude: {{news?.latitude}}</p>
+    <!-- <p>latitude: {{news?.latitude}}</p>
         <p>longtitude: {{news?.longitude}}</p>
         <p>url: {{news?.url}}</p>
-        <p>creationdate: {{news?.creationDate}}</p>
         <p>dates: {{news?.dates}}</p>
         <p>newsId: {{news?.newsId}}</p>
         <p>userId: {{news?.userId}}</p>
-        <p>username: {{news?.username}}</p>
+        <p>username: {{news?.username}}</p> -->
 
-    </div>
+    <footer class="panel-footer">
+        <div class="author">
+            Created on: {{news?.creationDate}}
+        </div>
+    </footer>
 </article>

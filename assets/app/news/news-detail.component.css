@@ -1,0 +1,50 @@
+hr {
+    border: none;
+    height: 4px;
+    /* Set the hr color */
+    color: white;
+    /* old IE */
+    background-color: white;
+    /* Modern Browsers */
+}
+
+
+.background {
+    /* background-color:white; */
+    padding-bottom: 250px;
+    background: rgb(255, 255, 255);
+    /* Fall-back for browsers that don't
+    support rgba */
+    background: rgba(255, 255, 255, .3);
+    /* opacity: 0.5; */
+    filter: alpha(opacity=50);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.5);
+}
+
+
+
+/* .bigger {
+    font-weight: normal;
+    font-size: 2em;
+    text-align: right;
+    margin-left: 20px;
+    position: relative
+} */
+
+.buttons {
+    padding-top: 20px;
+    margin-left: 20px;
+}
+.top{
+    padding-top:20px;
+    padding-left:20px;
+    color:white;
+}
+
+.detail, .bottom{
+    margin-left:20px;
+}
+
+.bottom{
+    padding-top:20px;
+}

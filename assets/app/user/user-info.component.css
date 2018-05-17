@@ -33,10 +33,9 @@ tr td:first-child {
 } */
 
 @media screen and (max-width: 800px) {
-    .bio, tr {
+    .info, tr {
         max-width: 90%;
-        margin-left: 50%;
-        margin-top: 200%;
+       margin-left:12%;
     }
 }
 

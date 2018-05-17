@@ -4,14 +4,21 @@
     </div>
 
     <div class="col-lg-8  col-lg-offset-1">
-        <ul class="tabs">
-            <li routerLinkActive="active">
-                <a [routerLink]="['replies']">REPLIES</a>
+        <ul class="tab" >
+            <li routerLinkActive="active" class="tab"style="position:absolute;right:5px;float:right;">
+                <a [routerLink]="['replies']">
+                    <h1 >REPLIES</h1>
+                    <br>
+                    <br>
+                </a>
             </li>
-            <li routerLinkActive="active">
-                <a [routerLink]="['posts']">POSTS</a>
+            <li routerLinkActive="active" class="tab">
+                <a [routerLink]="['posts']">
+                    <h1>POSTS</h1>
+                </a>
             </li>
         </ul>
+
         <router-outlet></router-outlet>
     </div>
 </div>

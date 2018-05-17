@@ -12,7 +12,7 @@ import { NewsService } from "./news.service";
 })
 export class NewsListComponent implements OnInit {
 
-    news: News[];
+    newslist: News[];
 
     constructor(private newsService: NewsService) {}
 
@@ -20,7 +20,7 @@ export class NewsListComponent implements OnInit {
         this.newsService.getNews()
             .subscribe(
                 (news: News[]) => {
-                    this.news = news;
+                    this.newslist = news;
                 }
             );
     }

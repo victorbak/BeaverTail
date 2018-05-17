@@ -1,10 +1,17 @@
 <article class="panel panel-default">
     <div class="panel-body">
         <!-- {{ news?.title }} -->
-        <a (click)= "getDetail()">test: title for a news</a>
+        <!-- <a (click)= "getDetail()">test: title for a news</a> -->
+        <a (click)= "getDetail(news?.newsId)">{{news?.title}}</a>
+
     </div>
     <div class="panel-body">
         <!-- {{ news?.creationDate }} -->
-        <p>2018/05/19</p>
+        <p>{{news?.longitude}}</p>
+        <p>{{news?.url}}</p>
+        <p>creationdate: {{news?.creationDate}}</p>
+        <p>dates: {{news?.dates}}</p>
+        <p>id: {{news?.newsId}}</p>
+
     </div>
 </article>

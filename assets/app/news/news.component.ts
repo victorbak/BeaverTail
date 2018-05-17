@@ -8,21 +8,7 @@ import { Router } from "@angular/router";
 
 @Component({
     selector: 'app-news',
-    templateUrl: './news.component.html',
-    styles: [`
-        .date {
-            display: inline-block;
-            font-style: italic;
-            font-size: 12px;
-            width: 80%;
-        }
-        .config {
-            display: inline-block;
-            text-align: right;
-            font-size: 12px;
-            width: 19%;
-        }
-    `]
+    templateUrl: './news.component.html'
 })
 export class NewsComponent {
     @Input() news: News;
@@ -42,5 +28,9 @@ export class NewsComponent {
 
     getDetail() {
         this.router.navigateByUrl('/news')
+    }
+
+    belongsToUser() {
+        return localStorage.getItem('userId') == this.news.userId;
     }
 }

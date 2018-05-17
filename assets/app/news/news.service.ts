@@ -30,7 +30,10 @@ export class NewsService {
                                       result.obj.longitude,
                                       result.obj.latitude,
                                       result.obj.dates,
-                                      result.obj.user._id
+                                      result.obj.creationDate,
+                                      result.obj._id,
+                                      result.obj.user.id,
+                                      result.obj.user.username
                                       );
                 this.stories.push(news);
                 return news;

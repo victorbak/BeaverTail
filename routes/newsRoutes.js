@@ -62,6 +62,23 @@ router.get('/popular', function(req, res, next) {
     });
 });
 
+//gets a news by id
+router.get('/:id', function(req, res, next) {
+    News.findById(req.params.id)
+    .exec(function(err, news) {
+        if (err) {
+            return res.status(500).json({
+                title: 'An error occured',
+                error: err
+            });
+        }
+        res.status(200).json({
+            message: 'Success',
+            obj: news
+        })
+    });
+});
+
 //gets a news by username
 router.get('/:username', function(req, res, next) {
     News.find({'user.username': req.params.username})

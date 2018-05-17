@@ -13,7 +13,13 @@ var newsSchema = new mongoose.Schema({
     latitude: {type: Number},
     creationDate: {type: Date, default: Date.now},
     dates: [{type: Date}],
-    user: {type: Schema.Types.ObjectId, ref: 'User'},
+    user: {
+        id: {
+            type: Schema.Types.ObjectId,
+            ref: 'User'
+        },
+        username: String
+    },
     replies: [{type: Schema.Types.ObjectId, ref: 'Reply'}]
 });
 

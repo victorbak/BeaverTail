@@ -11,6 +11,7 @@ export class News {
         public dates?: [Date],
         public creationDate?: Date,
         public newsId?: string,
-        public userId?: string
+        public userId?: string,
+        public username?: string   
     ){}
 }

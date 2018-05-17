@@ -25,6 +25,7 @@ router.get('/', function(req, res, next) {
     });
 });
 
+
 //Gets 10 most recent posts
 router.get('/new', function(req, res, next) {
     News.find({}).sort({creationDate: -1}).limit(10)
@@ -49,7 +50,7 @@ router.get('/popular', function(req, res, next) {
     .exec(function(err, news) {
         if (err) {
             return res.status(500).json({
-                title: 'An esrror occured',
+                title: 'An error occured',
                 error: err
             });
         }
@@ -61,9 +62,9 @@ router.get('/popular', function(req, res, next) {
     });
 });
 
-//gets a news by id
-router.get('/:id', function(req, res, next) {
-    News.findById(req.params.id)
+//gets a news by username
+router.get('/:username', function(req, res, next) {
+    News.find({'user.username': req.params.username})
     .exec(function(err, news) {
         if (err) {
             return res.status(500).json({
@@ -77,6 +78,7 @@ router.get('/:id', function(req, res, next) {
         })
     });
 });
+
 
 router.use('/', function(req, res, next) {
     jwt.verify(req.query.token, "It's Kovine, Nigerian! Hehehehe", function(err, decoded) {
@@ -97,7 +99,7 @@ router.post('/', function(req, res, next) {
         if (err) {
             return res.status(401).json({
                 title: 'An error has occured',
-                error: err
+                error: err,
             });
         }
         var news = new News({
@@ -109,7 +111,8 @@ router.post('/', function(req, res, next) {
             longitude: req.body.longitude,
             latitude: req.body.latitude,
             dates: req.body.dates,
-            user: user._id
+            'user.id': user._id,
+            'user.username': user.username
         });
         news.save(function(err, result) {
             if (err) {

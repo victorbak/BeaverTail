@@ -4,6 +4,7 @@ import { News } from "./news.model"
 import "rxjs/Rx";
 import { Observable } from "rxjs"
 import { error } from "util";
+import { User } from "../auth/user.model";
 
 @Injectable()
 export class NewsService {
@@ -24,7 +25,7 @@ export class NewsService {
                 const news = new News(result.obj.title,
                                       result.obj.synopsis,
                                       result.obj.tags,
-                                      0,
+                                      result.obj.replyCount,
                                       result.obj.url,
                                       result.obj.longitude,
                                       result.obj.latitude,
@@ -52,7 +53,8 @@ export class NewsService {
                         news.longitude,
                         news.latitude,
                         news.dates,
-                        news.userId
+                        news.userId,
+                        news.username
                      ));
                 }
                 this.stories = transformedNews;
@@ -60,6 +62,32 @@ export class NewsService {
             })
             .catch((error: Response) => Observable.throw(error.json()));            
     }
+
+    getNewsByName(username: String) {
+        return this.http.get('http://localhost:3000/news/' + username)
+            .map((response: Response) => {
+                const stories = response.json().obj;
+                let transformedNews: News[] = [];
+                for (let news of stories) {
+                    transformedNews.push(new News(
+                        news.title, 
+                        news.synopsis, 
+                        news.tags, 
+                        news.replyCount, 
+                        news.url,
+                        news.longitude,
+                        news.latitude,
+                        news.dates,
+                        news.userId,
+                        news.username
+                     ));
+                }
+                this.stories = transformedNews;
+                return transformedNews;
+            })
+            .catch((error: Response) => Observable.throw(error.json()));            
+    }
+
     editNews(news: News) {
         this.newsIsEdit.emit(news);
     }

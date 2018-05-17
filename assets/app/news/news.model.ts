@@ -9,6 +9,7 @@ export class News {
         public longitude?: number,
         public latitude?: number,
         public dates?: [Date],
+        public creationDate?: Date, 
         public newsId?: string,
         public userId?: string,
         public username?: string   

@@ -80,7 +80,7 @@ router.get('/:id', function(req, res, next) {
 });
 
 //gets a news by username
-router.get('/:username', function(req, res, next) {
+router.get('/user/:username', function(req, res, next) {
     News.find({'user.username': req.params.username})
     .exec(function(err, news) {
         if (err) {
@@ -95,6 +95,8 @@ router.get('/:username', function(req, res, next) {
         })
     });
 });
+
+
 
 
 router.use('/', function(req, res, next) {

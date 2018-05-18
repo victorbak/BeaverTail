@@ -26,6 +26,7 @@ import {TabModule} from 'angular-tabs-component';
 import { NewsService } from './news/news.service';
 import { NewsDetailComponent } from './news/news-detail.component';
 import { NewsReplyComponent } from './news/news-reply.component';
+import { StorageService } from './shared/storage.service';
 
 @NgModule({
     declarations: [
@@ -61,7 +62,8 @@ import { NewsReplyComponent } from './news/news-reply.component';
     providers: [
         AuthService,
         NewsService,
-        ClusterManager
+        ClusterManager,
+        StorageService
     ],
     bootstrap: [AppComponent],
     schemas: [ NO_ERRORS_SCHEMA ]

@@ -3,6 +3,7 @@ import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { AuthService } from "./auth.service";
 import { User } from "./user.model";
 import { Router } from "@angular/router";
+import { StorageService } from "../shared/storage.service";
 
 @Component({
     selector: 'app-signup',
@@ -11,7 +12,7 @@ import { Router } from "@angular/router";
 export class SignupComponent implements OnInit {
     myForm: FormGroup
     
-    constructor(private authService: AuthService, private router: Router) {}
+    constructor(private authService: AuthService, private router: Router, private storageService: StorageService) {}
 
     onSubmit() {
         const user = new User(
@@ -28,9 +29,9 @@ export class SignupComponent implements OnInit {
         this.authService.signup(user)
             .subscribe(
                 data => {
-                    localStorage.setItem('token', data.token)
-                    localStorage.setItem('userId', data.userId)
-                    localStorage.setItem('username', data.obj.username)
+                    this.storageService.setItem('token', data.token)
+                    this.storageService.setItem('userId', data.userId)
+                    this.storageService.setItem('username', data.obj.username)
                     
                     this.router.navigateByUrl('/')
                 },

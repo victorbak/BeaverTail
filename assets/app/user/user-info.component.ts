@@ -14,10 +14,12 @@ import { AuthService } from "../auth/auth.service";
 
 })
 export class UserInfoComponent implements OnInit {
-    private username = localStorage.getItem('username')
+    private username
     user: User
     constructor(private authService: AuthService, private router: Router) { }
     ngOnInit() {
+        var splitUrl = this.router.url.split("/")
+        this.username = splitUrl[splitUrl.length - 1]
         this.authService.getUser(this.username)
             .subscribe((user: User) => {
                 this.user = user

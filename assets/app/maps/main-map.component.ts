@@ -7,7 +7,8 @@ import { MarkerManager } from "@agm/core";
     selector: 'app-main-map',
     templateUrl: './main-map.component.html',
     styleUrls: [
-        './main-map.component.css'
+        './main-map.component.css',
+        '../../../node_modules/snazzy-info-window/dist/snazzy-info-window.css'
     ]
 })
 export class MainMapComponent implements OnInit {
@@ -26,7 +27,8 @@ export class MainMapComponent implements OnInit {
                         lat: n.latitude,
                         lng: n.longitude,
                         title: n.title,
-                        id: n.newsId
+                        id: n.newsId,
+                        desc: n.synopsis.length > 100? n.synopsis.substring(0, 99) + "..." : n.synopsis
                     })
                 })
                 console.log(this.news)
@@ -40,4 +42,5 @@ interface Markers {
     lng: number
     title: string
     id: string
+    desc: string
 }

@@ -4,6 +4,7 @@ import { User } from '../auth/user.model'
 import { AuthService } from "../auth/auth.service";
 import { NewsService } from "./news.service";
 import { Router } from "@angular/router";
+import { NewsDetailComponent } from "./news-detail.component";
 
 
 @Component({
@@ -27,10 +28,11 @@ export class NewsComponent {
     }
 
     getDetail() {
-        this.router.navigateByUrl('/news')
-    }
+        //this.newsService.getNewsById(this.news.newsId)
+        //this.router.navigateByUrl('/news/newsId='+this.news.newsId)
+        this.router.navigate(['/news'],{queryParams: {newsId: this.news.newsId}} )
+        //this.router.navigate(['/products'], { queryParams: { order: 'popular' } });
 
-    belongsToUser() {
-        return localStorage.getItem('userId') == this.news.userId;
     }
+    
 }

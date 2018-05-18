@@ -1,4 +1,9 @@
-import { Component } from "@angular/core";
+import { Component, OnInit, Input } from "@angular/core";
+import { NewsService } from "./news.service";
+import { News } from "./news.model";
+import 'rxjs/add/operator/filter';
+import { Router } from "@angular/router";
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
     selector: 'news-detail',
@@ -7,6 +12,27 @@ import { Component } from "@angular/core";
         './news-detail.component.css'
     ]
 })
-export class NewsDetailComponent{
-    
+export class NewsDetailComponent implements OnInit {
+    // @Input() test: News
+
+    news: News
+    newsId: String
+
+    constructor(private newsService: NewsService, private router: ActivatedRoute) { }
+    ngOnInit() {
+        this.router.queryParams
+            .filter(params => params.newsId)
+            .subscribe(params => {
+                console.log(params); // {order: "popular"}
+
+                this.newsId = params.newsId;
+                console.log(this.newsId); // popular
+            })
+            console.log(this.newsId); // popular
+
+        this.newsService.getNewsById(this.newsId)
+            .subscribe((news: News) => {
+                this.news = news
+            })
+    }
 }

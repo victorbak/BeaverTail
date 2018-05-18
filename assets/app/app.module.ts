@@ -16,6 +16,7 @@ import { ProfileComponent } from './user/profile.component';
 import { UserInfoComponent } from './user/user-info.component';
 import { FormComponent } from './news/news-input.component';
 import { AgmCoreOverrideModule } from './agmcoreoverride.module';
+import { AgmSnazzyInfoWindowModule } from '@agm/snazzy-info-window';
 import { AgmJsMarkerClustererModule, ClusterManager } from '@agm/js-marker-clusterer';
 import { NewsListComponent } from './news/news-list.component';
 import { NewsComponent } from './news/news.component';
@@ -50,6 +51,7 @@ import { NewsReplyComponent } from './news/news-reply.component';
         AgmCoreOverrideModule.forRoot({
             apiKey: 'AIzaSyBeWcFP4LtWiS8ckrXz1JytArU2YEXhMPc'
         }),
+        AgmSnazzyInfoWindowModule,
         AgmJsMarkerClustererModule,
         Ng4GeoautocompleteModule.forRoot(),
         RlTagInputModule,

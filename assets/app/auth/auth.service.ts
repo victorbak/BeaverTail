@@ -36,6 +36,7 @@ export class AuthService {
     }
 
     getUser(username){
+        
         return this.http.get('http://localhost:3000/user/'+ username)
         .map((response: Response) =>{
             const user = response.json().obj

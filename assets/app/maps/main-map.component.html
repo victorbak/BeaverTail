@@ -4,7 +4,7 @@
             <agm-snazzy-info-window [maxWidth]="200" [closeWhenOthersOpen]="true">
                 <ng-template>
                     <div class="info-box">
-                        <a href="#"><h4>{{ m.title }}</h4></a>
+                        <a (click)="getDetail(m.id)"><h4>{{ m.title }}</h4></a>
                         <p>{{ m.desc }}</p>
                     </div>
                 </ng-template>

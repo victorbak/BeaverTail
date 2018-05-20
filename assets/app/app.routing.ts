@@ -25,7 +25,6 @@ const APP_ROUTES: Routes = [
     { path: 'news', component: NewsDetailComponent },
     { path: 'aboutus', component: aboutUs },
     { path: 'news/reply', component: NewsReplyInputComponent }
-
 ];
 
 export const routing = RouterModule.forRoot(APP_ROUTES);

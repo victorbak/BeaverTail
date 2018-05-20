@@ -1,9 +1,33 @@
-.row-centered {
+.center {
     text-align: center;
+    margin: auto 0;
+}
+.user-photo {
+    height: 300px;
+    /* position: absolute; */
+    max-width: 100%;
+    border-radius: 200px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.9);
+    /* float:middle;
+    position: relative;
+ */
 }
 
-.col-centered {
-    display: inline-block;
-    float: none;
-    margin-right: -4px;
+@media screen and (max-width: 800px) {
+    .user-photo {
+        max-width: 100%;
+        /* The width is 100%, when the viewport is 800px or smaller */
+    }
+}
+
+.space{
+    margin-top:50px;
+}
+
+h2{
+    font-family: "Courier New", Courier, monospace;
+}
+
+.linkedin{
+    max-width: 100%;
 }

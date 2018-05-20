@@ -249,7 +249,7 @@ router.delete('/:id', function(req, res, next) {
                 error: {message: 'News not found'}
             });
         }
-        if (news.user != decoded.user._id) {
+        if (news.user.id != decoded.user._id) {
             return res.status(401).json({
                 title: 'Users do not match',
                 error: err

@@ -3,11 +3,12 @@ import { Http, Headers, Response } from "@angular/http"
 import { User } from './user.model'
 import 'rxjs'
 import { Observable } from "rxjs"
+import { StorageService } from "../shared/storage.service";
 
 @Injectable()
 export class AuthService {
 
-    constructor(private http: Http) {
+    constructor(private http: Http, private storageService: StorageService) {
     }
 
     signup(user: User) {
@@ -27,16 +28,15 @@ export class AuthService {
     }
 
     logout() {
-        console.log(localStorage)
-        localStorage.clear()
-        console.log(localStorage)
+        this.storageService.clearStorage()
     }
 
     isLoggedIn() {
-        return localStorage.getItem('token') != null;
+        return localStorage.getItem('token') != null
     }
 
     getUser(username){
+        
         return this.http.get('http://localhost:3000/user/'+ username)
         .map((response: Response) =>{
             const user = response.json().obj

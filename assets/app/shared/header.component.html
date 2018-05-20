@@ -1,39 +1,31 @@
-<!-- <header class="row">
-    <nav class="col-md-8 col-md-offset-2">
-        <ul class="nav nav-pills">
-            <li><a [routerLink]="['']">Home</a></li>
-            <li *ngIf="!isLoggedIn()"><a [routerLink]="['/signup']">Signup</a></li>
-            <li *ngIf="!isLoggedIn()"><a [routerLink]="['/signin']">Signin</a></li>
-            <li *ngIf="isLoggedIn()"><a (click)="onLogout()">Logout</a></li>
-            <li *ngIf="isLoggedIn()"><a [routerLink]="['/user']">Hello {{ username }}</a></li>
-        </ul>
-    </nav>
-</header> -->
+<div class="topnav">
+	<label for="show-menu" class="show-menu">Menu</label>
+
+	<input type="checkbox" id="show-menu" role="button">
+
+	<ul id="menu">
+		<li>
+			<a [routerLink]="['']" style="font-size: 25px; margin-left:50px;"> BEAVERTAIL
+			</a>
+		</li>
+		<li *ngIf="!isLoggedIn()">
+			<a [routerLink]="['/signup']">Signup</a>
+		</li>
+		<li *ngIf="!isLoggedIn()">
+			<a [routerLink]="['/signin']">Signin</a>
+		</li>
+		<li *ngIf="isLoggedIn()">
+			<a (click)="onLogout()">Logout</a>
+		</li>
+
+		<li *ngIf="isLoggedIn()">
+			<a [routerLink]="['/user/profile', username]">Hello {{ username }}</a>
+		</li>
+		<li>
+			<a [routerLink]="['/aboutus']"> About Us</a>
+			<!-- <a>About Us</a> -->
+		</li>
 
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-		<a class="navbar-brand" href="#">Navbar</a>
-		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
-			<span class="navbar-toggler-icon"></span>
-		</button>
-	
-		<div class="collapse navbar-collapse" id="navbarColor03">
-	  <ul class="navbar-nav mr-auto">
-		<li class="nav-item" *ngIf="!isLoggedIn()">
-		  <a class="nav-link" [routerLink]="['/signup']">Signup</a>
-		</li>
-		<li class="nav-item" *ngIf="!isLoggedIn()">
-		  <a class="nav-link" [routerLink]="['/signin']">Signin</a>
-		</li>
-		<li class="nav-item" *ngIf="isLoggedIn()">
-		  <a class="nav-link" (click)="onLogout()">Logout</a>
-		</li>
-		<li class="nav-item" *ngIf="isLoggedIn()">
-		  <a class="nav-link" [routerLink]="['/user']">Hello {{ username }}</a>
-		</li>
-	  </ul>
-	  
-	</div>
-	</nav>
-	
-	
+	</ul>
+</div>

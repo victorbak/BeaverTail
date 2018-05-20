@@ -1,0 +1,156 @@
+h1, h3, h5 {
+    text-transform: uppercase;
+    font-weight: normal;
+}
+
+.user-photo {
+    height: 200px;
+    /* position: absolute; */
+    /* max-width: 100%; */
+    top: 10%;
+    left: 10%;
+    border-radius: 3px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.9);
+    /* float:middle;
+    position: relative;
+ */
+    width: 100%;
+    height: 200px;
+}
+
+@media screen and (max-width: 800px) {
+    .user-photo {
+        max-width: 100%;
+        height: 600px;
+        /* The width is 100%, when the viewport is 800px or smaller */
+    }
+}
+.middle{
+    position: relative;
+    margin-left:25px;
+}
+
+
+@media screen and (max-width: 800px) {
+    .middle {
+        /* max-width: 100%;
+        height:600px;
+        margin-left:500px;
+        margin-left: */
+        position: relative;
+        /* The width is 100%, when the viewport is 800px or smaller */
+    }
+}
+
+.middle {
+    float: middle;
+}
+
+tr td:first-child x {
+    width: 100px;
+}
+
+.info {
+    /* margin-left:20px; */
+    /* margin-left:50px; */
+    position: relative;
+    float: middle;
+    margin-left: 18px;
+}
+
+.socialMedia {
+    padding-left: 20px;
+}
+
+.socialMedia1 {
+    padding-left: 28px;
+}
+
+.bio {
+    margin-top: 210%;
+    margin-left: 12%;
+}
+
+hr {
+    height: 10px;
+    color: green;
+    width: 20px;
+}
+@media screen and (max-width: 800px) {
+    hr {
+       width: 100%;
+    }
+}
+@media screen and (max-width: 800px) {
+    .info, tr {
+        max-width: 90%;
+        margin-left: 12%;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .user-photo {
+        max-width: 100%;
+        height: 200px;
+        display: inline-block;
+        text-align: center;
+    }
+}
+
+hr {
+    color: white;
+}
+
+button {
+    width: 100%;
+    height: 60px;
+    margin-top: 10px;
+    font-size: 1em;
+    background-color: white;
+}
+
+button a {
+    color: #3dcdbc;
+    color: -moz-linear-gradient(left, #3dcdbc 0%, #33a1bd 100%);
+    color: -webkit-gradient(left top, right top, color-stop(0%, #3dcdbc), color-stop(100%, #33a1bd));
+    color: -webkit-linear-gradient(left, #3dcdbc 0%, #33a1bd 100%);
+    color: -o-linear-gradient(left, #3dcdbc 0%, #33a1bd 100%);
+    color: -ms-linear-gradient(left, #3dcdbc 0%, #33a1bd 100%);
+    color: linear-gradient(to right, #3dcdbc 0%, #33a1bd 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3dcdbc', endColorstr='#33a1bd', GradientType=1);
+}
+
+@media screen and (max-width: 800px) {
+    button {
+        width: 100%;
+        /* The width is 100%, when the viewport is 800px or smaller */
+    }
+}
+
+@media screen and (max-width: 800px) {
+    div.hr {
+        height: 5px;
+        width: 100%;
+        position: relative;
+        float: middle;
+        background: #fff url(hr1.gif) no-repeat scroll center;
+        /* The width is 100%, when the viewport is 800px or smaller */
+    }
+}
+
+div.hr {
+    height: 5px;
+    width: 100%;
+    position: relative;
+    float: middle;
+    background: #fff url(hr1.gif) no-repeat scroll center;
+}
+
+div.hr hr {
+    display: none;
+}
+
+.detail {
+    /* margin-left: -20px; */
+    margin-top:20px;
+}

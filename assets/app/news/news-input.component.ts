@@ -1,23 +1,22 @@
-import { Component } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
+import { NgForm, FormGroup, FormControl, Validators } from "@angular/forms";
 import {News} from './news.model';
-import { FormGroup, FormControl, Validators } from "@angular/forms";
+import { NewsService } from "./news.service";
 
-
-<<<<<<< HEAD
-import {Form} from './news.model';
-
-=======
->>>>>>> 5266d7e9f5d6c0d5ecc0c1fec8261559da64c933
 @Component({
     selector: 'app-form',
     templateUrl: './news-input.component.html',
-    styleUrls:[
+    styleUrls: [
         './news-input.component.css'
     ]
 
 })
 
-export class FormComponent{
+export class FormComponent {
+    news: News;
+
+    constructor(private newsService: NewsService) {}
+
     // let form = new Form ( 'www.facebook.com.'
     // ,'So this is the example', 'Canada', 'Canadian, Social',
     // 'Canadian','News, Social, Facebook'
@@ -28,13 +27,77 @@ export class FormComponent{
     latitude: number
     longitude: number
     zoom: number = 2
+    tags: string[] = []
+    peopleTags: string[] = []
+    govTags: string[] = []
+    title: string
+    synopsis: string
+    url?: string
+    merged: string[] = []
+    reply = 100 
+
+    errorMessages: string[] = []
 
     submitted = false;
-    onSubmit() {
+
+    onSubmit(form: NgForm) {
+        this.errorMessages = []
         this.submitted = true;
+        console.log(form)
+        console.log(this.latitude + ", " + this.longitude)
+        if (!this.latitude || !this.longitude) {
+            this.errorMessages.push("Please enter a valid location")
+        }
+        if (this.tags.length == 0 && this.govTags.length == 0 && this.peopleTags.length == 0) {
+            this.errorMessages.push("Please enter at least one tag")
+        }
+        if (form.form.value.url) {
+            var urlRegex = new RegExp(/[-a-zA-Z0-9@:%_\+.~#?&//=]{2,256}\.[a-z]{2,4}\b(\/[-a-zA-Z0-9@:%_\+.~#?&//=]*)?/gi)
+            if (!urlRegex.test(form.form.value.url)) {
+                this.errorMessages.push("Please enter a valid URL")
+            }
+        }
+
+        //merging tags
+        for(var i = 0; i < this.tags.length; i++)
+        {
+            this.merged[i] = this.tags[i];
+        }
+        for(var i = 0; i < this.govTags.length; i++)
+        {
+            this.merged = this.merged.concat(this.govTags[i]);
+        }
+        for(var i = 0; i < this.peopleTags.length; i++)
+        {
+            this.merged = this.merged.concat(this.peopleTags[i]);
+        }
+
+        //Creating a news post
+        const news = new News(
+            form.value.title,
+            form.value.synopsis, 
+            this.merged, 
+            this.reply, 
+            form.value.url, 
+            this.longitude,
+            this.latitude, 
+            form.value.dates
+        );
+        this.newsService.addNews(news)
+            .subscribe(
+                data => console.log(data),
+                error => console.error(error)
+            );
+        form.resetForm();
     }
-    
-    autoCompleteCallback1(selectedData:any) {
+
+
+    onClear(form: NgForm) {
+        this.news = null;
+        form.resetForm();
+    }
+
+    autoCompleteCallback1(selectedData: any) {
         console.log(selectedData.response)
         if (selectedData.response) {
             this.latitudeForMap = selectedData.data.geometry.location.lat
@@ -57,6 +120,7 @@ export class FormComponent{
         this.longitude = $event.coords.lng
         console.log(this.latitude + ", " + this.longitude)
     }
+
 }
 
 interface Marker {

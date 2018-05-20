@@ -1,34 +1,46 @@
 <!-- <div class="container"> -->
 <div class="background">
-    <h1>Create a News</h1>
 
     <div class="col-md-8 col-md-offset-2">
-        <form (ngSubmit)="onSubmit(f)" #f="ngForm">
+        <h1>Create News</h1>
+        <h4 class="errorMessage" *ngFor="let m of errorMessages">{{ m }}</h4>
+        <form (ngSubmit)="onSubmit(f)" #f="ngForm" ngNativeValidate>
             <div class="form-group">
                 <label for="title">Title*</label>
-                <input type="text" id="title" class="form-control" [ngModel]="news?.title" name="title" required>
+                <input type="text" id="title" class="form-control" [ngModel]="title" name="title" required>
             </div>
 
             <div class="form-group">
                 <label for="synopsis">Synopsis*</label>
-                <input type="text" id="synopsis" class="form-control" [ngModel]="news?.title" name="synopsis" required>
+                <input type="text" id="synopsis" class="form-control" [ngModel]="synopsis" name="synopsis" required>
             </div>
 
             <div class="form-group">
-                <label for="tag">Tags*</label>
-                <input type="text" id="tag" class="form-control" [ngModel]="news?.title" name="tag" required>
+                <label for="gov-tag">Government Tags</label>
+                <rl-tag-input [(ngModel)]="govTags" name="govtag" id="gov-tag" placeholder="Add Government Tags"></rl-tag-input>
+            </div>
+
+            <div class="form-group">
+                <label for="people-tag">People Tags</label>
+                <rl-tag-input [(ngModel)]="peopleTags" name="ppltag" id="people-tag" placeholder="Add People Tags"></rl-tag-input>
+            </div>
+
+            <div class="form-group">
+                <label for="tag">Other Tags</label>
+                <rl-tag-input [(ngModel)]="tags" name="tag" id="people-tag" placeholder="Add Tags">
+                </rl-tag-input>
             </div>
 
             <div class="form-group">
                 <label for="url">URL</label>
-                <input type="text" id="url" class="form-control" [ngModel]="news?.url" name="url" required>
+                <input type="text" id="url" class="form-control" [ngModel]="url" name="url">
             </div>
 
             <div class="form-group">
                 <label for="location">Location</label>
 
                 <ng4geo-autocomplete (componentCallback)="autoCompleteCallback1($event)"></ng4geo-autocomplete>
-                
+
                 <agm-map [latitude]="latitudeForMap" [longitude]="longitudeForMap" [zoom]="zoom" (mapClick)="mapClicked($event)">
 
                     <agm-marker [latitude]="latitude" [longitude]="longitude" [markerDraggable]="true" (dragEnd)="pinDragged($event)">
@@ -38,11 +50,15 @@
             </div>
 
             <div class="form-group">
-                <label for="dates">Dates</label>
+               
+                <label for="dates" style="padding-top:20px;">Dates</label>
                 <input type="date" id="dates" class="form-control" [ngModel]="news?.dates" name="dates" required>
             </div>
 
-            <button type="button" class="btn btn-danger">Clear</button>
+            <h4 class="errorMessage" *ngFor="let m of errorMessages">{{ m }}</h4>
+            <button type="button" class="btn btn-danger" (click)="onClear(f)">Clear</button>
             <button class="btn btn-primary" type="submit">Save</button>
+            <div class="footer"></div>
         </form>
     </div>
+</div>

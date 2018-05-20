@@ -1,6 +1,8 @@
 import { Component, OnInit} from "@angular/core";
 import { AuthService } from "../auth/auth.service";
 import { Router } from "@angular/router";
+import { FlexLayoutModule } from "@angular/flex-layout";
+import { StorageService } from "./storage.service";
 
 @Component({
     selector: 'app-header',
@@ -12,7 +14,11 @@ import { Router } from "@angular/router";
 export class HeaderComponent implements OnInit{
     
     username: String
-    constructor(private authService: AuthService, private router: Router) {}
+    constructor(
+        private authService: AuthService, 
+        private router: Router,
+        private storageService: StorageService) {
+    }
 
     isLoggedIn() {
         return this.authService.isLoggedIn();
@@ -27,6 +33,9 @@ export class HeaderComponent implements OnInit{
         if (this.isLoggedIn()) {         
             this.username = localStorage.getItem('username')
         }
+        this.storageService.watchStorage().subscribe((data:string) => {
+            this.username = localStorage.getItem('username')
+        })
     }
 
 }

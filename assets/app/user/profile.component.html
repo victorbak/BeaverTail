@@ -1,10 +1,49 @@
-<div class="row">
+<!-- <div class="row">
     <div class="col-lg-3">
         <user-info></user-info>
     </div>
 
     <div class="col-lg-8  col-lg-offset-1">
-        <news-list></news-list>
+        <ul class="tab">
+            <li routerLinkActive="active" class="tab" >
+                <a [routerLink]="['replies']">
+                    <h1 style="padding-bottom: 20px;">REPLIES</h1>
+                    <br>
+                    <br>
+                </a>
+            </li>
+            <li routerLinkActive="active" class="tab" >
+                <a [routerLink]="['posts']">
+                    <h1 style="right:20px;">POSTS</h1>
+                </a>
+            </li>
+        </ul>
+
+        <router-outlet></router-outlet>
     </div>
 </div>
 
+-->
+
+
+<div class="col-lg-3">
+    <user-info></user-info>
+</div>
+<div class="col-lg-7  col-lg-offset-2">
+    <ul class="inlineList" style="list-style-type:none;padding-top:20px;
+    padding-bottom: 20px; font-size:2em;">
+        <li routerLinkActive=" active ">
+            <a [routerLink]="[ 'replies']" style="color:white;text-decoration: none;" onMouseOver="this.style.color='#000000'"  onMouseOut="this.style.color='#FFF'">
+                REPLIES &nbsp;&nbsp;&nbsp;&nbsp;
+            </a>
+            <a [routerLink]="[ 'posts']" style="color:white;text-decoration: none;" onMouseOver="this.style.color='#000000'" onMouseOut="this.style.color='#FFF'">
+                &nbsp;&nbsp;&nbsp;&nbsp; POSTS
+            </a>
+        </li>
+        <!-- <li routerLinkActive="active ">
+           
+        </li> -->
+    </ul>
+
+    <router-outlet></router-outlet>
+</div>

@@ -29,6 +29,7 @@ import { NewsReplyComponent } from './news/news-reply.component';
 import { StorageService } from './shared/storage.service';
 import { NewsPopularComponent } from './news/news-popular.component';
 import { NewsRecentComponent } from './news/news-recent.component';
+import { NewsReplyInputComponent } from './news/news-reply-input.component';
 import { aboutUs } from './aboutus/about-us.component';
 
 @NgModule({
@@ -45,6 +46,7 @@ import { aboutUs } from './aboutus/about-us.component';
         NewsComponent,
         NewsDetailComponent,
         NewsReplyComponent,
+        NewsReplyInputComponent,
         NewsPopularComponent,
         NewsRecentComponent,
         aboutUs

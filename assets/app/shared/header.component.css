@@ -57,7 +57,7 @@ li:hover a {
     background: linear-gradient(to right, #3dcdbc 0%, #33a1bd 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3dcdbc', endColorstr='#33a1bd', GradientType=1);
     width: 100%;
-    height: 60px;
+    height: 70px;
 }
 
 /*Make dropdown links vertical*/

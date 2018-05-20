@@ -12,11 +12,14 @@ import { NewsService } from "./news.service";
 export class NewsListComponent implements OnInit {
 
     newslist: News[];
+    username: String;
 
     constructor(private newsService: NewsService) {}
 
     ngOnInit() {
-        this.newsService.getNews()
+       
+         this.username = localStorage.getItem('username')
+        this.newsService.getNewsByName(this.username)
             .subscribe(
                 (news: News[]) => {
                     this.newslist = news;

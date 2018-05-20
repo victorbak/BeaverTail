@@ -123,7 +123,7 @@ export class NewsService {
     }
 
     getNewsByName(username: String) {
-        return this.http.get('http://localhost:3000/news/' + username)
+        return this.http.get('http://localhost:3000/news/user/' + username)
             .map((response: Response) => {
                 const stories = response.json().obj;
                 let transformedNews: News[] = [];
@@ -137,8 +137,10 @@ export class NewsService {
                         news.longitude,
                         news.latitude,
                         news.dates,
-                        news.userId,
-                        news.username
+                        news.creationDate,
+                        news._id,
+                        news.user.id,
+                        news.user.username
                     ));
                 }
                 this.stories = transformedNews;

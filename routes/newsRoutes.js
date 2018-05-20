@@ -151,6 +151,7 @@ router.post('/', function(req, res, next) {
 });
 
 router.patch('/:id', function(req, res, next) {
+    var decoded = jwt.decode(req.query.token);
     News.findById(req.params.id, function(err, news) {
         if (err) {
             return res.status(500).json({

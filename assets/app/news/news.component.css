@@ -1,9 +1,0 @@
-
-@media screen and (max-width: 2000px) {
-    .panel panel-default{
-        width: 100%;
-      
-        text-align:center;
-        /* The width is 100%, when the viewport is 800px or smaller */
-    }
-}

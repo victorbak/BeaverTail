@@ -28,11 +28,7 @@ export class NewsComponent {
     }
 
     getDetail() {
-        //this.newsService.getNewsById(this.news.newsId)
-        //this.router.navigateByUrl('/news/newsId='+this.news.newsId)
         this.router.navigate(['/news'],{queryParams: {newsId: this.news.newsId}} )
-        //this.router.navigate(['/products'], { queryParams: { order: 'popular' } });
-
     }
     
 }

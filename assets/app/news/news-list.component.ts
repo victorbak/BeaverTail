@@ -5,19 +5,21 @@ import { NewsService } from "./news.service";
 
 @Component({
     selector: 'news-list',
-    templateUrl: './news-list.component.html',
-    styleUrls: [
-        './news-list.component.css',
-    ]
+    template: `<div>
+                    <app-news [news]="news" *ngFor="let news of newslist"></app-news>
+                </div>`
 })
 export class NewsListComponent implements OnInit {
 
     newslist: News[];
+    username: String;
 
     constructor(private newsService: NewsService) {}
 
     ngOnInit() {
-        this.newsService.getNews()
+       
+         this.username = localStorage.getItem('username')
+        this.newsService.getNewsByName(this.username)
             .subscribe(
                 (news: News[]) => {
                     this.newslist = news;

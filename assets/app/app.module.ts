@@ -27,6 +27,8 @@ import { NewsService } from './news/news.service';
 import { NewsDetailComponent } from './news/news-detail.component';
 import { NewsReplyComponent } from './news/news-reply.component';
 import { StorageService } from './shared/storage.service';
+import { NewsPopularComponent } from './news/news-popular.component';
+import { NewsRecentComponent } from './news/news-recent.component';
 
 @NgModule({
     declarations: [
@@ -41,7 +43,9 @@ import { StorageService } from './shared/storage.service';
         NewsListComponent,
         NewsComponent,
         NewsDetailComponent,
-        NewsReplyComponent
+        NewsReplyComponent,
+        NewsPopularComponent,
+        NewsRecentComponent
         ],
     imports: [
         BrowserModule,

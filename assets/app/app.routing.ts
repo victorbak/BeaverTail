@@ -22,9 +22,7 @@ const APP_ROUTES: Routes = [
     { path: 'user/profile/:username', component: ProfileComponent, children: Profile_ROUTES },
     { path: 'form', component: FormComponent },
     { path: 'news', component: NewsDetailComponent },
-
     { path: 'aboutus', component: aboutUs },
-
     { path: 'news/reply', component: NewsReplyComponent }
 
 

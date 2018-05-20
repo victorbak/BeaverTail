@@ -5,10 +5,9 @@ import { NewsService } from "./news.service";
 
 @Component({
     selector: 'news-list',
-    templateUrl: './news-list.component.html',
-    styleUrls: [
-        './news-list.component.css',
-    ]
+    template: `<div>
+                    <app-news [news]="news" *ngFor="let news of newslist"></app-news>
+                </div>`
 })
 export class NewsListComponent implements OnInit {
 

@@ -68,6 +68,60 @@ export class NewsService {
             .catch((error: Response) => Observable.throw(error.json()));
     }
 
+    getPopularNews(){
+        return this.http.get('http://localhost:3000/news/popular')
+            .map((response: Response) => {
+                const stories = response.json().obj;
+                let transformedNews: News[] = [];
+                for (let news of stories) {
+                    transformedNews.push(new News(
+                        news.title,
+                        news.synopsis,
+                        news.tags,
+                        news.replyCount,
+                        news.url,
+                        news.longitude,
+                        news.latitude,
+                        news.dates,
+                        news.creationDate,
+                        news._id,
+                        news.user.id,
+                        news.user.username
+                    ));
+                }
+                this.stories = transformedNews;
+                return transformedNews;
+            })
+            .catch((error: Response) => Observable.throw(error.json()));
+    }
+
+    getRecentNews(){
+        return this.http.get('http://localhost:3000/news/new')
+            .map((response: Response) => {
+                const stories = response.json().obj;
+                let transformedNews: News[] = [];
+                for (let news of stories) {
+                    transformedNews.push(new News(
+                        news.title,
+                        news.synopsis,
+                        news.tags,
+                        news.replyCount,
+                        news.url,
+                        news.longitude,
+                        news.latitude,
+                        news.dates,
+                        news.creationDate,
+                        news._id,
+                        news.user.id,
+                        news.user.username
+                    ));
+                }
+                this.stories = transformedNews;
+                return transformedNews;
+            })
+            .catch((error: Response) => Observable.throw(error.json()));
+    }
+
     getNewsByName(username: String) {
         return this.http.get('http://localhost:3000/news/' + username)
             .map((response: Response) => {

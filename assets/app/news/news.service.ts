@@ -10,7 +10,7 @@ import { User } from "../auth/user.model";
 @Injectable()
 export class NewsService {
     private stories: News[] = [];
-    private replies: News[] = [];
+    private replies: Reply[] = [];
     newsIsEdit = new EventEmitter<News>();
 
     constructor(private http: Http) { }
@@ -49,18 +49,19 @@ export class NewsService {
         const token = localStorage.getItem('token')
             ? '?token=' + localStorage.getItem('token')
             : '';
-        return this.http.post('http://localhost:3000/api/news/reply' + token, body, { headers: headers })
+        return this.http.post('http://localhost:3000/api/news/' + newsId + '/' + 'reply' + token, body, { headers: headers })
             .map((response: Response) => {
                 const result = response.json();
-                const reply = new Reply(result.obj.title,
+                const reply = new Reply(
+                    result.obj.title,
                     result.obj.synopsis,
                     result.obj.tags,
                     result.obj.url,
-                    result.obj.creationDate,
                     result.obj._id,
                     newsId,
                     result.obj.user.id,
-                    result.obj.user.username
+                    result.obj.user.username,
+                    result.obj.creationDate
                 );
                 this.replies.push(reply);
                 return reply;

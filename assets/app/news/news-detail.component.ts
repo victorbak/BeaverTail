@@ -35,4 +35,11 @@ export class NewsDetailComponent implements OnInit {
                 this.news = news
             })
     }
+
+    onDelete(){
+        this.newsService.deleteNews(this.news)
+        .subscribe(
+            result => console.log(result)
+        );
+    }
 }

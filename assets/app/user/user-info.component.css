@@ -1,4 +1,4 @@
-h1, h3 ,h5{
+h1, h3, h5 {
     text-transform: uppercase;
     font-weight: normal;
 }
@@ -19,56 +19,72 @@ h1, h3 ,h5{
 }
 
 @media screen and (max-width: 800px) {
-    .user-photo{
+    .user-photo {
         max-width: 100%;
-        height:600px;
-        /* The width is 100%, when the viewport is 800px or smaller */
-    }
-}
-
-@media screen and (max-width: 800px) {
-    .middle{
-        max-width: 100%;
-        height:600px;
-        float:middle;
+        height: 600px;
         /* The width is 100%, when the viewport is 800px or smaller */
     }
 }
 .middle{
-    float:middle;
-}
-tr td:first-child x{
-    width: 100px;
-   
+    position: relative;
+    margin-left:25px;
 }
 
-.info{
- /* margin-left:20px; */
- /* margin-left:50px; */
- position: relative;
- float:middle;
- margin-left:20px;
+
+@media screen and (max-width: 800px) {
+    .middle {
+        /* max-width: 100%;
+        height:600px;
+        margin-left:500px;
+        margin-left: */
+        position: relative;
+        /* The width is 100%, when the viewport is 800px or smaller */
+    }
 }
-.socialMedia{
-    padding-left:20px;
+
+.middle {
+    float: middle;
 }
-.socialMedia1{
-    padding-left:28px;
+
+tr td:first-child x {
+    width: 100px;
 }
+
+.info {
+    /* margin-left:20px; */
+    /* margin-left:50px; */
+    position: relative;
+    float: middle;
+    margin-left: 18px;
+}
+
+.socialMedia {
+    padding-left: 20px;
+}
+
+.socialMedia1 {
+    padding-left: 28px;
+}
+
 .bio {
     margin-top: 210%;
     margin-left: 12%;
 }
 
-hr{
-    height:10px;
-    color:green;
+hr {
+    height: 10px;
+    color: green;
+    width: 20px;
 }
-
+@media screen and (max-width: 800px) {
+    hr {
+       width: 100%;
+    }
+}
 @media screen and (max-width: 800px) {
     .info, tr {
         max-width: 90%;
-       margin-left:12%;
+        margin-left: 12%;
     }
 }
 
@@ -81,9 +97,10 @@ hr{
     }
 }
 
-hr{
-    color:white;
+hr {
+    color: white;
 }
+
 button {
     width: 100%;
     height: 60px;
@@ -109,30 +126,31 @@ button a {
         /* The width is 100%, when the viewport is 800px or smaller */
     }
 }
+
 @media screen and (max-width: 800px) {
     div.hr {
         height: 5px;
         width: 100%;
         position: relative;
-        float:middle;
+        float: middle;
         background: #fff url(hr1.gif) no-repeat scroll center;
-    
         /* The width is 100%, when the viewport is 800px or smaller */
     }
 }
+
 div.hr {
     height: 5px;
     width: 100%;
     position: relative;
-    float:middle;
+    float: middle;
     background: #fff url(hr1.gif) no-repeat scroll center;
-  }
-  div.hr hr {
+}
+
+div.hr hr {
     display: none;
-  }
+}
 
-
-
-  .detail{
-      margin-left:-20px;
-  }
+.detail {
+    /* margin-left: -20px; */
+    margin-top:20px;
+}

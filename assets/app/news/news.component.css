@@ -11,7 +11,7 @@
     padding-top: 10px;
     padding-left: 20px;
     padding-bottom: 10px;
-    width: 100%;
+    width: 95%;
     /* border-radius: 10px; */
 }
 
@@ -30,6 +30,8 @@ p {
     .background{
       width: 100%; /* The width is 100%, when the viewport is 800px or smaller */
       padding-left: 20px;
+      margin-left:40px;
+      margin-right:40px;
 
     }
   }

@@ -45,39 +45,42 @@
 <img class="user-photo" src="../../images/user.png" alt="default user">
 
 <table>
-    <div class="info">
+    <div class="middle">
+        <div class="info">
 
-        <td>
-            <h1>{{user?.username}}</h1>
-        </td>
-    </div>
-    <div class="hr">
-        <hr />
-    </div>
-    <tr>
-
-        <br>
-
-    </tr>
-    <div class="detail">
-        <tr>
-            <td>Name</td>
-            <td>{{user?.name}}</td>
-        </tr>
-        <tr>
-            <td>Bio</td>
-            <td>{{user?.bio}}</td>
-        </tr>
-        <tr>
-            <td>Email</td>
-            <td>{{user?.email}}</td>
-        </tr>
-        <tr>
-            <td>Social Media</td>
             <td>
-                <a href="{{user?.socialMedia}}">{{user?.socialMedia}}</a>
+                <h1>{{user?.username}}</h1>
             </td>
+        </div>
+        <div class="hr">
+            <hr />
+        </div>
+        <tr>
+
+
+
         </tr>
+        <div class="detail">
+            <tr>
+                <td>Name</td>
+                <td class="socialMedia1">{{user?.name}}</td>
+            </tr>
+            <tr>
+                <td>Bio</td>
+                <td class="socialMedia1">{{user?.bio}}</td>
+            </tr>
+            <tr>
+                <td>Email</td>
+                <td class="socialMedia1">{{user?.email}}</td>
+            </tr>
+            <tr>
+                <td>Social Media</td>
+                <td class="socialMedia">
+                    &nbsp;
+                    <a href="{{user?.socialMedia}}">{{user?.socialMedia}}</a>
+                </td>
+            </tr>
+        </div>
     </div>
 </table>
 <br>

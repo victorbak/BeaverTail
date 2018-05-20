@@ -18,7 +18,7 @@ export class NewsDetailComponent implements OnInit {
     news: News
     newsId: String
 
-    constructor(private newsService: NewsService, private router: ActivatedRoute) { }
+    constructor(private newsService: NewsService, private router: ActivatedRoute, private route: Router) { }
     ngOnInit() {
         this.router.queryParams
             .filter(params => params.newsId)
@@ -34,6 +34,11 @@ export class NewsDetailComponent implements OnInit {
             .subscribe((news: News) => {
                 this.news = news
             })
+    }
+
+    onReply(){
+        console.log(this.newsId);
+        this.route.navigate(['/news/reply'],{queryParams: {newsId: this.newsId}})
     }
 
     onDelete(){

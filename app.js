@@ -9,8 +9,6 @@ var mongoose = require('mongoose')
 var appRoutes = require('./routes/app')
 var userRoutes = require('./routes/userRoutes')
 var newsRoutes = require('./routes/newsRoutes')
-// var replyRoutes = require('./routes/replyRoutes')
-
 var app = express();
 
 mongoose.connect('mongodb://localhost:27017/beavertail')
@@ -35,10 +33,9 @@ app.use(function (req, res, next) {
 });
 
 
-app.use('/user', userRoutes)
-app.use('/news', newsRoutes)
-// app.use('/reply', replyRoutes)
-app.use('/', appRoutes)
+app.use('/api/user', userRoutes)
+app.use('/api/news', newsRoutes)
+app.use('/api/', appRoutes)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

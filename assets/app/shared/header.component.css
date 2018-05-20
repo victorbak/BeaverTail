@@ -79,6 +79,7 @@ li ul li {
     text-align: center;
     padding: 10px 0;
     display: none;
+    
     /* background-image: url(/assets/images/logo1.png); */
 }
 
@@ -120,6 +121,7 @@ input[type=checkbox]:checked~#menu {
     overflow: hidden;
     /* background-color: #333; */
     background-color: white;
+    padding-bottom:10px;
 }
 
 .topnav a {

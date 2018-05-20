@@ -9,8 +9,10 @@ import { NewsDetailComponent } from "./news-detail.component";
 
 @Component({
     selector: 'app-news',
-    templateUrl: './news.component.html'
-})
+    templateUrl: './news.component.html',
+    styleUrls: [
+        './news.component.css'
+    ]})
 export class NewsComponent {
     @Input() news: News;
 

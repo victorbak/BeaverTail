@@ -12,7 +12,9 @@ agm-map {
 
 
 }
-
+.footer{
+    margin-bottom:400px;
+}
 button{
     width: 100%;
     height: 60px;

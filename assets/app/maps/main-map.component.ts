@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { NewsService } from "../news/news.service";
 import { News } from "../news/news.model";
 import { MarkerManager } from "@agm/core";
+import { Router } from "@angular/router";
 
 @Component({
     selector: 'app-main-map',
@@ -16,7 +17,7 @@ export class MainMapComponent implements OnInit {
     news: News[]
     markers: Markers[] = []
 
-    constructor(private newsService: NewsService) {}
+    constructor(private newsService: NewsService, private router: Router) {}
 
     ngOnInit() {
         this.newsService.getNews().subscribe(
@@ -34,6 +35,10 @@ export class MainMapComponent implements OnInit {
                 console.log(this.news)
             }
         )
+    }
+
+    getDetail(id) {
+        this.router.navigate(['/news'],{queryParams: {newsId: id}} )
     }
 }
 

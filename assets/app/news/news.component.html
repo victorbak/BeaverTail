@@ -12,6 +12,11 @@
 
 
 <!-- the above are little white boxes -->
-<a (click)="getDetail()">{{news?.title}}</a>
-<p>Post on: {{news?.creationDate}}</p>
-<hr>
+<div class="background">
+    <a (click)="getDetail()">
+        <li>{{news?.title}}</li>
+    </a>
+    <p>Post on: {{news?.creationDate}}</p>
+
+    <!-- <hr> -->
+</div>

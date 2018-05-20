@@ -57,7 +57,7 @@ li:hover a {
     background: linear-gradient(to right, #3dcdbc 0%, #33a1bd 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#3dcdbc', endColorstr='#33a1bd', GradientType=1);
     width: 100%;
-    height: 60px;
+    height: 70px;
 }
 
 /*Make dropdown links vertical*/
@@ -79,6 +79,8 @@ li ul li {
     text-align: center;
     padding: 10px 0;
     display: none;
+    
+    /* background-image: url(/assets/images/logo1.png); */
 }
 
 /*Hide checkbox*/
@@ -119,6 +121,7 @@ input[type=checkbox]:checked~#menu {
     overflow: hidden;
     /* background-color: #333; */
     background-color: white;
+    padding-bottom:10px;
 }
 
 .topnav a {

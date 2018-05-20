@@ -9,6 +9,8 @@ var News = require('../models/news');
 var Reply = require('../models/reply');
 
 
+//GETTING NEWS
+
 //Gets all news
 router.get('/', function(req, res, next) {
     News.find()
@@ -64,6 +66,24 @@ router.get('/popular', function(req, res, next) {
     });
 });
 
+//Gets all replies
+router.get('/reply', function(req, res, next) {
+    Reply.find()
+    .exec(function(err, reply) {
+        if (err) {
+            return res.status(500).json({
+                title: 'An error occured',
+                error: err
+            });
+        }
+        
+        res.status(200).json({
+            message: 'Success: All',
+            obj: reply
+        })
+    });
+});
+
 //gets a news by id
 router.get('/:id', function(req, res, next) {
     News.findById(req.params.id)
@@ -98,8 +118,63 @@ router.get('/user/:username', function(req, res, next) {
     });
 });
 
+//GETTING REPLIES
 
 
+//gets replies by username
+router.get('/user/reply/:username', function(req, res, next) {
+    Reply.find({'user.username': req.params.username})
+    .exec(function(err, reply) {
+        if (err) {
+            return res.status(500).json({
+                title: 'An error occured',
+                error: err
+            });
+        }
+        res.status(200).json({
+            message: 'Success',
+            obj: reply
+        })
+    });
+});
+
+
+//gets a reply by id
+router.get('/reply/:id', function(req, res, next) {
+    Reply.findById(req.params.id)
+    .exec(function(err, reply) {
+        if (err) {
+            return res.status(500).json({
+                title: 'An error occured',
+                error: err
+            });
+        }
+        res.status(200).json({
+            message: 'Success',
+            obj: reply
+        })
+    });
+});
+
+//gets a reply by news id
+router.get('/news/reply/:id', function(req, res, next) {
+    Reply.find({news: req.params.id})
+    .exec(function(err, reply) {
+        if (err) {
+            return res.status(500).json({
+                title: 'An error occured',
+                error: err
+            });
+        }
+        res.status(200).json({
+            message: 'Success',
+            obj: reply
+        })
+    });
+});
+
+
+//MUST BE LOGGED IN TO USE ROUTES BELOW
 
 router.use('/', function(req, res, next) {
     jwt.verify(req.query.token, "It's Kovine, Nigerian! Hehehehe", function(err, decoded) {
@@ -255,6 +330,7 @@ router.delete('/:id', function(req, res, next) {
                 error: err
             });
         }
+        Reply.remove({news: req.params.id}).exec();
         news.remove(function(err, result) {
             if (err) {
                 return res.status(500).json({

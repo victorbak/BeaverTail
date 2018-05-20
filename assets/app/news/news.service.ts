@@ -204,8 +204,11 @@ export class NewsService {
     }
 
     deleteNews(news: News) {
+        const token = localStorage.getItem('token')
+        ? '?token=' + localStorage.getItem('token')
+        : '';
         this.stories.splice(this.stories.indexOf(news), 1);
-        return this.http.delete('http://localhost:3000/api/news/' + news.newsId)
+        return this.http.delete('http://localhost:3000/api/news/' + news.newsId + token)
             .map((response: Response) => response.json())
             .catch((error: Response) => Observable.throw(error.json()));
     }

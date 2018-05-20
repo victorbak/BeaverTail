@@ -1,7 +1,8 @@
 <!-- <div class="container"> -->
 <div class="background">
-    <h1>Create News</h1>
+
     <div class="col-md-8 col-md-offset-2">
+        <h1>Create News</h1>
         <h4 class="errorMessage" *ngFor="let m of errorMessages">{{ m }}</h4>
         <form (ngSubmit)="onSubmit(f)" #f="ngForm" ngNativeValidate>
             <div class="form-group">
@@ -26,12 +27,7 @@
 
             <div class="form-group">
                 <label for="tag">Other Tags</label>
-                <rl-tag-input 
-                    [(ngModel)]="tags" 
-                    name="tag" 
-                    id="people-tag" 
-                    placeholder="Add Tags"
-                    >
+                <rl-tag-input [(ngModel)]="tags" name="tag" id="people-tag" placeholder="Add Tags">
                 </rl-tag-input>
             </div>
 
@@ -44,7 +40,7 @@
                 <label for="location">Location</label>
 
                 <ng4geo-autocomplete (componentCallback)="autoCompleteCallback1($event)"></ng4geo-autocomplete>
-                
+
                 <agm-map [latitude]="latitudeForMap" [longitude]="longitudeForMap" [zoom]="zoom" (mapClick)="mapClicked($event)">
 
                     <agm-marker [latitude]="latitude" [longitude]="longitude" [markerDraggable]="true" (dragEnd)="pinDragged($event)">
@@ -54,10 +50,11 @@
             </div>
 
             <div class="form-group">
-                <label for="dates">Dates</label>
+               
+                <label for="dates" style="padding-top:20px;">Dates</label>
                 <input type="date" id="dates" class="form-control" [ngModel]="news?.dates" name="dates" required>
             </div>
-            
+
             <h4 class="errorMessage" *ngFor="let m of errorMessages">{{ m }}</h4>
             <button type="button" class="btn btn-danger" (click)="onClear(f)">Clear</button>
             <button class="btn btn-primary" type="submit">Save</button>

@@ -21,7 +21,9 @@ var newsSchema = new mongoose.Schema({
         username: String
     },
     replies: [{type: Schema.Types.ObjectId, ref: 'Reply'}]
-});
+},
+{ usePushEach: true }, // ADD THIS
+);
 
 newsSchema.post('remove', function(news) {
     User.findById(news.user, function(err, user) {

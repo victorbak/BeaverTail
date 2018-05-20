@@ -10,7 +10,8 @@ var userSchema = new mongoose.Schema({
     socialMedia: [{type: String}],
     picture: {type: String},
     role: {type: String},
-    newsPosts: [{type: Schema.Types.ObjectId, ref: 'News'}]
+    newsPosts: [{type: Schema.Types.ObjectId, ref: 'News'}],
+    replies: [{type: Schema.Types.ObjectId, ref: 'Reply'}]
 }, 
 { usePushEach: true }, // ADD THIS
 );

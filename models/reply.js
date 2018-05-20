@@ -7,7 +7,13 @@ var replySchema = new mongoose.Schema({
     tags: [{type: String, required: true}],
     url: {type: String},
     creationDate: {type: Date, default: Date.now},
-    user: {type: Schema.Types.ObjectId, ref: 'User'},
+    user: {
+        id: {
+            type: Schema.Types.ObjectId,
+            ref: 'User'
+        },
+        username: String
+    },
     news: {type: Schema.Types.ObjectId, ref: 'News'}
 })
 

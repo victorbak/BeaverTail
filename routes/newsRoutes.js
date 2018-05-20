@@ -6,6 +6,8 @@ var User = require('../models/user');
 
 var News = require('../models/news');
 
+var Reply = require('../models/reply');
+
 
 //Gets all news
 router.get('/', function(req, res, next) {
@@ -150,8 +152,47 @@ router.post('/', function(req, res, next) {
     });
 });
 
-router.patch('/:id', function(req, res, next) {
+//post a reply
+router.post('/reply', function(req, res, next) {
     var decoded = jwt.decode(req.query.token);
+    User.findById(decoded.user._id, function(err, user) {
+        if (err) {
+            return res.status(401).json({
+                title: 'An error has occured',
+                error: err,
+            });
+        }
+        var reply = new Reply({
+            title: req.body.title,
+            synopsis: req.body.synopsis,
+            tags: req.body.tags,
+            url: req.body.url,
+            dates: req.body.dates,
+            'user.id': user._id,
+            'user.username': user.username,
+            news: news._id
+        });
+        reply.save(function(err, result) {
+            if (err) {
+                return res.status(500).json({
+                    message: 'An error occured',
+                    error: err
+                });
+            }
+            user.replies.push(result);
+            user.save();
+            news.replies.push(result);
+            news.save();
+            res.status(200).json({
+                message: 'News Saved',
+                obj: result
+            });
+        });
+    });
+});
+
+
+router.patch('/:id', function(req, res, next) {
     News.findById(req.params.id, function(err, news) {
         if (err) {
             return res.status(500).json({

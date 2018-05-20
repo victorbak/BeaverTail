@@ -1,0 +1,49 @@
+<!-- <div class="container"> -->
+    <div class="background">
+        <h1>Enter you response</h1>
+        <div class="col-md-8 col-md-offset-2">
+            <h4 class="errorMessage" *ngFor="let m of errorMessages">{{ m }}</h4>
+            <form (ngSubmit)="onSubmit(f)" #f="ngForm" ngNativeValidate>
+                <div class="form-group">
+                    <label for="title">Title*</label>
+                    <input type="text" id="title" class="form-control" [ngModel]="title" name="title" required>
+                </div>
+    
+                <div class="form-group">
+                    <label for="synopsis">Synopsis*</label>
+                    <input type="text" id="synopsis" class="form-control" [ngModel]="synopsis" name="synopsis" required>
+                </div>
+    
+                <div class="form-group">
+                    <label for="gov-tag">Government Tags</label>
+                    <rl-tag-input [(ngModel)]="govTags" name="govtag" id="gov-tag" placeholder="Add Government Tags"></rl-tag-input>
+                </div>
+    
+                <div class="form-group">
+                    <label for="people-tag">People Tags</label>
+                    <rl-tag-input [(ngModel)]="peopleTags" name="ppltag" id="people-tag" placeholder="Add People Tags"></rl-tag-input>
+                </div>
+    
+                <div class="form-group">
+                    <label for="tag">Other Tags</label>
+                    <rl-tag-input 
+                        [(ngModel)]="tags" 
+                        name="tag" 
+                        id="people-tag" 
+                        placeholder="Add Tags"
+                        >
+                    </rl-tag-input>
+                </div>
+    
+                <div class="form-group">
+                    <label for="url">URL</label>
+                    <input type="text" id="url" class="form-control" [ngModel]="url" name="url">
+                </div>
+                
+                <h4 class="errorMessage" *ngFor="let m of errorMessages">{{ m }}</h4>
+                <button type="button" class="btn btn-danger" (click)="onClear(f)">Clear</button>
+                <button class="btn btn-primary" type="submit">Save</button>
+                <div class="footer"></div>
+            </form>
+        </div>
+    </div>

@@ -1,6 +1,7 @@
 import { Injectable, EventEmitter } from "@angular/core";
 import { Http, Response, Headers } from "@angular/http";
 import { News } from "./news.model"
+import { Reply } from "./reply.model"
 import "rxjs/Rx";
 import { Observable } from "rxjs"
 import { error } from "util";
@@ -9,6 +10,7 @@ import { User } from "../auth/user.model";
 @Injectable()
 export class NewsService {
     private stories: News[] = [];
+    private replies: News[] = [];
     newsIsEdit = new EventEmitter<News>();
 
     constructor(private http: Http) { }
@@ -19,7 +21,7 @@ export class NewsService {
         const token = localStorage.getItem('token')
             ? '?token=' + localStorage.getItem('token')
             : '';
-        return this.http.post('http://localhost:3000/news' + token, body, { headers: headers })
+        return this.http.post('http://localhost:3000/api/news' + token, body, { headers: headers })
             .map((response: Response) => {
                 const result = response.json();
                 const news = new News(result.obj.title,
@@ -41,8 +43,33 @@ export class NewsService {
             .catch((error: Response) => Observable.throw(error.json()));
     }
 
+    addReply(reply: Reply, newsId: string) {
+        const body = JSON.stringify(reply);
+        const headers = new Headers({ 'Content-Type': 'application/json' })
+        const token = localStorage.getItem('token')
+            ? '?token=' + localStorage.getItem('token')
+            : '';
+        return this.http.post('http://localhost:3000/api/news/reply' + token, body, { headers: headers })
+            .map((response: Response) => {
+                const result = response.json();
+                const reply = new Reply(result.obj.title,
+                    result.obj.synopsis,
+                    result.obj.tags,
+                    result.obj.url,
+                    result.obj.creationDate,
+                    result.obj._id,
+                    newsId,
+                    result.obj.user.id,
+                    result.obj.user.username
+                );
+                this.replies.push(reply);
+                return reply;
+            })
+            .catch((error: Response) => Observable.throw(error.json()));
+    }
+
     getNews() {
-        return this.http.get('http://localhost:3000/news')
+        return this.http.get('http://localhost:3000/api/news')
             .map((response: Response) => {
                 const stories = response.json().obj;
                 let transformedNews: News[] = [];
@@ -69,7 +96,7 @@ export class NewsService {
     }
 
     getPopularNews(){
-        return this.http.get('http://localhost:3000/news/popular')
+        return this.http.get('http://localhost:3000/api/news/popular')
             .map((response: Response) => {
                 const stories = response.json().obj;
                 let transformedNews: News[] = [];
@@ -96,7 +123,7 @@ export class NewsService {
     }
 
     getRecentNews(){
-        return this.http.get('http://localhost:3000/news/new')
+        return this.http.get('http://localhost:3000/api/news/new')
             .map((response: Response) => {
                 const stories = response.json().obj;
                 let transformedNews: News[] = [];
@@ -123,7 +150,7 @@ export class NewsService {
     }
 
     getNewsByName(username: String) {
-        return this.http.get('http://localhost:3000/news/user/' + username)
+        return this.http.get('http://localhost:3000/api/news/user/' + username)
             .map((response: Response) => {
                 const stories = response.json().obj;
                 let transformedNews: News[] = [];
@@ -150,7 +177,7 @@ export class NewsService {
     }
 
     getNewsById(newsId: String) {
-        return this.http.get('http://localhost:3000/news/' + newsId)
+        return this.http.get('http://localhost:3000/api/news/' + newsId)
             .map((response: Response) => {
                 const news = response.json().obj;
                 let transformedNews: News;
@@ -177,7 +204,7 @@ export class NewsService {
 
     deleteNews(news: News) {
         this.stories.splice(this.stories.indexOf(news), 1);
-        return this.http.delete('http://localhost:3000/news/' + news.newsId)
+        return this.http.delete('http://localhost:3000/api/news/' + news.newsId)
             .map((response: Response) => response.json())
             .catch((error: Response) => Observable.throw(error.json()));
     }

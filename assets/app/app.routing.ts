@@ -6,6 +6,7 @@ import { ProfileComponent } from "./user/profile.component";
 import { FormComponent } from "./news/news-input.component";
 import { Profile_ROUTES } from "./user/profile.routes";
 import { NewsDetailComponent } from "./news/news-detail.component";
+import { NewsReplyComponent } from "./news/news-reply.component";
 
 
 
@@ -16,7 +17,8 @@ const APP_ROUTES: Routes = [
     { path: 'signin', component: SigninComponent},
     { path: 'user/profile/:username', component: ProfileComponent, children: Profile_ROUTES},
     { path: 'form', component: FormComponent },
-    { path: 'news', component: NewsDetailComponent }
+    { path: 'news', component: NewsDetailComponent },
+    { path: 'news/reply', component: NewsReplyComponent }
 
 
 ];

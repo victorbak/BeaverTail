@@ -54,3 +54,11 @@ button a:hover {
       width: 100%; /* The width is 100%, when the viewport is 800px or smaller */
     }
   }
+
+.info-box {
+    width: 200px;
+    height: 140px;
+    background-color: #3dcdbc;
+    padding: 8px;
+    border-radius: 5%
+}

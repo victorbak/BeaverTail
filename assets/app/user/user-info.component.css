@@ -5,32 +5,65 @@ h1, h3 ,h5{
 
 .user-photo {
     height: 200px;
-    position: absolute;
-    max-width: 100%;
+    /* position: absolute; */
+    /* max-width: 100%; */
     top: 10%;
     left: 10%;
     border-radius: 3px;
     box-shadow: 0 3px 6px rgba(0, 0, 0, 0.9);
+    /* float:middle;
+    position: relative;
+ */
+    width: 100%;
+    height: 200px;
 }
 
-tr td:first-child {
+@media screen and (max-width: 800px) {
+    .user-photo{
+        max-width: 100%;
+        height:600px;
+        /* The width is 100%, when the viewport is 800px or smaller */
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .middle{
+        max-width: 100%;
+        height:600px;
+        float:middle;
+        /* The width is 100%, when the viewport is 800px or smaller */
+    }
+}
+.middle{
+    float:middle;
+}
+tr td:first-child x{
     width: 100px;
    
 }
 
 .info{
- margin-top:250px;
+ /* margin-left:20px; */
+ /* margin-left:50px; */
+ position: relative;
+ float:middle;
  margin-left:20px;
 }
-
+.socialMedia{
+    padding-left:20px;
+}
+.socialMedia1{
+    padding-left:28px;
+}
 .bio {
     margin-top: 210%;
     margin-left: 12%;
 }
 
-/* hr {
-    visibility: hidden;
-} */
+hr{
+    height:10px;
+    color:green;
+}
 
 @media screen and (max-width: 800px) {
     .info, tr {
@@ -76,3 +109,30 @@ button a {
         /* The width is 100%, when the viewport is 800px or smaller */
     }
 }
+@media screen and (max-width: 800px) {
+    div.hr {
+        height: 5px;
+        width: 100%;
+        position: relative;
+        float:middle;
+        background: #fff url(hr1.gif) no-repeat scroll center;
+    
+        /* The width is 100%, when the viewport is 800px or smaller */
+    }
+}
+div.hr {
+    height: 5px;
+    width: 100%;
+    position: relative;
+    float:middle;
+    background: #fff url(hr1.gif) no-repeat scroll center;
+  }
+  div.hr hr {
+    display: none;
+  }
+
+
+
+  .detail{
+      margin-left:-20px;
+  }

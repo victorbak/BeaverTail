@@ -1,9 +1,17 @@
 <agm-map [latitude]="49" [longitude]="-123" [backgroundColor]="'#aadaff'">
-    <agm-marker-cluster [imagePath]="'http://test.local:4711/m'">
-        <agm-marker *ngFor="let m of markers" [latitude]="m.lat" [longitude]="m.lng"></agm-marker>
+    <agm-marker-cluster [imagePath]="'https://raw.githubusercontent.com/WestAlbertans/BeaverTail/develop/assets/images/m'">
+        <agm-marker *ngFor="let m of markers" [latitude]="m.lat" [longitude]="m.lng">
+            <agm-snazzy-info-window [maxWidth]="200" [closeWhenOthersOpen]="true">
+                <ng-template>
+                    <div class="info-box">
+                        <a (click)="getDetail(m.id)"><h4>{{ m.title }}</h4></a>
+                        <p>{{ m.desc }}</p>
+                    </div>
+                </ng-template>
+            </agm-snazzy-info-window>
+        </agm-marker>
     </agm-marker-cluster>
 </agm-map>
-<!-- <h2><a [routerLink]="['/form']">form</a></h2> -->
 
 <button type="button" class="btn btn-info" [routerLink]="['/form']">
     <a>CREATE NEWS</a>

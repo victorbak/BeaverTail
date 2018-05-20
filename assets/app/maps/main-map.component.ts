@@ -2,12 +2,14 @@ import { Component, OnInit } from "@angular/core";
 import { NewsService } from "../news/news.service";
 import { News } from "../news/news.model";
 import { MarkerManager } from "@agm/core";
+import { Router } from "@angular/router";
 
 @Component({
     selector: 'app-main-map',
     templateUrl: './main-map.component.html',
     styleUrls: [
-        './main-map.component.css'
+        './main-map.component.css',
+        '../../../node_modules/snazzy-info-window/dist/snazzy-info-window.css'
     ]
 })
 export class MainMapComponent implements OnInit {
@@ -15,7 +17,7 @@ export class MainMapComponent implements OnInit {
     news: News[]
     markers: Markers[] = []
 
-    constructor(private newsService: NewsService) {}
+    constructor(private newsService: NewsService, private router: Router) {}
 
     ngOnInit() {
         this.newsService.getNews().subscribe(
@@ -26,12 +28,17 @@ export class MainMapComponent implements OnInit {
                         lat: n.latitude,
                         lng: n.longitude,
                         title: n.title,
-                        id: n.newsId
+                        id: n.newsId,
+                        desc: n.synopsis.length > 100? n.synopsis.substring(0, 99) + "..." : n.synopsis
                     })
                 })
                 console.log(this.news)
             }
         )
+    }
+
+    getDetail(id) {
+        this.router.navigate(['/news'],{queryParams: {newsId: id}} )
     }
 }
 
@@ -40,4 +47,5 @@ interface Markers {
     lng: number
     title: string
     id: string
+    desc: string
 }

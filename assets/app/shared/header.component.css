@@ -79,6 +79,7 @@ li ul li {
     text-align: center;
     padding: 10px 0;
     display: none;
+    /* background-image: url(/assets/images/logo1.png); */
 }
 
 /*Hide checkbox*/

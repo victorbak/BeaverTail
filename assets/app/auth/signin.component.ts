@@ -3,6 +3,7 @@ import { AuthService } from "./auth.service";
 import { FormGroup, FormControl, Validators } from "@angular/forms";
 import { User } from "./user.model";
 import { Router } from "@angular/router";
+import { StorageService } from "../shared/storage.service";
 
 @Component({
     selector: 'app-signin',
@@ -12,7 +13,7 @@ export class SigninComponent implements OnInit {
 
     public myForm: FormGroup
     
-    constructor(private authService: AuthService, private router: Router) {}
+    constructor(private authService: AuthService, private router: Router, private storageService: StorageService) {}
 
     onSubmit() {
         const user = new User(this.myForm.value.username, this.myForm.value.password)
@@ -20,9 +21,9 @@ export class SigninComponent implements OnInit {
         this.authService.signin(user)
             .subscribe(
                 data => {
-                    localStorage.setItem('userId', data.userId)
-                    localStorage.setItem('username', data.obj.username)
-                    localStorage.setItem('token', data.token)
+                    this.storageService.setItem('userId', data.userId)
+                    this.storageService.setItem('username', data.obj.username)
+                    this.storageService.setItem('token', data.token)
                 },
                 error => console.log(error)
             )

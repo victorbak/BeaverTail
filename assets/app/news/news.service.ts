@@ -198,6 +198,76 @@ export class NewsService {
             })
             .catch((error: Response) => Observable.throw(error.json()));
     }
+    
+    //Get Replies
+    getReplies() {
+        return this.http.get('http://localhost:3000/api/news/reply')
+            .map((response: Response) => {
+                const replies = response.json().obj;
+                let transformedReplies: Reply[] = [];
+                for (let reply of replies) {
+                    transformedReplies.push(new Reply(
+                        reply.title,
+                        reply.synopsis,
+                        reply.tags,
+                        reply.url,
+                        reply._id,
+                        reply.user.id,
+                        reply.user.username,
+                        reply.creationDate
+                    ));
+                }
+                this.replies = transformedReplies
+                return transformedReplies;
+            })
+            .catch((error: Response) => Observable.throw(error.json()));
+    }
+
+    getRepliesByName(username : String) {
+        return this.http.get('http://localhost:3000/api/news/reply/user/' + username)
+            .map((response: Response) => {
+                const replies = response.json().obj;
+                let transformedReplies: Reply[] = [];
+                for (let reply of replies) {
+                    transformedReplies.push(new Reply(
+                        reply.title,
+                        reply.synopsis,
+                        reply.tags,
+                        reply.url,
+                        reply._id,
+                        reply.user.id,
+                        reply.user.username,
+                        reply.creationDate
+                    ));
+                }
+                this.replies = transformedReplies
+                return transformedReplies;
+            })
+            .catch((error: Response) => Observable.throw(error.json()));
+    }
+
+    getRepliesById(replyId : String) {
+        return this.http.get('http://localhost:3000/api/news/reply/' + replyId)
+            .map((response: Response) => {
+                const replies = response.json().obj;
+                let transformedReplies: Reply[] = [];
+                for (let reply of replies) {
+                    transformedReplies.push(new Reply(
+                        reply.title,
+                        reply.synopsis,
+                        reply.tags,
+                        reply.url,
+                        reply._id,
+                        reply.user.id,
+                        reply.user.username,
+                        reply.creationDate
+                    ));
+                }
+                this.replies = transformedReplies
+                return transformedReplies;
+            })
+            .catch((error: Response) => Observable.throw(error.json()));
+    }
 
     editNews(news: News) {
         this.newsIsEdit.emit(news);

@@ -122,7 +122,7 @@ router.get('/user/:username', function(req, res, next) {
 
 
 //gets replies by username
-router.get('/user/reply/:username', function(req, res, next) {
+router.get('/reply/user/:username', function(req, res, next) {
     Reply.find({'user.username': req.params.username})
     .exec(function(err, reply) {
         if (err) {

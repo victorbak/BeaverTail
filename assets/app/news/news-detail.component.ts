@@ -47,6 +47,5 @@ export class NewsDetailComponent implements OnInit {
             result => console.log(result)
         );
         this.route.navigate(['/']);
-
     }
 }

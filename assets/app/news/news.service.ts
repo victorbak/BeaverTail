@@ -316,4 +316,18 @@ export class NewsService {
                 return Observable.throw(error.json());
             });
     }
+
+    deleteReply(reply: Reply) {
+        const token = localStorage.getItem('token')
+        ? '?token=' + localStorage.getItem('token')
+        : '';
+        this.replies.splice(this.stories.indexOf(reply), 1);
+        return this.http.delete('http://localhost:3000/api/news/reply/' + reply.replyId + token)
+            .map((response: Response) => response.json())
+            .catch((error: Response) => { 
+                this.errorService.handleError(error.json());
+                return Observable.throw(error.json());
+            });
+    }
+
 }

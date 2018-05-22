@@ -31,6 +31,8 @@ import { NewsPopularComponent } from './news/news-popular.component';
 import { NewsRecentComponent } from './news/news-recent.component';
 import { NewsReplyInputComponent } from './news/news-reply-input.component';
 import { aboutUs } from './aboutus/about-us.component';
+import { ErrorComponent } from './errors/error.component';
+import { ErrorService } from './errors/error.service';
 
 @NgModule({
     declarations: [
@@ -49,7 +51,8 @@ import { aboutUs } from './aboutus/about-us.component';
         NewsReplyInputComponent,
         NewsPopularComponent,
         NewsRecentComponent,
-        aboutUs
+        aboutUs,
+        ErrorComponent
         ],
     imports: [
         BrowserModule,
@@ -71,7 +74,8 @@ import { aboutUs } from './aboutus/about-us.component';
         AuthService,
         NewsService,
         ClusterManager,
-        StorageService
+        StorageService,
+        ErrorService
     ],
     bootstrap: [AppComponent],
     schemas: [ NO_ERRORS_SCHEMA ]

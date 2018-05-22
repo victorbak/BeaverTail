@@ -254,8 +254,6 @@ router.post('/:id/reply', function(req, res, next) {
                         error: err
                     });
                 }
-                user.replies.push(result);
-                user.save();
                 news.replies.push(result);
                 news.save();
                 res.status(200).json({

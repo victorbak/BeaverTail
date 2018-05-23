@@ -81,65 +81,75 @@
     <hr>
     <div *ngFor="let reply of replylist" class="detail">
         <!-- <p>Post By: {{reply?.username}}</p> -->
-        <h3>Post By: {{reply?.username}}</h3>
-        <table style="border-collapse: collapse;">
-            <tr>
-                <td>
-                    <h4 style="padding-right:50px;">Verification</h4>
-                </td>
-                <td>
-                    <h5>
-                        <b>{{reply?.verify}}</b>
-                    </h5>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <h4 style="padding-right:50px;">Title</h4>
-                </td>
-                <td>
-                    <h5 style=" vertical-align: baseline;">{{reply?.title}}}</h5>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <h4 style="padding-right:50px;">Synopsis</h4>
-                </td>
-                <td>
-                    <h5>{{reply?.synopsis}}</h5>
-                </td>
-            </tr>
+            <table style="border-collapse: collapse;">
+                <tr>
+                    <td>
+                        <h4 style="padding-right:50px;">Verification</h4>
+                    </td>
+                    <td>
+                        <h5>
+                            <b>{{reply?.verify}}</b>
+                        </h5>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h4 style="padding-right:50px;">Title</h4>
+                    </td>
+                    <td>
+                        <h5 style=" vertical-align: baseline;">{{reply?.title}}}</h5>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h4 style="padding-right:50px;">Synopsis</h4>
+                    </td>
+                    <td>
+                        <h5>{{reply?.synopsis}}</h5>
+                    </td>
+                </tr>
 
-            <tr>
-                <td>
-                    <h4 style="padding-right:50px;">URL</h4>
-                </td>
-                <td>
-                    <a href="{{reply?.url}}">
-                        <h5>{{reply?.url}}</h5>
-                    </a>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <h4 style="padding-right:50px;">Post on</h4>
-                </td>
-                <td>
-                    <h5>{{reply?.creationDate}}</h5>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <!-- <h4 style="padding-right:50px;">Tags</h4> -->
-                    <img style=" height: 28px;" src="../../images/tag.png">
-                </td>
-                <td>
-                    <h5>{{reply?.tags}}</h5>
-                </td>
-            </tr>
-        </table>
-        <div class="bottom">
-                <button class="btn btn-danger" (click)="onReplyDelete(reply?.replyId)">Delete</button>
-        </div>
+                <tr>
+                    <td>
+                        <h4 style="padding-right:50px;">URL</h4>
+                    </td>
+                    <td>
+                        <a href="{{reply?.url}}">
+                            <h5>{{reply?.url}}</h5>
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h4 style="padding-right:50px;">Post on</h4>
+                    </td>
+                    <td>
+                        <h5>{{reply?.creationDate}}</h5>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h4 style="padding-right:50px;">User:</h4>
+                    </td>
+                    <td>
+                        <h5>
+                            <b>{{reply?.username}}</b>
+                        </h5>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <!-- <h4 style="padding-right:50px;">Tags</h4> -->
+                        <img style=" height: 28px;" src="../../images/tag.png">
+                    </td>
+                    <td>
+                        <h5>{{reply?.tags}}</h5>
+                    </td>
+                </tr>
+            </table>
+            <div class="bottom">
+                    <button *ngIf=" replyBelongsToUser(reply)"class="btn btn-danger" (click)="onReplyDelete(reply?.replyId)">Delete</button>   
+            </div>
+            <hr style ="width:97%">
     </div>
 </div>

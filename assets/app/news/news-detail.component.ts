@@ -33,16 +33,16 @@ export class NewsDetailComponent implements OnInit {
         this.router.queryParams
             .filter(params => params.newsId)
             .subscribe(params => {
-                console.log(params); // {order: "popular"}
+                // console.log(params); // {order: "popular"}
 
                 this.newsId = params.newsId;
-                console.log(this.newsId); // popular
+                // console.log(this.newsId); // popular
             })
 
         this.newsService.getNewsById(this.newsId)
             .subscribe((news: News) => {
                 this.news = news
-                console.log(this.news); // popular
+                // console.log(this.news); // popular
 
             })
 
@@ -60,7 +60,7 @@ export class NewsDetailComponent implements OnInit {
     }
 
     onReply() {
-        console.log(this.newsId);
+        // console.log(this.newsId);
         this.route.navigate(['/news/reply'], { queryParams: { newsId: this.newsId } })
     }
 
@@ -73,13 +73,13 @@ export class NewsDetailComponent implements OnInit {
     }
 
     onReplyDelete(id : string) {
-        console.log(id)
+        // console.log(id)
         for(var i = 0; i < this.replylist.length; i++) {
             if(id == this.replylist[i].replyId) {
                 this.reply = this.replylist[i];
             }
         }
-        console.log(this.reply);
+        // console.log(this.reply);
 
         this.newsService.deleteReply(this.reply)
             .subscribe(
@@ -96,6 +96,13 @@ export class NewsDetailComponent implements OnInit {
     belongsToUser() {
         if (this.news) {
             return this.news.username == this.username
+        }
+        return false
+    }
+
+    replyBelongsToUser(reply) {
+        if(reply.username == localStorage.getItem('username')) {
+            return true;
         }
         return false
     }

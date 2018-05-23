@@ -4,11 +4,12 @@ import { User } from './user.model'
 import 'rxjs'
 import { Observable } from "rxjs"
 import { StorageService } from "../shared/storage.service";
+import { ErrorService } from "../errors/error.service";
 
 @Injectable()
 export class AuthService {
 
-    constructor(private http: Http, private storageService: StorageService) {
+    constructor(private http: Http, private storageService: StorageService, private errorService : ErrorService) {
     }
 
     signup(user: User) {
@@ -16,7 +17,10 @@ export class AuthService {
         const headers = new Headers({'Content-Type': 'application/json'})
         return this.http.post('http://localhost:3000/api/user', body, {headers: headers})
             .map((response: Response) => response.json())
-            .catch((error: Response) => Observable.throw(error.json()))
+            .catch((error: Response) => { 
+                this.errorService.handleError(error.json());
+                return Observable.throw(error.json());
+            });
     }
 
     signin(user: User) {
@@ -24,7 +28,10 @@ export class AuthService {
         const headers = new Headers({'Content-Type': 'application/json'})
         return this.http.post('http://localhost:3000/api/user/signin', body, {headers: headers})
             .map((response: Response) => response.json())
-            .catch((error: Response) => Observable.throw(error.json()))
+            .catch((error: Response) => { 
+                this.errorService.handleError(error.json());
+                return Observable.throw(error.json());
+            });
     }
 
     logout() {
@@ -42,6 +49,9 @@ export class AuthService {
             const user = response.json().obj
             return user;
         })
-        .catch((error: Response) => Observable.throw(error.json()))
+        .catch((error: Response) => { 
+            this.errorService.handleError(error.json());
+            return Observable.throw(error.json());
+        });
     }
 }

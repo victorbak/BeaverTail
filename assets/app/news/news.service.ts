@@ -9,6 +9,7 @@ import { User } from "../auth/user.model";
 import { URL } from "../../../env.js"
 import { ErrorService } from "../errors/error.service";
 import { ReplyListComponent } from "./news-replylist.component";
+var dateFormat = require('dateformat');
 
 @Injectable()
 export class NewsService {
@@ -94,9 +95,9 @@ export class NewsService {
                         news.url,
                         news.longitude,
                         news.latitude,
-                        news.dateTo,
-                        news.dateFrom,
-                        news.creationDate,
+                        dateFormat(news.dateTo),
+                        dateFormat(news.dateFrom),
+                        dateFormat(news.creationDate),
                         news._id,
                         news.user.id,
                         news.user.username
@@ -125,9 +126,9 @@ export class NewsService {
                         news.url,
                         news.longitude,
                         news.latitude,
-                        news.dateTo,
-                        news.dateFrom,
-                        news.creationDate,
+                        dateFormat(news.dateTo),
+                        dateFormat(news.dateFrom),
+                        dateFormat(news.creationDate),
                         news._id,
                         news.user.id,
                         news.user.username
@@ -156,9 +157,9 @@ export class NewsService {
                         news.url,
                         news.longitude,
                         news.latitude,
-                        news.dateTo,
-                        news.dateFrom,
-                        news.creationDate,
+                        dateFormat(news.dateTo),
+                        dateFormat(news.dateFrom),
+                        dateFormat(news.creationDate),
                         news._id,
                         news.user.id,
                         news.user.username
@@ -187,9 +188,9 @@ export class NewsService {
                         news.url,
                         news.longitude,
                         news.latitude,
-                        news.dateTo,
-                        news.dateFrom,
-                        news.creationDate,
+                        dateFormat(news.dateTo),
+                        dateFormat(news.dateFrom),
+                        dateFormat(news.creationDate),
                         news._id,
                         news.user.id,
                         news.user.username
@@ -216,9 +217,9 @@ export class NewsService {
                     news.url,
                     news.longitude,
                     news.latitude,
-                    news.dateTo,
-                    news.dateFrom,
-                    news.creationDate,
+                    dateFormat(news.dateTo),
+                    dateFormat(news.dateFrom),
+                    dateFormat(news.creationDate),
                     news._id,
                     news.userId,
                     news.username);
@@ -247,7 +248,7 @@ export class NewsService {
                         reply.news,
                         reply.user.id,
                         reply.user.username,
-                        reply.creationDate
+                        dateFormat(reply.creationDate)
                     ));
                 }
                 this.replies = transformedReplies
@@ -275,7 +276,7 @@ export class NewsService {
                         reply.news,
                         reply.user.id,
                         reply.user.username,
-                        reply.creationDate
+                        dateFormat(reply.creationDate)
                     ));
                 }
                 this.replies = transformedReplies
@@ -301,7 +302,7 @@ export class NewsService {
                         reply._id,
                         reply.user.id,
                         reply.user.username,
-                        reply.creationDate
+                        dateFormat(reply.creationDate)
                     );
                 return transformedReplies;
             })
@@ -327,7 +328,7 @@ export class NewsService {
                         reply.news,
                         reply.user.id,
                         reply.user.username,
-                        reply.creationDate
+                        dateFormat(reply.creationDate)
                     ));
                 }
                 this.replies = transformedReplies

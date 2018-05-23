@@ -1,13 +1,9 @@
 var express = require('express');
 var router = express.Router();
 var jwt = require('jsonwebtoken');
-
 var User = require('../models/user');
-
 var News = require('../models/news');
-
 var Reply = require('../models/reply');
-
 
 //GETTING NEWS
 
@@ -206,8 +202,8 @@ router.post('/', function(req, res, next) {
             url: req.body.url,
             longitude: req.body.longitude,
             latitude: req.body.latitude,
-            dateFrom: req.body.dateFrom,
-            dateTo: req.body.dateTo,
+            dateFrom: dateFormat(req.body.dateFrom),
+            dateTo: dateFormat(req.body.dateTo),
             'user.id': user._id,
             'user.username': user.username
         });

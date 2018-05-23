@@ -20,3 +20,12 @@ agm-map {
   .footer{
     padding-bottom: 25px;
   }
+  .wideInput{
+    text-align: left;
+    padding-left:0;
+    padding-top:0;
+    padding-bottom:0.4em;
+    padding-right: 0.4em;
+    width: 100%;
+    height: 200px;
+}

@@ -12,7 +12,8 @@ var newsSchema = new mongoose.Schema({
     longitude: {type: Number},
     latitude: {type: Number},
     creationDate: {type: Date, default: Date.now},
-    dates: [{type: Date}],
+    dateFrom: {type: Date},
+    dateTo: {type: Date},
     user: {
         id: {
             type: Schema.Types.ObjectId,

@@ -5,6 +5,7 @@ var replySchema = new mongoose.Schema({
     title: {type: String, required: true},
     synopsis: {type: String, required: true},
     tags: [{type: String, required: true}],
+    verify: {type: String},
     url: {type: String},
     creationDate: {type: Date, default: Date.now},
     user: {

@@ -32,6 +32,8 @@ import { NewsRecentComponent } from './news/news-recent.component';
 import { NewsReplyInputComponent } from './news/news-reply-input.component';
 import { aboutUs } from './aboutus/about-us.component';
 import { GOOGLE_MAPS_API_KEY } from '../../env.js'
+import { ErrorComponent } from './errors/error.component';
+import { ErrorService } from './errors/error.service';
 
 @NgModule({
     declarations: [
@@ -50,7 +52,8 @@ import { GOOGLE_MAPS_API_KEY } from '../../env.js'
         NewsReplyInputComponent,
         NewsPopularComponent,
         NewsRecentComponent,
-        aboutUs
+        aboutUs,
+        ErrorComponent
         ],
     imports: [
         BrowserModule,
@@ -72,7 +75,8 @@ import { GOOGLE_MAPS_API_KEY } from '../../env.js'
         AuthService,
         NewsService,
         ClusterManager,
-        StorageService
+        StorageService,
+        ErrorService
     ],
     bootstrap: [AppComponent],
     schemas: [ NO_ERRORS_SCHEMA ]

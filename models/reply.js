@@ -17,4 +17,13 @@ var replySchema = new mongoose.Schema({
     news: {type: Schema.Types.ObjectId, ref: 'News'}
 })
 
+
+replySchema.post('remove', function(news) {
+    News.findById(reply.news, function(err, news) {
+        New.replies.pull(reply);
+        News.save();
+    });
+})
+
+
 module.exports = mongoose.model('Reply', replySchema)

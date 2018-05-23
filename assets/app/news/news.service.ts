@@ -7,6 +7,7 @@ import { Observable } from "rxjs"
 import { error } from "util";
 import { User } from "../auth/user.model";
 import { URL } from "../../../env.js"
+import { ErrorService } from "../errors/error.service";
 
 @Injectable()
 export class NewsService {
@@ -14,7 +15,7 @@ export class NewsService {
     private replies: Reply[] = [];
     newsIsEdit = new EventEmitter<News>();
 
-    constructor(private http: Http) { }
+    constructor(private http: Http, private errorService : ErrorService) { }
 
     addNews(news: News) {
         const body = JSON.stringify(news);
@@ -41,7 +42,10 @@ export class NewsService {
                 this.stories.push(news);
                 return news;
             })
-            .catch((error: Response) => Observable.throw(error.json()));
+            .catch((error: Response) => { 
+                this.errorService.handleError(error.json());
+                return Observable.throw(error.json());
+            });
     }
 
     addReply(reply: Reply, newsId: string) {
@@ -67,7 +71,10 @@ export class NewsService {
                 this.replies.push(reply);
                 return reply;
             })
-            .catch((error: Response) => Observable.throw(error.json()));
+            .catch((error: Response) => { 
+                this.errorService.handleError(error.json());
+                return Observable.throw(error.json());
+            });
     }
 
     getNews() {
@@ -94,7 +101,10 @@ export class NewsService {
                 this.stories = transformedNews;
                 return transformedNews;
             })
-            .catch((error: Response) => Observable.throw(error.json()));
+            .catch((error: Response) => { 
+                this.errorService.handleError(error.json());
+                return Observable.throw(error.json());
+            });
     }
 
     getPopularNews(){
@@ -121,7 +131,10 @@ export class NewsService {
                 this.stories = transformedNews;
                 return transformedNews;
             })
-            .catch((error: Response) => Observable.throw(error.json()));
+            .catch((error: Response) => { 
+                this.errorService.handleError(error.json());
+                return Observable.throw(error.json());
+            });
     }
 
     getRecentNews(){
@@ -148,7 +161,10 @@ export class NewsService {
                 this.stories = transformedNews;
                 return transformedNews;
             })
-            .catch((error: Response) => Observable.throw(error.json()));
+            .catch((error: Response) => { 
+                this.errorService.handleError(error.json());
+                return Observable.throw(error.json());
+            });
     }
 
     getNewsByName(username: String) {
@@ -175,7 +191,10 @@ export class NewsService {
                 this.stories = transformedNews;
                 return transformedNews;
             })
-            .catch((error: Response) => Observable.throw(error.json()));
+            .catch((error: Response) => { 
+                this.errorService.handleError(error.json());
+                return Observable.throw(error.json());
+            });
     }
 
     getNewsById(newsId: String) {
@@ -197,7 +216,10 @@ export class NewsService {
                     news.username);
                 return transformedNews;
             })
-            .catch((error: Response) => Observable.throw(error.json()));
+            .catch((error: Response) => { 
+                this.errorService.handleError(error.json());
+                return Observable.throw(error.json());
+            });
     }
     
     //Get Replies
@@ -221,7 +243,10 @@ export class NewsService {
                 this.replies = transformedReplies
                 return transformedReplies;
             })
-            .catch((error: Response) => Observable.throw(error.json()));
+            .catch((error: Response) => { 
+                this.errorService.handleError(error.json());
+                return Observable.throw(error.json());
+            });
     }
 
     getRepliesByName(username : String) {
@@ -244,11 +269,37 @@ export class NewsService {
                 this.replies = transformedReplies
                 return transformedReplies;
             })
-            .catch((error: Response) => Observable.throw(error.json()));
+            .catch((error: Response) => { 
+                this.errorService.handleError(error.json());
+                return Observable.throw(error.json());
+            });
     }
 
     getRepliesById(replyId : String) {
         return this.http.get(URL + '/api/news/reply/' + replyId)
+            .map((response: Response) => {
+                const reply = response.json().obj;
+                let transformedReplies: Reply;
+                    transformedReplies = new Reply(
+                        reply.title,
+                        reply.synopsis,
+                        reply.tags,
+                        reply.url,
+                        reply._id,
+                        reply.user.id,
+                        reply.user.username,
+                        reply.creationDate
+                    );
+                return transformedReplies;
+            })
+            .catch((error: Response) => { 
+                this.errorService.handleError(error.json());
+                return Observable.throw(error.json());
+            });
+    }
+
+    getRepliesByNewsId(newsId : String) {
+        return this.http.get('http://localhost:3000/api/news/reply/news/' + newsId)
             .map((response: Response) => {
                 const replies = response.json().obj;
                 let transformedReplies: Reply[] = [];
@@ -267,8 +318,12 @@ export class NewsService {
                 this.replies = transformedReplies
                 return transformedReplies;
             })
-            .catch((error: Response) => Observable.throw(error.json()));
+            .catch((error: Response) => { 
+                this.errorService.handleError(error.json());
+                return Observable.throw(error.json());
+            });
     }
+
 
     editNews(news: News) {
         this.newsIsEdit.emit(news);
@@ -281,6 +336,23 @@ export class NewsService {
         this.stories.splice(this.stories.indexOf(news), 1);
         return this.http.delete(URL + '/api/news/' + news.newsId + token)
             .map((response: Response) => response.json())
-            .catch((error: Response) => Observable.throw(error.json()));
+            .catch((error: Response) => { 
+                this.errorService.handleError(error.json());
+                return Observable.throw(error.json());
+            });
     }
+
+    deleteReply(reply: Reply) {
+        const token = localStorage.getItem('token')
+        ? '?token=' + localStorage.getItem('token')
+        : '';
+        this.replies.splice(this.stories.indexOf(reply), 1);
+        return this.http.delete('http://localhost:3000/api/news/reply/' + reply.replyId + token)
+            .map((response: Response) => response.json())
+            .catch((error: Response) => { 
+                this.errorService.handleError(error.json());
+                return Observable.throw(error.json());
+            });
+    }
+
 }

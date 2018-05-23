@@ -31,6 +31,8 @@ import { NewsPopularComponent } from './news/news-popular.component';
 import { NewsRecentComponent } from './news/news-recent.component';
 import { NewsReplyInputComponent } from './news/news-reply-input.component';
 import { aboutUs } from './aboutus/about-us.component';
+import { ReplyListComponent } from './news/news-replylist.component';
+import { NewsReplyDetailComponent } from './news/news-reply-detail.component';
 import { GOOGLE_MAPS_API_KEY } from '../../env.js'
 import { ErrorComponent } from './errors/error.component';
 import { ErrorService } from './errors/error.service';
@@ -53,6 +55,8 @@ import { ErrorService } from './errors/error.service';
         NewsPopularComponent,
         NewsRecentComponent,
         aboutUs,
+        ReplyListComponent,
+        NewsReplyDetailComponent,
         ErrorComponent
         ],
     imports: [

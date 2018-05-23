@@ -6,7 +6,7 @@ import { Reply } from "./reply.model";
 import { Router, ActivatedRoute } from "@angular/router";
 
 @Component({
-    selector: 'news-reply',
+    selector: 'reply-input',
     templateUrl: './news-reply-input.component.html',
 })
 export class NewsReplyInputComponent{

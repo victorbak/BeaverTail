@@ -75,5 +75,17 @@
         <button class="btn btn-primary" (click)="onReply()">Reply</button>
         <button class="btn btn-danger" (click)="onDelete()">Delete</button>
     </div>
-    
+
+    <h1 class="top">Replies</h1>
+    <hr>
+    <div *ngFor="let reply of replylist">
+        <p>Post By: {{reply?.username}}</p>
+        <ul>
+            <li>title:{{reply?.title}}</li>
+            <li>synopsis:{{reply?.synopsis}}</li>
+            <li>tags:{{reply?.tags}}</li>
+            <li>url:{{reply?.url}}</li>
+            <li>Post On:{{reply?.creationDate}}</li>
+        </ul>
+    </div>
 </div>

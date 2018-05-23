@@ -31,6 +31,8 @@ import { NewsPopularComponent } from './news/news-popular.component';
 import { NewsRecentComponent } from './news/news-recent.component';
 import { NewsReplyInputComponent } from './news/news-reply-input.component';
 import { aboutUs } from './aboutus/about-us.component';
+import { ReplyListComponent } from './news/news-replylist.component';
+import { NewsReplyDetailComponent } from './news/news-reply-detail.component';
 
 @NgModule({
     declarations: [
@@ -49,7 +51,9 @@ import { aboutUs } from './aboutus/about-us.component';
         NewsReplyInputComponent,
         NewsPopularComponent,
         NewsRecentComponent,
-        aboutUs
+        aboutUs,
+        ReplyListComponent,
+        NewsReplyDetailComponent
         ],
     imports: [
         BrowserModule,

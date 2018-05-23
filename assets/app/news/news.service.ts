@@ -212,6 +212,7 @@ export class NewsService {
                         reply.tags,
                         reply.url,
                         reply._id,
+                        reply.news,
                         reply.user.id,
                         reply.user.username,
                         reply.creationDate
@@ -235,6 +236,7 @@ export class NewsService {
                         reply.tags,
                         reply.url,
                         reply._id,
+                        reply.news,
                         reply.user.id,
                         reply.user.username,
                         reply.creationDate
@@ -258,6 +260,7 @@ export class NewsService {
                         reply.tags,
                         reply.url,
                         reply._id,
+                        reply.news,
                         reply.user.id,
                         reply.user.username,
                         reply.creationDate

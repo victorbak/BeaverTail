@@ -4,6 +4,7 @@ import { User } from './user.model'
 import 'rxjs'
 import { Observable } from "rxjs"
 import { StorageService } from "../shared/storage.service";
+import { URL } from "../../../env.js"
 
 @Injectable()
 export class AuthService {
@@ -14,7 +15,7 @@ export class AuthService {
     signup(user: User) {
         const body = JSON.stringify(user)
         const headers = new Headers({'Content-Type': 'application/json'})
-        return this.http.post('http://localhost:3000/api/user', body, {headers: headers})
+        return this.http.post(URL + '/api/user', body, {headers: headers})
             .map((response: Response) => response.json())
             .catch((error: Response) => Observable.throw(error.json()))
     }
@@ -22,7 +23,7 @@ export class AuthService {
     signin(user: User) {
         const body = JSON.stringify(user)
         const headers = new Headers({'Content-Type': 'application/json'})
-        return this.http.post('http://localhost:3000/api/user/signin', body, {headers: headers})
+        return this.http.post(URL + '/api/user/signin', body, {headers: headers})
             .map((response: Response) => response.json())
             .catch((error: Response) => Observable.throw(error.json()))
     }
@@ -37,7 +38,7 @@ export class AuthService {
 
     getUser(username){
         
-        return this.http.get('http://localhost:3000/api/user/'+ username)
+        return this.http.get(URL + '/api/user/'+ username)
         .map((response: Response) =>{
             const user = response.json().obj
             return user;

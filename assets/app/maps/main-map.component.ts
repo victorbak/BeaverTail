@@ -3,6 +3,8 @@ import { NewsService } from "../news/news.service";
 import { News } from "../news/news.model";
 import { MarkerManager } from "@agm/core";
 import { Router } from "@angular/router";
+import { AuthService } from "../auth/auth.service";
+
 
 @Component({
     selector: 'app-main-map',
@@ -17,7 +19,7 @@ export class MainMapComponent implements OnInit {
     news: News[]
     markers: Markers[] = []
 
-    constructor(private newsService: NewsService, private router: Router) {}
+    constructor(private newsService: NewsService, private router: Router, private authService: AuthService) {}
 
     ngOnInit() {
         this.newsService.getNews().subscribe(
@@ -35,6 +37,10 @@ export class MainMapComponent implements OnInit {
                 console.log(this.news)
             }
         )
+    }
+
+    isLoggedIn() {
+        return this.authService.isLoggedIn();
     }
 
     getDetail(id) {

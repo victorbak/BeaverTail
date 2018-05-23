@@ -38,15 +38,15 @@
     left: 0;
     height: 25px;
     width: 25px;
-    background-color: #eee;
+    background-color: black;
     border-radius: 50%;
 }
 
 /* On mouse-over, add a grey background color */
 
-.container:hover input~.checkmark {
-    background-color: white
-}
+/* .container:hover input~.checkmark {
+    background-color: white;
+} */
 
 /* When the radio button is checked, add a blue background */
 

@@ -6,6 +6,7 @@ import "rxjs/Rx";
 import { Observable } from "rxjs"
 import { error } from "util";
 import { User } from "../auth/user.model";
+import { URL } from "../../../env.js"
 import { ErrorService } from "../errors/error.service";
 
 @Injectable()
@@ -22,7 +23,7 @@ export class NewsService {
         const token = localStorage.getItem('token')
             ? '?token=' + localStorage.getItem('token')
             : '';
-        return this.http.post('http://localhost:3000/api/news' + token, body, { headers: headers })
+        return this.http.post(URL + '/api/news' + token, body, { headers: headers })
             .map((response: Response) => {
                 const result = response.json();
                 const news = new News(result.obj.title,
@@ -53,7 +54,7 @@ export class NewsService {
         const token = localStorage.getItem('token')
             ? '?token=' + localStorage.getItem('token')
             : '';
-        return this.http.post('http://localhost:3000/api/news/' + newsId + '/' + 'reply' + token, body, { headers: headers })
+        return this.http.post(URL + '/api/news/' + newsId + '/' + 'reply' + token, body, { headers: headers })
             .map((response: Response) => {
                 const result = response.json();
                 const reply = new Reply(
@@ -77,7 +78,7 @@ export class NewsService {
     }
 
     getNews() {
-        return this.http.get('http://localhost:3000/api/news')
+        return this.http.get(URL + '/api/news')
             .map((response: Response) => {
                 const stories = response.json().obj;
                 let transformedNews: News[] = [];
@@ -107,7 +108,7 @@ export class NewsService {
     }
 
     getPopularNews(){
-        return this.http.get('http://localhost:3000/api/news/popular')
+        return this.http.get(URL + '/api/news/popular')
             .map((response: Response) => {
                 const stories = response.json().obj;
                 let transformedNews: News[] = [];
@@ -137,7 +138,7 @@ export class NewsService {
     }
 
     getRecentNews(){
-        return this.http.get('http://localhost:3000/api/news/new')
+        return this.http.get(URL + '/api/news/new')
             .map((response: Response) => {
                 const stories = response.json().obj;
                 let transformedNews: News[] = [];
@@ -167,7 +168,7 @@ export class NewsService {
     }
 
     getNewsByName(username: String) {
-        return this.http.get('http://localhost:3000/api/news/user/' + username)
+        return this.http.get(URL + '/api/news/user/' + username)
             .map((response: Response) => {
                 const stories = response.json().obj;
                 let transformedNews: News[] = [];
@@ -197,7 +198,7 @@ export class NewsService {
     }
 
     getNewsById(newsId: String) {
-        return this.http.get('http://localhost:3000/api/news/' + newsId)
+        return this.http.get(URL + '/api/news/' + newsId)
             .map((response: Response) => {
                 const news = response.json().obj;
                 let transformedNews: News;
@@ -223,7 +224,7 @@ export class NewsService {
     
     //Get Replies
     getReplies() {
-        return this.http.get('http://localhost:3000/api/news/reply')
+        return this.http.get(URL + '/api/news/reply')
             .map((response: Response) => {
                 const replies = response.json().obj;
                 let transformedReplies: Reply[] = [];
@@ -250,7 +251,7 @@ export class NewsService {
     }
 
     getRepliesByName(username : String) {
-        return this.http.get('http://localhost:3000/api/news/reply/user/' + username)
+        return this.http.get(URL + '/api/news/reply/user/' + username)
             .map((response: Response) => {
                 const replies = response.json().obj;
                 let transformedReplies: Reply[] = [];
@@ -277,7 +278,7 @@ export class NewsService {
     }
 
     getRepliesById(replyId : String) {
-        return this.http.get('http://localhost:3000/api/news/reply/' + replyId)
+        return this.http.get(URL + '/api/news/reply/' + replyId)
             .map((response: Response) => {
                 const reply = response.json().obj;
                 let transformedReplies: Reply;
@@ -336,7 +337,7 @@ export class NewsService {
         ? '?token=' + localStorage.getItem('token')
         : '';
         this.stories.splice(this.stories.indexOf(news), 1);
-        return this.http.delete('http://localhost:3000/api/news/' + news.newsId + token)
+        return this.http.delete(URL + '/api/news/' + news.newsId + token)
             .map((response: Response) => response.json())
             .catch((error: Response) => { 
                 this.errorService.handleError(error.json());

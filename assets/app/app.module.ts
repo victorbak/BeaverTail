@@ -33,6 +33,7 @@ import { NewsReplyInputComponent } from './news/news-reply-input.component';
 import { aboutUs } from './aboutus/about-us.component';
 import { ReplyListComponent } from './news/news-replylist.component';
 import { NewsReplyDetailComponent } from './news/news-reply-detail.component';
+import { GOOGLE_MAPS_API_KEY } from '../../env.js'
 import { ErrorComponent } from './errors/error.component';
 import { ErrorService } from './errors/error.service';
 
@@ -65,7 +66,7 @@ import { ErrorService } from './errors/error.service';
         ReactiveFormsModule,
         HttpModule,
         AgmCoreOverrideModule.forRoot({
-            apiKey: 'AIzaSyBeWcFP4LtWiS8ckrXz1JytArU2YEXhMPc'
+            apiKey: GOOGLE_MAPS_API_KEY
         }),
         AgmSnazzyInfoWindowModule,
         AgmJsMarkerClustererModule,

@@ -157,7 +157,7 @@ router.get('/reply/:id', function(req, res, next) {
 });
 
 //gets a reply by news id
-router.get('/news/reply/:id', function(req, res, next) {
+router.get('/reply/news/:id', function(req, res, next) {
     Reply.find({news: req.params.id})
     .exec(function(err, reply) {
         if (err) {
@@ -338,6 +338,42 @@ router.delete('/:id', function(req, res, next) {
             }
             res.status(200).json({
                 message: 'Deleted News',
+                obj: result
+            });
+        });
+    });
+});
+
+router.delete('/reply/:id', function(req, res, next) {
+    var decoded = jwt.decode(req.query.token);
+    Reply.findById(req.params.id, function(err, reply) {
+        if (err) {
+            return res.status(500).json({
+                message: 'An error occured',
+                error: err
+            });
+        }
+        if (!reply) {
+            return res.status(500).json({
+                message: 'No News Found!',
+                error: {message: 'News not found'}
+            });
+        }
+        if (reply.user.id != decoded.user._id) {
+            return res.status(401).json({
+                title: 'Users do not match',
+                error: err
+            });
+        }
+        reply.remove(function(err, result) {
+            if (err) {
+                return res.status(500).json({
+                    message: 'An error occured',
+                    error: err
+                });
+            }
+            res.status(200).json({
+                message: 'Deleted Reply',
                 obj: result
             });
         });

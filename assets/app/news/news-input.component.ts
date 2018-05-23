@@ -85,6 +85,7 @@ export class FormComponent {
             form.value.dateFrom,
             form.value.dateTo
         );
+        console.log(this.news);
         this.newsService.addNews(news)
             .subscribe(
                 data => console.log(data),

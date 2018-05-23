@@ -366,12 +366,12 @@ router.delete('/reply/:id', function(req, res, next) {
             });
         }
         reply.remove(function(err, result) {
-            if (err) {
-                return res.status(500).json({
-                    message: 'An error occured',
-                    error: err
-                });
-            }
+            // if (err) {
+            //     return res.status(500).json({
+            //         message: 'An error occured',
+            //         error: err
+            //     });
+            // }
             res.status(200).json({
                 message: 'Deleted Reply',
                 obj: result

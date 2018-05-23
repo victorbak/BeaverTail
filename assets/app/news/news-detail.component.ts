@@ -18,7 +18,7 @@ export class NewsDetailComponent implements OnInit {
 
     news: News
     newsId: String
-    replylist: Reply[]
+    replylist = ['haha','heyhey']
 
     constructor(private newsService: NewsService, private router: ActivatedRoute, private route: Router) { }
     ngOnInit() {
@@ -30,17 +30,16 @@ export class NewsDetailComponent implements OnInit {
                 this.newsId = params.newsId;
                 console.log(this.newsId); // popular
             })
-        console.log(this.newsId); // popular
 
         this.newsService.getNewsById(this.newsId)
             .subscribe((news: News) => {
                 this.news = news
             })
 
-        this.newsService.getRepliesById("5b0497b97574fab345e20c03")
-            .subscribe((replies: Reply[]) => {
-                this.replylist = replies
-            })
+        // this.newsService.getRepliesById("5b0497b97574fab345e20c03")
+        //     .subscribe((replies: Reply[]) => {
+        //         this.replylist = replies
+        //     })
     }
 
     onReply() {

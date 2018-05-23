@@ -4,7 +4,9 @@
         <div class="col-md-8 col-md-offset-2">
             <h4 class="errorMessage" *ngFor="let m of errorMessages">{{ m }}</h4>
             <form (ngSubmit)="onSubmit(f)" #f="ngForm" ngNativeValidate>
+                <br/>
                 <div class="form-group">
+                        <label for="verify">Verification*</label><br/>
                         <input type="radio" id="verify" [ngModel]="verify" name="verify" value="This Reply Verifies This News Post.">I am verifying this post.<br>
                         <input type="radio" id="verify" [ngModel]="verify" name="verify" value="This Reply Contests This News Post.">I am contesting this post<br>
                 </div>

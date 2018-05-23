@@ -4,6 +4,7 @@ export class Reply {
         public title: string,
         public synopsis: string,
         public tags: string[],
+        public verify: string,
         public url?: string,
         public replyId?: string,
         public newsId?: string,

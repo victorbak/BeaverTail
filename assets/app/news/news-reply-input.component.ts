@@ -75,6 +75,7 @@ export class NewsReplyInputComponent{
             form.value.title,
             form.value.synopsis, 
             this.merged,  
+            form.value.verify,
             form.value.url
         );
         this.newsService.addReply(reply, this.newsId)

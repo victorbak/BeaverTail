@@ -8,6 +8,7 @@ import { error } from "util";
 import { User } from "../auth/user.model";
 import { URL } from "../../../env.js"
 import { ErrorService } from "../errors/error.service";
+import { ReplyListComponent } from "./news-replylist.component";
 
 @Injectable()
 export class NewsService {
@@ -62,6 +63,7 @@ export class NewsService {
                     result.obj.title,
                     result.obj.synopsis,
                     result.obj.tags,
+                    result.obj.verify,
                     result.obj.url,
                     result.obj._id,
                     newsId,
@@ -239,6 +241,7 @@ export class NewsService {
                         reply.title,
                         reply.synopsis,
                         reply.tags,
+                        reply.verify,
                         reply.url,
                         reply._id,
                         reply.news,
@@ -266,6 +269,7 @@ export class NewsService {
                         reply.title,
                         reply.synopsis,
                         reply.tags,
+                        reply.verify,
                         reply.url,
                         reply._id,
                         reply.news,
@@ -292,6 +296,7 @@ export class NewsService {
                         reply.title,
                         reply.synopsis,
                         reply.tags,
+                        reply.verify,
                         reply.url,
                         reply._id,
                         reply.user.id,
@@ -316,6 +321,7 @@ export class NewsService {
                         reply.title,
                         reply.synopsis,
                         reply.tags,
+                        reply.verify,
                         reply.url,
                         reply._id,
                         reply.news,

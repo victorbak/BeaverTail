@@ -210,7 +210,8 @@ export class NewsService {
             .map((response: Response) => {
                 const news = response.json().obj;
                 let transformedNews: News;
-                transformedNews = new News(news.title,
+                transformedNews = new News(
+                    news.title,
                     news.synopsis,
                     news.tags,
                     news.replyCount,
@@ -221,8 +222,8 @@ export class NewsService {
                     dateFormat(news.dateFrom),
                     dateFormat(news.creationDate),
                     news._id,
-                    news.userId,
-                    news.username);
+                    news.user.id,
+                    news.user.username);
                 return transformedNews;
             })
             .catch((error: Response) => { 

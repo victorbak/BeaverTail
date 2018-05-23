@@ -34,7 +34,6 @@ export class MainMapComponent implements OnInit {
                         desc: n.synopsis.length > 100? n.synopsis.substring(0, 99) + "..." : n.synopsis
                     })
                 })
-                console.log(this.news)
             }
         )
     }

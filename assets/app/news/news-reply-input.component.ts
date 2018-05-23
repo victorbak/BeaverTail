@@ -83,6 +83,7 @@ export class NewsReplyInputComponent{
                 error => console.error(error)
             );
         form.resetForm();
+        this.route.navigate(['/news'],{queryParams: {newsId: this.newsId}} )
     }
 
 }

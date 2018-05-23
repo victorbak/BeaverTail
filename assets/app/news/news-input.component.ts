@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { NgForm, FormGroup, FormControl, Validators } from "@angular/forms";
 import {News} from './news.model';
 import { NewsService } from "./news.service";
+import { Router } from "@angular/router";
 
 @Component({
     selector: 'app-form',
@@ -15,7 +16,7 @@ import { NewsService } from "./news.service";
 export class FormComponent {
     news: News;
 
-    constructor(private newsService: NewsService) {}
+    constructor(private newsService: NewsService, private router: Router) {}
 
     // let form = new Form ( 'www.facebook.com.'
     // ,'So this is the example', 'Canada', 'Canadian, Social',
@@ -90,6 +91,8 @@ export class FormComponent {
                 error => console.error(error)
             );
         form.resetForm();
+        this.router.navigateByUrl('/');
+
     }
 
 

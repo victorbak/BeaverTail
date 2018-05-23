@@ -4,7 +4,9 @@
             <agm-snazzy-info-window [maxWidth]="200" [closeWhenOthersOpen]="true">
                 <ng-template>
                     <div class="info-box">
-                        <a (click)="getDetail(m.id)"><h4>{{ m.title }}</h4></a>
+                        <a (click)="getDetail(m.id)">
+                            <h4>{{ m.title }}</h4>
+                        </a>
                         <p>{{ m.desc }}</p>
                     </div>
                 </ng-template>
@@ -13,10 +15,12 @@
     </agm-marker-cluster>
 </agm-map>
 
-<button type="button" class="btn btn-info" [routerLink]="['/form']">
+<button *ngIf="isLoggedIn()" type="button" class="btn btn-info" [routerLink]="['/form']">
     <a>CREATE NEWS</a>
 </button>
 <hr>
+
+
 <div class="col-lg-6">
     <h1>Recent News</h1>
     <news-recent></news-recent>

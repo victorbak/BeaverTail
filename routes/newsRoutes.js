@@ -232,7 +232,7 @@ router.post('/', function(req, res, next) {
 router.post('/:id/reply', function(req, res, next) {
     var decoded = jwt.decode(req.query.token);
     User.findById(decoded.user._id, function(err, user) {
-        News.findById(req.params.id, function(err, news) {
+        News.findOneAndUpdate( {_id : req.params.id}, {$inc: {replyCount : 1}}).exec(function(err, news) {
             if (err) {
                 return res.status(401).json({
                     title: 'An error has occured',
@@ -266,6 +266,8 @@ router.post('/:id/reply', function(req, res, next) {
         });
     });
 });
+
+
 
 
 router.patch('/:id', function(req, res, next) {

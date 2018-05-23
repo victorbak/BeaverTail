@@ -6,6 +6,12 @@ import { Component } from "@angular/core";
     styleUrls: ['./about-us.component.css'],
 
 })
-export class aboutUs{
-    
+export class aboutUs {
+    fullImagePath: string;
+    constructor() {
+        this.fullImagePath = '/assets/images/kunlaya.png'
+    }
+    ngOnInit() {
+    }
+
 }

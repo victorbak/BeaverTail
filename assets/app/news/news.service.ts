@@ -10,7 +10,7 @@ import { User } from "../auth/user.model";
 @Injectable()
 export class NewsService {
     private stories: News[] = [];
-    private replies: News[] = [];
+    private replies: Reply[] = [];
     newsIsEdit = new EventEmitter<News>();
 
     constructor(private http: Http) { }
@@ -49,18 +49,19 @@ export class NewsService {
         const token = localStorage.getItem('token')
             ? '?token=' + localStorage.getItem('token')
             : '';
-        return this.http.post('http://localhost:3000/api/news/reply' + token, body, { headers: headers })
+        return this.http.post('http://localhost:3000/api/news/' + newsId + '/' + 'reply' + token, body, { headers: headers })
             .map((response: Response) => {
                 const result = response.json();
-                const reply = new Reply(result.obj.title,
+                const reply = new Reply(
+                    result.obj.title,
                     result.obj.synopsis,
                     result.obj.tags,
                     result.obj.url,
-                    result.obj.creationDate,
                     result.obj._id,
                     newsId,
                     result.obj.user.id,
-                    result.obj.user.username
+                    result.obj.user.username,
+                    result.obj.creationDate
                 );
                 this.replies.push(reply);
                 return reply;
@@ -197,14 +198,87 @@ export class NewsService {
             })
             .catch((error: Response) => Observable.throw(error.json()));
     }
+    
+    //Get Replies
+    getReplies() {
+        return this.http.get('http://localhost:3000/api/news/reply')
+            .map((response: Response) => {
+                const replies = response.json().obj;
+                let transformedReplies: Reply[] = [];
+                for (let reply of replies) {
+                    transformedReplies.push(new Reply(
+                        reply.title,
+                        reply.synopsis,
+                        reply.tags,
+                        reply.url,
+                        reply._id,
+                        reply.user.id,
+                        reply.user.username,
+                        reply.creationDate
+                    ));
+                }
+                this.replies = transformedReplies
+                return transformedReplies;
+            })
+            .catch((error: Response) => Observable.throw(error.json()));
+    }
+
+    getRepliesByName(username : String) {
+        return this.http.get('http://localhost:3000/api/news/reply/user/' + username)
+            .map((response: Response) => {
+                const replies = response.json().obj;
+                let transformedReplies: Reply[] = [];
+                for (let reply of replies) {
+                    transformedReplies.push(new Reply(
+                        reply.title,
+                        reply.synopsis,
+                        reply.tags,
+                        reply.url,
+                        reply._id,
+                        reply.user.id,
+                        reply.user.username,
+                        reply.creationDate
+                    ));
+                }
+                this.replies = transformedReplies
+                return transformedReplies;
+            })
+            .catch((error: Response) => Observable.throw(error.json()));
+    }
+
+    getRepliesById(replyId : String) {
+        return this.http.get('http://localhost:3000/api/news/reply/' + replyId)
+            .map((response: Response) => {
+                const replies = response.json().obj;
+                let transformedReplies: Reply[] = [];
+                for (let reply of replies) {
+                    transformedReplies.push(new Reply(
+                        reply.title,
+                        reply.synopsis,
+                        reply.tags,
+                        reply.url,
+                        reply._id,
+                        reply.user.id,
+                        reply.user.username,
+                        reply.creationDate
+                    ));
+                }
+                this.replies = transformedReplies
+                return transformedReplies;
+            })
+            .catch((error: Response) => Observable.throw(error.json()));
+    }
 
     editNews(news: News) {
         this.newsIsEdit.emit(news);
     }
 
     deleteNews(news: News) {
+        const token = localStorage.getItem('token')
+        ? '?token=' + localStorage.getItem('token')
+        : '';
         this.stories.splice(this.stories.indexOf(news), 1);
-        return this.http.delete('http://localhost:3000/api/news/' + news.newsId)
+        return this.http.delete('http://localhost:3000/api/news/' + news.newsId + token)
             .map((response: Response) => response.json())
             .catch((error: Response) => Observable.throw(error.json()));
     }

@@ -10,6 +10,7 @@ import { NewsDetailComponent } from "./news/news-detail.component";
 import { aboutUs } from "./aboutus/about-us.component";
 
 import { NewsReplyComponent } from "./news/news-reply.component";
+import { NewsReplyInputComponent } from "./news/news-reply-input.component";
 
 
 
@@ -23,10 +24,7 @@ const APP_ROUTES: Routes = [
     { path: 'form', component: FormComponent },
     { path: 'news', component: NewsDetailComponent },
     { path: 'aboutus', component: aboutUs },
-    { path: 'news/reply', component: NewsReplyComponent }
-
-
-
+    { path: 'news/reply', component: NewsReplyInputComponent }
 ];
 
 export const routing = RouterModule.forRoot(APP_ROUTES);

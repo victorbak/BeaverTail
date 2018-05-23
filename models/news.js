@@ -26,8 +26,8 @@ var newsSchema = new mongoose.Schema({
 );
 
 newsSchema.post('remove', function(news) {
-    User.findById(news.user, function(err, user) {
-        user.messages.pull(message);
+    User.findById(news.user.id, function(err, user) {
+        user.newsPosts.pull(news);
         user.save();
     });
 })

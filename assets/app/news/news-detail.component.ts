@@ -46,5 +46,7 @@ export class NewsDetailComponent implements OnInit {
         .subscribe(
             result => console.log(result)
         );
+        this.route.navigate(['/']);
+
     }
 }

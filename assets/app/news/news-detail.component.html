@@ -76,6 +76,8 @@
         <button class="btn btn-danger" (click)="onDelete()">Delete</button>
     </div>
     
-    <reply-detail></reply-detail>
+    <div *ngFor="let reply of replylist">
+        <li>{{reply.title}}</li>
+    </div>
 
 </div>

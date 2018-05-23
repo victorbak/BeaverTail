@@ -12,11 +12,19 @@ import { NewsDetailComponent } from "./news-detail.component";
     templateUrl: './news.component.html',
     styleUrls: [
         './news.component.css'
-    ]})
+    ]
+})
 export class NewsComponent {
+    fullImagePath: string;
     @Input() news: News;
 
-    constructor(private newsService: NewsService, private router: Router) { }
+    constructor(private newsService: NewsService, private router: Router) {
+    this.fullImagePath = '/assets/images/tag.png'
+    }
+
+    
+    ngOnInit() {
+    }
 
     onEdit() {
         this.newsService.editNews(this.news);
@@ -30,7 +38,7 @@ export class NewsComponent {
     }
 
     getDetail() {
-        this.router.navigate(['/news'],{queryParams: {newsId: this.news.newsId}} )
+        this.router.navigate(['/news'], { queryParams: { newsId: this.news.newsId } })
     }
-    
+
 }

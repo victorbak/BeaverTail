@@ -300,6 +300,32 @@ export class NewsService {
             });
     }
 
+    getRepliesByNewsId(newsId : String) {
+        return this.http.get('http://localhost:3000/api/news/reply/news/' + newsId)
+            .map((response: Response) => {
+                const replies = response.json().obj;
+                let transformedReplies: Reply[] = [];
+                for (let reply of replies) {
+                    transformedReplies.push(new Reply(
+                        reply.title,
+                        reply.synopsis,
+                        reply.tags,
+                        reply.url,
+                        reply._id,
+                        reply.user.id,
+                        reply.user.username,
+                        reply.creationDate
+                    ));
+                }
+                this.replies = transformedReplies
+                return transformedReplies;
+            })
+            .catch((error: Response) => { 
+                this.errorService.handleError(error.json());
+                return Observable.throw(error.json());
+            });
+    }
+
     editNews(news: News) {
         this.newsIsEdit.emit(news);
     }

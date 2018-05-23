@@ -157,7 +157,7 @@ router.get('/reply/:id', function(req, res, next) {
 });
 
 //gets a reply by news id
-router.get('/news/reply/:id', function(req, res, next) {
+router.get('/reply/news/:id', function(req, res, next) {
     Reply.find({news: req.params.id})
     .exec(function(err, reply) {
         if (err) {

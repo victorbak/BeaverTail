@@ -78,14 +78,53 @@
 
     <h1 class="top">Replies</h1>
     <hr>
-    <div *ngFor="let reply of replylist">
-        <p>Post By: {{reply?.username}}</p>
-        <ul>
-            <li>title:{{reply?.title}}</li>
-            <li>synopsis:{{reply?.synopsis}}</li>
-            <li>tags:{{reply?.tags}}</li>
-            <li>url:{{reply?.url}}</li>
-            <li>Post On:{{reply?.creationDate}}</li>
-        </ul>
+    <div *ngFor="let reply of replylist" class="detail">
+        <!-- <p>Post By: {{reply?.username}}</p> -->
+        <h3>Post By: {{reply?.username}}</h3>
+        <table style="border-collapse: collapse;">
+                <tr>
+                    <td>
+                        <h4 style="padding-right:50px;">Title</h4>
+                    </td>
+                    <td>
+                        <h5 style=" vertical-align: baseline;">{{reply?.title}}}</h5>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h4 style="padding-right:50px;">Synopsis</h4>
+                    </td>
+                    <td>
+                        <h5>{{reply?.synopsis}}</h5>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h4 style="padding-right:50px;">Tags</h4>
+                    </td>
+                    <td>
+                        <h5>{{reply?.tags}}</h5>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h4 style="padding-right:50px;">URL</h4>
+                    </td>
+                    <td>
+                        <a>
+                            <h5>{{reply?.url}}</h5>
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h4 style="padding-right:50px;">Post on</h4>
+                    </td>
+                    <td>
+                        <h5>{{reply?.creationDate}}</h5>
+                    </td>
+                </tr>
+            </table>
+        
     </div>
 </div>

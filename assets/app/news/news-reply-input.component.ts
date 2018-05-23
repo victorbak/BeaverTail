@@ -8,6 +8,9 @@ import { Router, ActivatedRoute } from "@angular/router";
 @Component({
     selector: 'reply-input',
     templateUrl: './news-reply-input.component.html',
+    styleUrls: [
+        './news-reply-input.component.css'
+    ]
 })
 export class NewsReplyInputComponent{
 

@@ -14,11 +14,12 @@ import { Reply } from "./reply.model";
     ]
 })
 export class NewsDetailComponent implements OnInit {
-    // @Input() test: News
+    // @Input() reply: Reply
 
     news: News
     newsId: String
     replylist: Reply[]
+    reply: Reply;
 
     constructor(private newsService: NewsService, private router: ActivatedRoute, private route: Router) { }
     ngOnInit() {
@@ -34,6 +35,7 @@ export class NewsDetailComponent implements OnInit {
         this.newsService.getNewsById(this.newsId)
             .subscribe((news: News) => {
                 this.news = news
+                console.log(this.news);
             })
 
         this.newsService.getRepliesByNewsId(this.newsId)
@@ -53,9 +55,23 @@ export class NewsDetailComponent implements OnInit {
                 result => console.log(result)
             );
         this.route.navigate(['/']);
-
     }
 
+    onReplyDelete(id : string) {
+        console.log(id)
+        for(var i = 0; i < this.replylist.length; i++) {
+            if(id == this.replylist[i].replyId) {
+                this.reply = this.replylist[i];
+            }
+        }
+        console.log(this.reply);
+
+        this.newsService.deleteReply(this.reply)
+            .subscribe(
+                result => console.log(result)
+            );
+            this.route.navigateByUrl('/');
+    }
 
 
 }

@@ -16,13 +16,15 @@ var replySchema = new mongoose.Schema({
         username: String
     },
     news: {type: Schema.Types.ObjectId, ref: 'News'}
-})
+},
+{ usePushEach: true }, // ADD THIS
+)
 
 
-replySchema.post('remove', function(news) {
+replySchema.post('remove', function(reply) {
     News.findById(reply.news, function(err, news) {
-        New.replies.pull(reply);
-        News.save();
+        news.replies.pull(reply);
+        news.save();
     });
 })
 

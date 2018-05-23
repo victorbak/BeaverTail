@@ -1,13 +1,9 @@
 var express = require('express');
 var router = express.Router();
 var jwt = require('jsonwebtoken');
-
 var User = require('../models/user');
-
 var News = require('../models/news');
-
 var Reply = require('../models/reply');
-
 
 //GETTING NEWS
 
@@ -103,7 +99,7 @@ router.get('/:id', function(req, res, next) {
 
 //gets a news by username
 router.get('/user/:username', function(req, res, next) {
-    News.find({'user.username': req.params.username})
+    News.find({'user.username': req.params.username}).sort({creationDate: -1})
     .exec(function(err, news) {
         if (err) {
             return res.status(500).json({
@@ -123,7 +119,7 @@ router.get('/user/:username', function(req, res, next) {
 
 //gets replies by username
 router.get('/reply/user/:username', function(req, res, next) {
-    Reply.find({'user.username': req.params.username})
+    Reply.find({'user.username': req.params.username}).sort({creationDate: -1})
     .exec(function(err, reply) {
         if (err) {
             return res.status(500).json({
@@ -158,7 +154,7 @@ router.get('/reply/:id', function(req, res, next) {
 
 //gets a reply by news id
 router.get('/reply/news/:id', function(req, res, next) {
-    Reply.find({news: req.params.id})
+    Reply.find({news: req.params.id}).sort({creationDate: -1})
     .exec(function(err, reply) {
         if (err) {
             return res.status(500).json({

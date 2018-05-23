@@ -74,7 +74,7 @@
     </table>
     <div class="bottom">
         <button class="btn btn-primary" (click)="onReply()">Reply</button>
-        <button class="btn btn-danger" (click)="onDelete()">Delete</button>
+        <button *ngIf="belongsToUser()"class="btn btn-danger" (click)="onDelete()">Delete</button>
     </div>
 
     <h1 class="top">Replies</h1>

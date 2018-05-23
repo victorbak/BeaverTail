@@ -5,6 +5,8 @@ import 'rxjs/add/operator/filter';
 import { Router } from "@angular/router";
 import { ActivatedRoute } from '@angular/router';
 import { Reply } from "./reply.model";
+import { StorageService } from "../shared/storage.service";
+import { AuthService } from "../auth/auth.service";
 
 @Component({
     selector: 'news-detail',
@@ -19,8 +21,13 @@ export class NewsDetailComponent implements OnInit {
     news: News
     newsId: String
     replylist: Reply[]
+    username: String
 
-    constructor(private newsService: NewsService, private router: ActivatedRoute, private route: Router) { }
+    constructor(private newsService: NewsService,
+        private storageService: StorageService,
+        private authService: AuthService,
+        private router: ActivatedRoute,
+        private route: Router) { }
     ngOnInit() {
         this.router.queryParams
             .filter(params => params.newsId)
@@ -34,12 +41,21 @@ export class NewsDetailComponent implements OnInit {
         this.newsService.getNewsById(this.newsId)
             .subscribe((news: News) => {
                 this.news = news
+                console.log(this.news); // popular
+
             })
 
         this.newsService.getRepliesByNewsId(this.newsId)
             .subscribe((replies: Reply[]) => {
                 this.replylist = replies
             })
+
+        if (this.isLoggedIn()) {
+            this.username = localStorage.getItem('username')
+        }
+        this.storageService.watchStorage().subscribe((data: string) => {
+            this.username = localStorage.getItem('username')
+        })
     }
 
     onReply() {
@@ -56,6 +72,16 @@ export class NewsDetailComponent implements OnInit {
 
     }
 
+    isLoggedIn() {
+        return this.authService.isLoggedIn();
+    }
+
+    belongsToUser() {
+        if (this.news) {
+            return this.news.username == this.username
+        }
+        return false
+    }
 
 
 }

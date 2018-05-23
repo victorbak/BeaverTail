@@ -55,8 +55,9 @@ tr td:first-child x {
     /* margin-left:50px; */
     position: relative;
     float: middle;
-    margin-left: 18px;
+    margin-left: 30px;
 }
+
 
 .socialMedia {
     padding-left: 20px;
@@ -71,11 +72,7 @@ tr td:first-child x {
     margin-left: 12%;
 }
 
-hr {
-    height: 10px;
-    color: green;
-    width: 20px;
-}
+
 @media screen and (max-width: 800px) {
     hr {
        width: 100%;
@@ -97,9 +94,7 @@ hr {
     }
 }
 
-hr {
-    color: white;
-}
+
 
 button {
     width: 100%;
@@ -153,4 +148,6 @@ div.hr hr {
 .detail {
     /* margin-left: -20px; */
     margin-top:20px;
+    margin-left: 30px;
+
 }

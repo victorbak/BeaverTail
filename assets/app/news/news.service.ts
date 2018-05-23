@@ -298,11 +298,12 @@ export class NewsService {
     }
 
     getRepliesByNewsId(newsId : String) {
-        return this.http.get('http://localhost:3000/api/news/reply/news' + newsId)
+        return this.http.get('http://localhost:3000/api/news/reply/news/' + newsId)
             .map((response: Response) => {
-                const reply = response.json().obj;
-                let transformedReplies: Reply;
-                    transformedReplies = new Reply(
+                const replies = response.json().obj;
+                let transformedReplies: Reply[] = [];
+                for (let reply of replies) {
+                    transformedReplies.push(new Reply(
                         reply.title,
                         reply.synopsis,
                         reply.tags,
@@ -311,7 +312,9 @@ export class NewsService {
                         reply.user.id,
                         reply.user.username,
                         reply.creationDate
-                    );
+                    ));
+                }
+                this.replies = transformedReplies
                 return transformedReplies;
             })
             .catch((error: Response) => { 
@@ -319,6 +322,7 @@ export class NewsService {
                 return Observable.throw(error.json());
             });
     }
+
 
     editNews(news: News) {
         this.newsIsEdit.emit(news);

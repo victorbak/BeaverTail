@@ -82,7 +82,8 @@ export class FormComponent {
             form.value.url, 
             this.longitude,
             this.latitude, 
-            form.value.dates
+            form.value.dateFrom,
+            form.value.dateTo
         );
         this.newsService.addNews(news)
             .subscribe(

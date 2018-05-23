@@ -45,29 +45,29 @@
         </tr>
         <tr>
             <td>
-                <h3 style="padding-right:50px;">Event Dates From</h3>
+                <h3 style="padding-right:50px;">Date From</h3>
             </td>
             <!-- <td>{{news?.dates}}</td> -->
             <td>
-                <h4>{{news?.dates}}</h4>
+                <h4>{{news?.dateFrom}}</h4>
             </td>
         </tr>
         <tr>
             <td>
-                <h3 style="padding-right:50px;">Creation Date</h3>
+                <h3 style="padding-right:50px;">Date To</h3>
+            </td>
+            <!-- <td>{{news?.dates}}</td> -->
+            <td>
+                <h4>{{news?.dateTo}}</h4>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <h3 style="padding-right:50px;">Date Posted</h3>
             </td>
             <!-- <td>{{news?.creationDate}}</td> -->
             <td>
                 <h4>{{news?.creationDate}}</h4>
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <h3 style="padding-right:50px;">Event Dates To</h3>
-            </td>
-            <!-- <td>{{news?.dates}}</td> -->
-            <td>
-                <h4>Dates for test</h4>
             </td>
         </tr>
     </table>
@@ -78,14 +78,53 @@
 
     <h1 class="top">Replies</h1>
     <hr>
-    <div *ngFor="let reply of replylist">
-        <p>Post By: {{reply?.username}}</p>
-        <ul>
-            <li>title:{{reply?.title}}</li>
-            <li>synopsis:{{reply?.synopsis}}</li>
-            <li>tags:{{reply?.tags}}</li>
-            <li>url:{{reply?.url}}</li>
-            <li>Post On:{{reply?.creationDate}}</li>
-        </ul>
+    <div *ngFor="let reply of replylist" class="detail">
+        <!-- <p>Post By: {{reply?.username}}</p> -->
+        <h3>Post By: {{reply?.username}}</h3>
+        <table style="border-collapse: collapse;">
+                <tr>
+                    <td>
+                        <h4 style="padding-right:50px;">Title</h4>
+                    </td>
+                    <td>
+                        <h5 style=" vertical-align: baseline;">{{reply?.title}}}</h5>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h4 style="padding-right:50px;">Synopsis</h4>
+                    </td>
+                    <td>
+                        <h5>{{reply?.synopsis}}</h5>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h4 style="padding-right:50px;">Tags</h4>
+                    </td>
+                    <td>
+                        <h5>{{reply?.tags}}</h5>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h4 style="padding-right:50px;">URL</h4>
+                    </td>
+                    <td>
+                        <a href="{{reply?.url}}">
+                            <h5>{{reply?.url}}</h5>
+                        </a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <h4 style="padding-right:50px;">Post on</h4>
+                    </td>
+                    <td>
+                        <h5>{{reply?.creationDate}}</h5>
+                    </td>
+                </tr>
+            </table>
+        
     </div>
 </div>

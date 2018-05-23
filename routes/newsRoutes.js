@@ -206,7 +206,8 @@ router.post('/', function(req, res, next) {
             url: req.body.url,
             longitude: req.body.longitude,
             latitude: req.body.latitude,
-            dates: req.body.dates,
+            dateFrom: req.body.dateFrom,
+            dateTo: req.body.dateTo,
             'user.id': user._id,
             'user.username': user.username
         });

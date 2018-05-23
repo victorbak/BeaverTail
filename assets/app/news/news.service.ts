@@ -277,10 +277,9 @@ export class NewsService {
     getRepliesById(replyId : String) {
         return this.http.get('http://localhost:3000/api/news/reply/' + replyId)
             .map((response: Response) => {
-                const replies = response.json().obj;
-                let transformedReplies: Reply[] = [];
-                for (let reply of replies) {
-                    transformedReplies.push(new Reply(
+                const reply = response.json().obj;
+                let transformedReplies: Reply;
+                    transformedReplies = new Reply(
                         reply.title,
                         reply.synopsis,
                         reply.tags,
@@ -289,9 +288,7 @@ export class NewsService {
                         reply.user.id,
                         reply.user.username,
                         reply.creationDate
-                    ));
-                }
-                this.replies = transformedReplies
+                    );
                 return transformedReplies;
             })
             .catch((error: Response) => { 
@@ -301,12 +298,11 @@ export class NewsService {
     }
 
     getRepliesByNewsId(newsId : String) {
-        return this.http.get('http://localhost:3000/api/news/reply/news/' + newsId)
+        return this.http.get('http://localhost:3000/api/news/reply/news' + newsId)
             .map((response: Response) => {
-                const replies = response.json().obj;
-                let transformedReplies: Reply[] = [];
-                for (let reply of replies) {
-                    transformedReplies.push(new Reply(
+                const reply = response.json().obj;
+                let transformedReplies: Reply;
+                    transformedReplies = new Reply(
                         reply.title,
                         reply.synopsis,
                         reply.tags,
@@ -315,9 +311,7 @@ export class NewsService {
                         reply.user.id,
                         reply.user.username,
                         reply.creationDate
-                    ));
-                }
-                this.replies = transformedReplies
+                    );
                 return transformedReplies;
             })
             .catch((error: Response) => { 

@@ -243,6 +243,7 @@ router.post('/:id/reply', function(req, res, next) {
                 title: req.body.title,
                 synopsis: req.body.synopsis,
                 tags: req.body.tags,
+                verify: req.body.verify,
                 url: req.body.url,
                 'user.id': user._id,
                 'user.username': user.username,

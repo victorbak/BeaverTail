@@ -43,11 +43,11 @@ export class NewsReplyInputComponent{
     submitted = false;
 
     onSubmit(form: NgForm) {
-        console.log(this.newsId); 
-        console.log(this.title);
+        // console.log(this.newsId); 
+        // console.log(this.title);
         this.errorMessages = []
         this.submitted = true;
-        console.log(form)
+        //console.log(form)
         if (this.tags.length == 0 && this.govTags.length == 0 && this.peopleTags.length == 0) {
             this.errorMessages.push("Please enter at least one tag")
 

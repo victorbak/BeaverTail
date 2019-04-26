@@ -2,6 +2,7 @@ import { Component, OnInit } from "@angular/core";
 import { NgForm, FormGroup, FormControl, Validators } from "@angular/forms";
 import {News} from './news.model';
 import { NewsService } from "./news.service";
+import { Router } from "@angular/router";
 
 @Component({
     selector: 'app-form',
@@ -15,7 +16,7 @@ import { NewsService } from "./news.service";
 export class FormComponent {
     news: News;
 
-    constructor(private newsService: NewsService) {}
+    constructor(private newsService: NewsService, private router: Router) {}
 
     // let form = new Form ( 'www.facebook.com.'
     // ,'So this is the example', 'Canada', 'Canadian, Social',
@@ -43,8 +44,8 @@ export class FormComponent {
     onSubmit(form: NgForm) {
         this.errorMessages = []
         this.submitted = true;
-        console.log(form)
-        console.log(this.latitude + ", " + this.longitude)
+        // console.log(form)
+        // console.log(this.latitude + ", " + this.longitude)
         if (!this.latitude || !this.longitude) {
             this.errorMessages.push("Please enter a valid location")
         }
@@ -81,14 +82,18 @@ export class FormComponent {
             form.value.url, 
             this.longitude,
             this.latitude, 
-            form.value.dates
+            form.value.dateFrom,
+            form.value.dateTo
         );
+        //console.log(this.news);
         this.newsService.addNews(news)
             .subscribe(
                 data => console.log(data),
                 error => console.error(error)
             );
         form.resetForm();
+        this.router.navigateByUrl('/');
+
     }
 
 
@@ -98,27 +103,27 @@ export class FormComponent {
     }
 
     autoCompleteCallback1(selectedData: any) {
-        console.log(selectedData.response)
+        //console.log(selectedData.response)
         if (selectedData.response) {
             this.latitudeForMap = selectedData.data.geometry.location.lat
             this.latitude = selectedData.data.geometry.location.lat
             this.longitudeForMap = selectedData.data.geometry.location.lng
             this.longitude = selectedData.data.geometry.location.lng
             this.zoom = 10
-            console.log(this.latitude + ", " + this.longitude)
+            //console.log(this.latitude + ", " + this.longitude)
         }
     }
 
     mapClicked($event: any) {
         this.latitude = $event.coords.lat
         this.longitude = $event.coords.lng
-        console.log(this.latitude + ", " + this.longitude)
+        //console.log(this.latitude + ", " + this.longitude)
     }
 
     pinDragged($event: any) {
         this.latitude = $event.coords.lat
         this.longitude = $event.coords.lng
-        console.log(this.latitude + ", " + this.longitude)
+        //console.log(this.latitude + ", " + this.longitude)
     }
 
 }

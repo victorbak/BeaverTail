@@ -6,10 +6,10 @@ import { AppComponent } from "./app.component";
 import { HeaderComponent } from './shared/header.component';
 import { Ng4GeoautocompleteModule } from 'ng4-geoautocomplete'
 import { SignupComponent } from '../app/auth/signup.component';
-import { routing } from './app.routing';
 import { SigninComponent } from '../app/auth/signin.component';
 import { HttpModule } from '@angular/http';
 import { AuthService } from './auth/auth.service';
+import { routing } from './app.routing';
 import { AgmCoreModule } from '@agm/core'
 import { MainMapComponent } from './maps/main-map.component';
 import { ProfileComponent } from './user/profile.component';
@@ -31,6 +31,9 @@ import { NewsPopularComponent } from './news/news-popular.component';
 import { NewsRecentComponent } from './news/news-recent.component';
 import { NewsReplyInputComponent } from './news/news-reply-input.component';
 import { aboutUs } from './aboutus/about-us.component';
+import { ReplyListComponent } from './news/news-replylist.component';
+import { NewsReplyDetailComponent } from './news/news-reply-detail.component';
+import { GOOGLE_MAPS_API_KEY } from '../../env.js'
 import { ErrorComponent } from './errors/error.component';
 import { ErrorService } from './errors/error.service';
 
@@ -52,6 +55,8 @@ import { ErrorService } from './errors/error.service';
         NewsPopularComponent,
         NewsRecentComponent,
         aboutUs,
+        ReplyListComponent,
+        NewsReplyDetailComponent,
         ErrorComponent
         ],
     imports: [
@@ -61,7 +66,7 @@ import { ErrorService } from './errors/error.service';
         ReactiveFormsModule,
         HttpModule,
         AgmCoreOverrideModule.forRoot({
-            apiKey: 'AIzaSyBeWcFP4LtWiS8ckrXz1JytArU2YEXhMPc'
+            apiKey: GOOGLE_MAPS_API_KEY
         }),
         AgmSnazzyInfoWindowModule,
         AgmJsMarkerClustererModule,

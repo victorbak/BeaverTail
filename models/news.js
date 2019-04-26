@@ -1,6 +1,5 @@
 var mongoose = require('mongoose')
 var Schema = mongoose.Schema
-
 var User = require('./user');
 
 var newsSchema = new mongoose.Schema({
@@ -12,7 +11,8 @@ var newsSchema = new mongoose.Schema({
     longitude: {type: Number},
     latitude: {type: Number},
     creationDate: {type: Date, default: Date.now},
-    dates: [{type: Date}],
+    dateFrom: {type: Date},
+    dateTo: {type: Date},
     user: {
         id: {
             type: Schema.Types.ObjectId,

@@ -1,6 +1,7 @@
 agm-map {
-    height: 300px;
+  height: 300px;
 }
+
 /*!
  * Bootswatch v4.1.1
  * Homepage: https://bootswatch.com
@@ -16,7 +17,6 @@ agm-map {
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 
- .footer{
-    padding-bottom: 50px;
-  }
- 
+.footer {
+  margin-bottom: 50px;
+}

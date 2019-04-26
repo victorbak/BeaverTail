@@ -4,21 +4,28 @@
     background: rgb(255, 255, 255);
     /* Fall-back for browsers that don't
     support rgba */
-    background: rgba(255, 255, 255, .4);
+    background: rgba(255, 255, 255, 0.6);
     /* opacity: 0.5; */
     filter: alpha(opacity=50);
-    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 3px 6px rgb(236, 236, 236);
     padding-top: 10px;
     padding-left: 20px;
     padding-bottom: 10px;
-    width: 95%;
+    /* width: 100%; */
     /* border-radius: 10px; */
 }
 
 a {
-    text-transform: uppercase;
     font-size: 20px;
     list-style-type: square;
+}
+h5{
+    margin-left:10px;
+    /* background-color:black;
+    color:white; */
+    display:inline-block;
+    margin-top:-20px;
+    
 }
 
 p {
@@ -29,9 +36,9 @@ p {
 @media screen and (max-width: 800px) {
     .background{
       width: 100%; /* The width is 100%, when the viewport is 800px or smaller */
-      padding-left: 20px;
-      margin-left:40px;
-      margin-right:40px;
-
     }
+  }
+
+  li {
+    color:rgb(92, 89, 89);
   }

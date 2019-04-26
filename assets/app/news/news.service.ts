@@ -6,7 +6,10 @@ import "rxjs/Rx";
 import { Observable } from "rxjs"
 import { error } from "util";
 import { User } from "../auth/user.model";
+import { URL } from "../../../env.js"
 import { ErrorService } from "../errors/error.service";
+import { ReplyListComponent } from "./news-replylist.component";
+var dateFormat = require('dateformat');
 
 @Injectable()
 export class NewsService {
@@ -22,7 +25,7 @@ export class NewsService {
         const token = localStorage.getItem('token')
             ? '?token=' + localStorage.getItem('token')
             : '';
-        return this.http.post('http://localhost:3000/api/news' + token, body, { headers: headers })
+        return this.http.post(URL + '/api/news' + token, body, { headers: headers })
             .map((response: Response) => {
                 const result = response.json();
                 const news = new News(result.obj.title,
@@ -32,7 +35,8 @@ export class NewsService {
                     result.obj.url,
                     result.obj.longitude,
                     result.obj.latitude,
-                    result.obj.dates,
+                    result.obj.dateFrom,
+                    result.obj.dateTo,
                     result.obj.creationDate,
                     result.obj._id,
                     result.obj.user.id,
@@ -53,13 +57,14 @@ export class NewsService {
         const token = localStorage.getItem('token')
             ? '?token=' + localStorage.getItem('token')
             : '';
-        return this.http.post('http://localhost:3000/api/news/' + newsId + '/' + 'reply' + token, body, { headers: headers })
+        return this.http.post(URL + '/api/news/' + newsId + '/' + 'reply' + token, body, { headers: headers })
             .map((response: Response) => {
                 const result = response.json();
                 const reply = new Reply(
                     result.obj.title,
                     result.obj.synopsis,
                     result.obj.tags,
+                    result.obj.verify,
                     result.obj.url,
                     result.obj._id,
                     newsId,
@@ -77,7 +82,7 @@ export class NewsService {
     }
 
     getNews() {
-        return this.http.get('http://localhost:3000/api/news')
+        return this.http.get(URL + '/api/news')
             .map((response: Response) => {
                 const stories = response.json().obj;
                 let transformedNews: News[] = [];
@@ -90,8 +95,9 @@ export class NewsService {
                         news.url,
                         news.longitude,
                         news.latitude,
-                        news.dates,
-                        news.creationDate,
+                        dateFormat(news.dateTo),
+                        dateFormat(news.dateFrom),
+                        dateFormat(news.creationDate),
                         news._id,
                         news.user.id,
                         news.user.username
@@ -107,7 +113,7 @@ export class NewsService {
     }
 
     getPopularNews(){
-        return this.http.get('http://localhost:3000/api/news/popular')
+        return this.http.get(URL + '/api/news/popular')
             .map((response: Response) => {
                 const stories = response.json().obj;
                 let transformedNews: News[] = [];
@@ -120,8 +126,9 @@ export class NewsService {
                         news.url,
                         news.longitude,
                         news.latitude,
-                        news.dates,
-                        news.creationDate,
+                        dateFormat(news.dateTo),
+                        dateFormat(news.dateFrom),
+                        dateFormat(news.creationDate),
                         news._id,
                         news.user.id,
                         news.user.username
@@ -137,7 +144,7 @@ export class NewsService {
     }
 
     getRecentNews(){
-        return this.http.get('http://localhost:3000/api/news/new')
+        return this.http.get(URL + '/api/news/new')
             .map((response: Response) => {
                 const stories = response.json().obj;
                 let transformedNews: News[] = [];
@@ -150,8 +157,9 @@ export class NewsService {
                         news.url,
                         news.longitude,
                         news.latitude,
-                        news.dates,
-                        news.creationDate,
+                        dateFormat(news.dateTo),
+                        dateFormat(news.dateFrom),
+                        dateFormat(news.creationDate),
                         news._id,
                         news.user.id,
                         news.user.username
@@ -167,7 +175,7 @@ export class NewsService {
     }
 
     getNewsByName(username: String) {
-        return this.http.get('http://localhost:3000/api/news/user/' + username)
+        return this.http.get(URL + '/api/news/user/' + username)
             .map((response: Response) => {
                 const stories = response.json().obj;
                 let transformedNews: News[] = [];
@@ -180,8 +188,9 @@ export class NewsService {
                         news.url,
                         news.longitude,
                         news.latitude,
-                        news.dates,
-                        news.creationDate,
+                        dateFormat(news.dateTo),
+                        dateFormat(news.dateFrom),
+                        dateFormat(news.creationDate),
                         news._id,
                         news.user.id,
                         news.user.username
@@ -197,22 +206,24 @@ export class NewsService {
     }
 
     getNewsById(newsId: String) {
-        return this.http.get('http://localhost:3000/api/news/' + newsId)
+        return this.http.get(URL + '/api/news/' + newsId)
             .map((response: Response) => {
                 const news = response.json().obj;
                 let transformedNews: News;
-                transformedNews = new News(news.title,
+                transformedNews = new News(
+                    news.title,
                     news.synopsis,
                     news.tags,
                     news.replyCount,
                     news.url,
                     news.longitude,
                     news.latitude,
-                    news.dates,
-                    news.creationDate,
+                    dateFormat(news.dateTo),
+                    dateFormat(news.dateFrom),
+                    dateFormat(news.creationDate),
                     news._id,
-                    news.userId,
-                    news.username);
+                    news.user.id,
+                    news.user.username);
                 return transformedNews;
             })
             .catch((error: Response) => { 
@@ -223,7 +234,7 @@ export class NewsService {
     
     //Get Replies
     getReplies() {
-        return this.http.get('http://localhost:3000/api/news/reply')
+        return this.http.get(URL + '/api/news/reply')
             .map((response: Response) => {
                 const replies = response.json().obj;
                 let transformedReplies: Reply[] = [];
@@ -232,11 +243,13 @@ export class NewsService {
                         reply.title,
                         reply.synopsis,
                         reply.tags,
+                        reply.verify,
                         reply.url,
                         reply._id,
+                        reply.news,
                         reply.user.id,
                         reply.user.username,
-                        reply.creationDate
+                        dateFormat(reply.creationDate)
                     ));
                 }
                 this.replies = transformedReplies
@@ -249,7 +262,7 @@ export class NewsService {
     }
 
     getRepliesByName(username : String) {
-        return this.http.get('http://localhost:3000/api/news/reply/user/' + username)
+        return this.http.get(URL + '/api/news/reply/user/' + username)
             .map((response: Response) => {
                 const replies = response.json().obj;
                 let transformedReplies: Reply[] = [];
@@ -258,11 +271,13 @@ export class NewsService {
                         reply.title,
                         reply.synopsis,
                         reply.tags,
+                        reply.verify,
                         reply.url,
                         reply._id,
+                        reply.news,
                         reply.user.id,
                         reply.user.username,
-                        reply.creationDate
+                        dateFormat(reply.creationDate)
                     ));
                 }
                 this.replies = transformedReplies
@@ -275,7 +290,7 @@ export class NewsService {
     }
 
     getRepliesById(replyId : String) {
-        return this.http.get('http://localhost:3000/api/news/reply/' + replyId)
+        return this.http.get(URL + '/api/news/reply/' + replyId)
             .map((response: Response) => {
                 const reply = response.json().obj;
                 let transformedReplies: Reply;
@@ -283,11 +298,12 @@ export class NewsService {
                         reply.title,
                         reply.synopsis,
                         reply.tags,
+                        reply.verify,
                         reply.url,
                         reply._id,
                         reply.user.id,
                         reply.user.username,
-                        reply.creationDate
+                        dateFormat(reply.creationDate)
                     );
                 return transformedReplies;
             })
@@ -307,11 +323,13 @@ export class NewsService {
                         reply.title,
                         reply.synopsis,
                         reply.tags,
+                        reply.verify,
                         reply.url,
                         reply._id,
+                        reply.news,
                         reply.user.id,
                         reply.user.username,
-                        reply.creationDate
+                        dateFormat(reply.creationDate)
                     ));
                 }
                 this.replies = transformedReplies
@@ -333,7 +351,7 @@ export class NewsService {
         ? '?token=' + localStorage.getItem('token')
         : '';
         this.stories.splice(this.stories.indexOf(news), 1);
-        return this.http.delete('http://localhost:3000/api/news/' + news.newsId + token)
+        return this.http.delete(URL + '/api/news/' + news.newsId + token)
             .map((response: Response) => response.json())
             .catch((error: Response) => { 
                 this.errorService.handleError(error.json());
@@ -341,11 +359,11 @@ export class NewsService {
             });
     }
 
-    deleteReply(reply: Reply) {
+    deleteReply(reply : Reply) {
         const token = localStorage.getItem('token')
         ? '?token=' + localStorage.getItem('token')
         : '';
-        this.replies.splice(this.stories.indexOf(reply), 1);
+        this.replies.splice(this.replies.indexOf(reply), 1);
         return this.http.delete('http://localhost:3000/api/news/reply/' + reply.replyId + token)
             .map((response: Response) => response.json())
             .catch((error: Response) => { 

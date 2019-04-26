@@ -26,8 +26,4 @@ export class NewsListComponent implements OnInit {
                 }
             );
     }
-
-    // belongsToUser() {
-    //     return localStorage.getItem('userId') == this.news.userId;
-    // }
 }

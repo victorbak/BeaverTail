@@ -6,8 +6,11 @@ import { Reply } from "./reply.model";
 import { Router, ActivatedRoute } from "@angular/router";
 
 @Component({
-    selector: 'news-reply',
+    selector: 'reply-input',
     templateUrl: './news-reply-input.component.html',
+    styleUrls: [
+        './news-reply-input.component.css'
+    ]
 })
 export class NewsReplyInputComponent{
 
@@ -40,11 +43,11 @@ export class NewsReplyInputComponent{
     submitted = false;
 
     onSubmit(form: NgForm) {
-        console.log(this.newsId); 
-        console.log(this.title);
+        // console.log(this.newsId); 
+        // console.log(this.title);
         this.errorMessages = []
         this.submitted = true;
-        console.log(form)
+        //console.log(form)
         if (this.tags.length == 0 && this.govTags.length == 0 && this.peopleTags.length == 0) {
             this.errorMessages.push("Please enter at least one tag")
 
@@ -75,6 +78,7 @@ export class NewsReplyInputComponent{
             form.value.title,
             form.value.synopsis, 
             this.merged,  
+            form.value.verify,
             form.value.url
         );
         this.newsService.addReply(reply, this.newsId)
@@ -83,6 +87,7 @@ export class NewsReplyInputComponent{
                 error => console.error(error)
             );
         form.resetForm();
+        this.route.navigate(['/news'],{queryParams: {newsId: this.newsId}} )
     }
 
 }
